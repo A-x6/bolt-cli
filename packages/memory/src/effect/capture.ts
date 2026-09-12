@@ -231,6 +231,44 @@ export namespace MemoryCapture {
         }),
       )
 
+      // Managed opencode models require per-request session headers that this background
+      // consolidation path does not send; the provider rejects them with MissingSessionID.
+      // Keep a zero-cost fallback digest and skip the LLM calls instead of erroring every turn.
+      const configuredProvider = input.memoryModel?.split("/")[0] ?? ""
+      const managedModel = configuredProvider.startsWith("opencode")
+        ? true
+        : !input.memoryModel && view.sessionModel.providerID.startsWith("opencode")
+      if (managedModel && (digestDue || typedCall) && safe) {
+        yield* memory.recordSession({
+          root,
+          sessionID: input.sessionID,
+          topic: "",
+          summary: safe,
+          time: now,
+          tokens: 0,
+          fallback: true,
+        })
+        yield* memory.decide({
+          root,
+          decision: {
+            kind: "digest",
+            trigger: "turn-close",
+            sessionID: input.sessionID,
+            result: "fallback",
+            llm: false,
+            parsed: false,
+            fallback: true,
+            reason: "opencode_managed_model",
+            tokens: 0,
+            operationCount: 1,
+            skippedCount: 0,
+            summary: "session digest fallback for opencode managed model",
+          },
+        })
+        return yield* skip("opencode_managed_model")
+      }
+      if (managedModel) return yield* skip("opencode_managed_model")
+
       const model =
         digestDue || typedCall
           ? yield* Effect.gen(function* () {
