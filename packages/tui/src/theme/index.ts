@@ -404,7 +404,7 @@ export function generateSystem(colors: TerminalColors, mode: "dark" | "light"): 
 
       // Status colors using ANSI
       error: ansiColors.red,
-      warning: ansiColors.yellow,
+      warning: ansiColors.blue,
       success: ansiColors.green,
       info: ansiColors.cyan,
 
