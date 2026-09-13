@@ -13,7 +13,7 @@ if (!Script.preview) {
     .text()
     .catch(() => "No notable changes")
   const dir = process.env.RUNNER_TEMP ?? "/tmp"
-  const notesFile = `${dir}/opencode-release-notes.txt`
+  const notesFile = `${dir}/bolt-release-notes.txt`
   await Bun.write(notesFile, body)
   // reuse an existing draft so a failed publish can be re-dispatched with the same version
   const existing = await $`gh release view v${Script.version}`.nothrow().quiet()
