@@ -9,6 +9,7 @@ import { Provider } from "@/provider/provider"
 import { Session } from "@/session/session"
 import { MessageID, PartID, SessionID } from "@/session/schema"
 import { SessionProcessor } from "@/session/processor"
+import { SessionToolBudget } from "@/session/tool-budget"
 import { SessionTools } from "@/session/tools"
 import { Tool } from "@/tool/tool"
 import { ToolRegistry } from "@/tool/registry"
@@ -61,11 +62,16 @@ const fakeTruncate = Truncate.Service.of({
   limits: () => Effect.succeed({ maxLines: 2000, maxBytes: 50 * 1024 }),
 } satisfies Truncate.Interface)
 
+const fakeToolBudget = SessionToolBudget.Service.of({
+  consume: () => Effect.succeed({ used: 1, allowed: true }),
+} satisfies SessionToolBudget.Interface)
+
 const layer = Layer.mergeAll(
   Layer.succeed(Plugin.Service, fakePlugin),
   Layer.succeed(Permission.Service, fakePermission),
   Layer.succeed(MCP.Service, fakeMcp()),
   Layer.succeed(Truncate.Service, fakeTruncate),
+  Layer.succeed(SessionToolBudget.Service, fakeToolBudget),
   RuntimeFlags.layer(),
   Layer.succeed(
     ToolRegistry.Service,
