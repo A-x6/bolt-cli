@@ -62,15 +62,17 @@ Or you can set it up manually.
            with:
              fetch-depth: 1
              persist-credentials: false
+   ```
 
 - name: Run OpenCode
-            uses: bolt-builder/bolt-cli/github@latest
-           env:
-             ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-           with:
-             model: anthropic/claude-sonnet-4-20250514
-             # share: true
-   ```
+  uses: bolt-builder/bolt-cli/github@latest
+  env:
+  ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+  with:
+  model: anthropic/claude-sonnet-4-20250514 # share: true
+  ```
+
+  ```
 
 3. **Store the API keys in secrets**
 

@@ -1706,7 +1706,31 @@ export type AgentConfig = {
   steps?: number
   maxSteps?: number
   permission?: PermissionConfig
-  [key: string]: unknown
+  [key: string]:
+    | unknown
+    | string
+    | number
+    | {
+        [key: string]: boolean
+      }
+    | boolean
+    | "subagent"
+    | "primary"
+    | "all"
+    | {
+        [key: string]: unknown
+      }
+    | string
+    | "primary"
+    | "secondary"
+    | "accent"
+    | "success"
+    | "warning"
+    | "error"
+    | "info"
+    | number
+    | PermissionConfig
+    | undefined
 }
 
 export type ProviderConfig = {
@@ -1730,11 +1754,11 @@ export type ProviderConfig = {
      * Timeout in milliseconds to wait for response headers (default: 300000). Set to false to disable timeout.
      */
     headerTimeout?: number | false
-/**
-      * Timeout in milliseconds between streamed SSE chunks for this provider (default: 300000). If no chunk arrives within this window, the request is aborted. Set to false to disable timeout.
-      */
-     chunkTimeout?: number | false
-     [key: string]: unknown | string | boolean | number | false | number | false | number | false | undefined
+    /**
+     * Timeout in milliseconds between streamed SSE chunks for this provider (default: 300000). If no chunk arrives within this window, the request is aborted. Set to false to disable timeout.
+     */
+    chunkTimeout?: number | false
+    [key: string]: unknown | string | boolean | number | false | number | false | number | false | undefined
   }
   models?: {
     [key: string]: {
@@ -1794,7 +1818,7 @@ export type ProviderConfig = {
       variants?: {
         [key: string]: {
           disabled?: boolean
-          [key: string]: unknown
+          [key: string]: unknown | boolean | undefined
         }
       }
     }

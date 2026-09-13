@@ -7,10 +7,8 @@ import { serializeArrayParam, serializeObjectParam, serializePrimitiveParam } fr
 import { getUrl } from "../core/utils.gen.js"
 import type { Client, ClientOptions, Config, RequestOptions } from "./types.gen.js"
 
-export const createQuerySerializer = <T = unknown>({ parameters = {}, ...args }: QuerySerializerOptions = {}): ((
-  queryParams: T,
-) => string) => {
-  const querySerializer = (queryParams: T): string => {
+export const createQuerySerializer = <T = unknown>({ parameters = {}, ...args }: QuerySerializerOptions = {}) => {
+  const querySerializer = (queryParams: T) => {
     const search: string[] = []
     if (queryParams && typeof queryParams === "object") {
       for (const name in queryParams) {
@@ -107,12 +105,14 @@ const checkForExistence = (
   return false
 }
 
-export async function setAuthParams(
-  options: Pick<RequestOptions, "auth" | "query" | "security"> & {
+export const setAuthParams = async ({
+  security,
+  ...options
+}: Pick<Required<RequestOptions>, "security"> &
+  Pick<RequestOptions, "auth" | "query"> & {
     headers: Headers
-  },
-): Promise<void> {
-  for (const auth of options.security ?? []) {
+  }) => {
+  for (const auth of security) {
     if (checkForExistence(options, auth.name)) {
       continue
     }
@@ -189,7 +189,7 @@ export const mergeHeaders = (...headers: Array<Required<Config>["headers"] | und
           mergedHeaders.append(key, v as string)
         }
       } else if (value !== undefined) {
-        // assume object headers are meant to be JSON stringified, i.e., their
+        // assume object headers are meant to be JSON stringified, i.e. their
         // content value in OpenAPI specification is 'application/json'
         mergedHeaders.set(key, typeof value === "object" ? JSON.stringify(value) : (value as string))
       }
@@ -200,10 +200,8 @@ export const mergeHeaders = (...headers: Array<Required<Config>["headers"] | und
 
 type ErrInterceptor<Err, Res, Req, Options> = (
   error: Err,
-  /** response may be undefined due to a network error where no response object is produced */
-  response: Res | undefined,
-  /** request may be undefined, because error may be from building the request object itself */
-  request: Req | undefined,
+  response: Res,
+  request: Req,
   options: Options,
 ) => Err | Promise<Err>
 
