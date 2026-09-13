@@ -12,8 +12,8 @@ describe("hasExistingAppState", () => {
 
   test("recognizes state written by an earlier Bolt launch", () => {
     expect(hasExistingAppState([file("bolt.settings")])).toBe(true)
-    expect(hasExistingAppState([file("opencode.global.dat")])).toBe(true)
+    expect(hasExistingAppState([file("bolt.global.dat")])).toBe(true)
     expect(hasExistingAppState([file("window-state-abc.json")])).toBe(true)
-    expect(hasExistingAppState([directory("opencode")])).toBe(true)
+    expect(hasExistingAppState([directory("bolt")])).toBe(true)
   })
 })

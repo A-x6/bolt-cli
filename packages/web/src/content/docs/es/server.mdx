@@ -23,7 +23,7 @@ opencode serve [--port <number>] [--hostname <string>] [--cors <origin>]
 | `--port`        | Puerto para escuchar                                  | `4096`           |
 | `--hostname`    | Nombre de host para escuchar                          | `127.0.0.1`      |
 | `--mdns`        | Habilitar el descubrimiento de mDNS                   | `false`          |
-| `--mdns-domain` | Nombre de dominio personalizado para el servicio mDNS | `opencode.local` |
+| `--mdns-domain` | Nombre de dominio personalizado para el servicio mDNS | `bolt.local` |
 | `--cors`        | Orígenes de navegador adicionales para permitir       | `[]`             |
 
 `--cors` se puede pasar varias veces:
@@ -36,10 +36,10 @@ opencode serve --cors http://localhost:5173 --cors https://app.example.com
 
 ### Autenticación
 
-Configure `OPENCODE_SERVER_PASSWORD` para proteger el servidor con autenticación básica HTTP. El nombre de usuario predeterminado es `opencode`, o configure `OPENCODE_SERVER_USERNAME` para anularlo. Esto se aplica tanto a `opencode serve` como a `opencode web`.
+Configure `BOLT_SERVER_PASSWORD` para proteger el servidor con autenticación básica HTTP. El nombre de usuario predeterminado es `opencode`, o configure `BOLT_SERVER_USERNAME` para anularlo. Esto se aplica tanto a `opencode serve` como a `opencode web`.
 
 ```bash
-OPENCODE_SERVER_PASSWORD=your-password opencode serve
+BOLT_SERVER_PASSWORD=your-password opencode serve
 ```
 
 ---
@@ -65,7 +65,7 @@ opencode TUI ejecutándose, `opencode serve` iniciará un nuevo servidor.
 
 Cuando inicia el TUI, asigna aleatoriamente un puerto y un nombre de host. En su lugar, puede pasar `--hostname` y `--port` [banderas](/docs/cli). Luego use esto para conectarse a su servidor.
 
-El punto final [`/tui`](#tui) se puede utilizar para conducir el TUI a través del servidor. Por ejemplo, puede completar previamente o ejecutar un mensaje. Esta configuración es utilizada por los complementos OpenCode [IDE](/docs/ide).
+El punto final [`/tui`](#tui) se puede utilizar para conducir el TUI a través del servidor. Por ejemplo, puede completar previamente o ejecutar un mensaje. Esta configuración es utilizada por los complementos Bolt [IDE](/docs/ide).
 
 ---
 

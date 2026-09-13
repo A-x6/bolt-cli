@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test"
 import path from "path"
-import { ConfigV1 } from "@opencode-ai/core/v1/config/config"
+import { ConfigV1 } from "@bolt-ai/core/v1/config/config"
 import { PRESETS, seed } from "../../src/cli/cmd/init"
 import { ConfigAgent } from "../../src/config/agent"
 import { ConfigCommand } from "../../src/config/command"
@@ -13,7 +13,7 @@ describe("seed", () => {
     const result = await seed(tmp.path)
     expect(result.created).toEqual([path.join(tmp.path, "bolt.jsonc")])
     const config = ConfigParse.jsonc(await Bun.file(path.join(tmp.path, "bolt.jsonc")).text(), "bolt.jsonc")
-    expect(config).toEqual({ $schema: "https://opencode.ai/config.json" })
+    expect(config).toEqual({ $schema: "https://bolt.ai/config.json" })
   })
 
   test("never overwrites existing files", async () => {
@@ -32,7 +32,7 @@ describe("seed", () => {
 
     const text = await Bun.file(path.join(tmp.path, "bolt.jsonc")).text()
     const config = ConfigParse.schema(ConfigV1.Info, ConfigParse.jsonc(text, "bolt.jsonc"), "bolt.jsonc")
-    expect(config.$schema).toBe("https://opencode.ai/config.json")
+    expect(config.$schema).toBe("https://bolt.ai/config.json")
 
     const agents = await ConfigAgent.load(path.join(tmp.path, ".bolt"))
     expect(Object.keys(agents).sort()).toEqual(Object.keys(preset.agents).sort())

@@ -21,7 +21,7 @@ export const EditCommand = effectCmd({
     const exists = yield* Effect.promise(() => Bun.file(file).exists())
     if (!exists) {
       yield* Effect.promise(() =>
-        Bun.write(file, JSON.stringify({ $schema: "https://opencode.ai/config.json" }, null, 2) + "\n"),
+        Bun.write(file, JSON.stringify({ $schema: "https://bolt.ai/config.json" }, null, 2) + "\n"),
       )
     }
     // `$1` keeps the file path intact even when $EDITOR carries flags (e.g. "code --wait").

@@ -1,13 +1,13 @@
 import fs from "node:fs"
 import path from "node:path"
 import { Effect } from "effect"
-import { Global } from "@opencode-ai/core/global"
+import { Global } from "@bolt-ai/core/global"
 import { effectCmd, fail } from "../effect-cmd"
 import { Envelope } from "../envelope"
 import { Porcelain } from "../porcelain"
 import { Tail } from "@/util/tail"
 
-const FILE = path.join(Global.Path.log, "opencode.log")
+const FILE = path.join(Global.Path.log, "bolt.log")
 
 export const LEVELS = ["DEBUG", "INFO", "WARN", "ERROR"] as const
 

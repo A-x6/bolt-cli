@@ -1,4 +1,4 @@
-# @opencode-ai/slack
+# @bolt-ai/slack
 
 Slack bot integration for opencode that creates threaded conversations.
 

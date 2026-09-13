@@ -33603,13 +33603,13 @@
       }
     }
   },
-  "opencode-go": {
-    "id": "opencode-go",
-    "env": ["OPENCODE_API_KEY"],
+  "bolt-go": {
+    "id": "bolt-go",
+    "env": ["BOLT_API_KEY"],
     "npm": "@ai-sdk/openai-compatible",
-    "api": "https://opencode.ai/zen/go/v1",
-    "name": "OpenCode Go",
-    "doc": "https://opencode.ai/docs/zen",
+    "api": "https://bolt.ai/zen/go/v1",
+    "name": "Bolt Go",
+    "doc": "https://bolt.ai/docs/zen",
     "models": {
       "deepseek-v4-flash": {
         "id": "deepseek-v4-flash",
@@ -90319,13 +90319,13 @@
       }
     }
   },
-  "opencode": {
-    "id": "opencode",
-    "env": ["OPENCODE_API_KEY"],
+  "bolt": {
+    "id": "bolt",
+    "env": ["BOLT_API_KEY"],
     "npm": "@ai-sdk/openai-compatible",
-    "api": "https://opencode.ai/zen/v1",
-    "name": "OpenCode Zen",
-    "doc": "https://opencode.ai/docs/zen",
+    "api": "https://bolt.ai/zen/v1",
+    "name": "Bolt Zen",
+    "doc": "https://bolt.ai/docs/zen",
     "models": {
       "ring-2.6-1t-free": {
         "id": "ring-2.6-1t-free",

@@ -1,7 +1,7 @@
 import type { Argv, InferredOptionTypes } from "yargs"
-import { ConfigV1 } from "@opencode-ai/core/v1/config/config"
+import { ConfigV1 } from "@bolt-ai/core/v1/config/config"
 import type { Config } from "@/config/config"
-import { Flag } from "@opencode-ai/core/flag/flag"
+import { Flag } from "@bolt-ai/core/flag/flag"
 import { Effect } from "effect"
 
 const options = {
@@ -22,8 +22,8 @@ const options = {
   },
   "mdns-domain": {
     type: "string" as const,
-    describe: "custom domain name for mDNS service (default: opencode.local)",
-    default: "opencode.local",
+    describe: "custom domain name for mDNS service (default: bolt.local)",
+    default: "bolt.local",
   },
   cors: {
     type: "string" as const,
@@ -94,14 +94,14 @@ export function resolveNetworkOptionsNoConfig(args: NetworkOptions, config?: Con
 export function enforceLoopbackWithoutAuth<T extends { hostname: string; mdns?: boolean }>(
   opts: T,
 ): { ok: true; opts: T } | { ok: false; error: string } {
-  if (Flag.OPENCODE_SERVER_PASSWORD) return { ok: true, opts }
+  if (Flag.BOLT_SERVER_PASSWORD) return { ok: true, opts }
   const pinned = opts.hostname === "localhost" ? { ...opts, hostname: "127.0.0.1" } : opts
   const loopback = pinned.hostname === "127.0.0.1" || pinned.hostname === "::1"
   if (!loopback || pinned.mdns)
     return {
       ok: false,
       error:
-        "Refusing to listen on a non-loopback interface without authentication. Set OPENCODE_SERVER_PASSWORD or bind to 127.0.0.1.",
+        "Refusing to listen on a non-loopback interface without authentication. Set BOLT_SERVER_PASSWORD or bind to 127.0.0.1.",
     }
   return { ok: true, opts: pinned }
 }

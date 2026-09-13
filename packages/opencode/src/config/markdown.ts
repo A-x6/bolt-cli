@@ -1,6 +1,6 @@
 import { Filesystem } from "@/util/filesystem"
-import { FrontmatterError } from "@opencode-ai/core/v1/config/error"
-import { ConfigMarkdown as ConfigMarkdownCore } from "@opencode-ai/core/config/markdown"
+import { FrontmatterError } from "@bolt-ai/core/v1/config/error"
+import { ConfigMarkdown as ConfigMarkdownCore } from "@bolt-ai/core/config/markdown"
 
 export const FILE_REGEX = /(?<![\w`])@(\.?[^\s`,.]*(?:\.[^\s`,.]+)*)/g
 export const SHELL_REGEX = /!`([^`]+)`/g

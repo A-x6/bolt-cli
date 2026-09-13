@@ -2,10 +2,10 @@ export * as ConfigV2Compat from "./v2-compat"
 
 import { isDeepStrictEqual } from "node:util"
 import { Option, Schema } from "effect"
-import { NonNegativeInt, PositiveInt } from "@opencode-ai/core/schema"
-import { ConfigAttachmentV1 } from "@opencode-ai/core/v1/config/attachment"
-import { ConfigLSPV1 } from "@opencode-ai/core/v1/config/lsp"
-import { InvalidError } from "@opencode-ai/core/v1/config/error"
+import { NonNegativeInt, PositiveInt } from "@bolt-ai/core/schema"
+import { ConfigAttachmentV1 } from "@bolt-ai/core/v1/config/attachment"
+import { ConfigLSPV1 } from "@bolt-ai/core/v1/config/lsp"
+import { InvalidError } from "@bolt-ai/core/v1/config/error"
 
 export interface Diagnostic {
   readonly kind: "invalid" | "unsupported" | "conflict"
@@ -108,7 +108,7 @@ export function lower(input: unknown, source = "configuration"): Result {
       path: source,
       issues: permissions.map((path) => ({
         path,
-        message: 'V2 permissions are not supported by OpenCode V1. Use V1 "permission" rules or run opencode2.',
+        message: 'V2 permissions are not supported by Bolt V1. Use V1 "permission" rules or run bolt2.',
       })),
     })
 

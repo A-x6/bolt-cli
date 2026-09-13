@@ -1,5 +1,5 @@
 import { EOL } from "os"
-import type { OpencodeClient } from "@opencode-ai/sdk/v2"
+import type { OpencodeClient } from "@bolt-ai/sdk/v2"
 import { GlobalBus, type GlobalEvent } from "@/bus/global"
 import { UI } from "../../ui"
 import { LABELS, LIMIT, format, judgePrompt, parseVerdict, type Model, type Parts } from "./best-of"

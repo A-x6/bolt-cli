@@ -1,5 +1,5 @@
 import { cmd } from "./cmd"
-import { ConfigV1 } from "@opencode-ai/core/v1/config/config"
+import { ConfigV1 } from "@bolt-ai/core/v1/config/config"
 import { effectCmd } from "../effect-cmd"
 import { Cause, Effect } from "effect"
 import { Client } from "@modelcontextprotocol/sdk/client/index.js"
@@ -12,11 +12,11 @@ import { MCP } from "../../mcp"
 import { McpAuth } from "../../mcp/auth"
 import { McpOAuthProvider } from "../../mcp/oauth-provider"
 import { Config } from "@/config/config"
-import { ConfigMCPV1 } from "@opencode-ai/core/v1/config/mcp"
+import { ConfigMCPV1 } from "@bolt-ai/core/v1/config/mcp"
 import { InstanceRef } from "@/effect/instance-ref"
-import { InstallationVersion } from "@opencode-ai/core/installation/version"
+import { InstallationVersion } from "@bolt-ai/core/installation/version"
 import path from "path"
-import { Global } from "@opencode-ai/core/global"
+import { Global } from "@bolt-ai/core/global"
 import { modify, applyEdits } from "jsonc-parser"
 import { Filesystem } from "@/util/filesystem"
 
@@ -186,7 +186,7 @@ export const McpAuthCommand = effectCmd({
 
     if (servers.length === 0) {
       prompts.log.warn("No OAuth-capable MCP servers configured")
-      prompts.log.info("Remote MCP servers support OAuth by default. Add a remote server in opencode.json:")
+      prompts.log.info("Remote MCP servers support OAuth by default. Add a remote server in bolt.json:")
       prompts.log.info(`
   "mcp": {
     "my-server": {
@@ -391,11 +391,11 @@ export const McpLogoutCommand = effectCmd({
 })
 
 async function resolveConfigPath(baseDir: string, global = false) {
-  // Check for existing config files (prefer .jsonc over .json, check .opencode/ subdirectory too)
-  const candidates = [path.join(baseDir, "opencode.json"), path.join(baseDir, "opencode.jsonc")]
+  // Check for existing config files (prefer .jsonc over .json, check .bolt/ subdirectory too)
+  const candidates = [path.join(baseDir, "bolt.json"), path.join(baseDir, "bolt.jsonc")]
 
   if (!global) {
-    candidates.push(path.join(baseDir, ".opencode", "opencode.json"), path.join(baseDir, ".opencode", "opencode.jsonc"))
+    candidates.push(path.join(baseDir, ".bolt", "bolt.json"), path.join(baseDir, ".bolt", "bolt.jsonc"))
   }
 
   for (const candidate of candidates) {
@@ -404,7 +404,7 @@ async function resolveConfigPath(baseDir: string, global = false) {
     }
   }
 
-  // Default to opencode.json if none exist
+  // Default to bolt.json if none exist
   return candidates[0]
 }
 
@@ -745,7 +745,7 @@ export const McpDebugCommand = effectCmd({
             params: {
               protocolVersion: LATEST_PROTOCOL_VERSION,
               capabilities: {},
-              clientInfo: { name: "opencode-debug", version: InstallationVersion },
+              clientInfo: { name: "bolt-debug", version: InstallationVersion },
             },
             id: 1,
           }),
@@ -789,7 +789,7 @@ export const McpDebugCommand = effectCmd({
 
           try {
             const client = new Client({
-              name: "opencode-debug",
+              name: "bolt-debug",
               version: InstallationVersion,
             })
             await client.connect(transport)

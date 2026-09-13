@@ -86,9 +86,9 @@ export const dict = {
   "desktop.wsl.error.installDistro": "Dağıtım kurulamadı: {{distro}}",
   "desktop.wsl.error.installOpencode": "Bolt kurulamadı",
   "desktop.wsl.error.alreadyAdded": "{{distro}} zaten eklendi",
-  "desktop.wsl.error.opencodeMissing": "opencode bu dağıtımda kurulu değil",
-  "desktop.wsl.error.opencodeCannotRun": "opencode kurulu ancak çalıştırılamadı",
-  "desktop.wsl.error.opencodeNotInstalled": "Bolt, {{distro}} içinde kurulu değil",
+  "desktop.wsl.error.boltMissing": "bolt bu dağıtımda kurulu değil",
+  "desktop.wsl.error.boltCannotRun": "bolt kurulu ancak çalıştırılamadı",
+  "desktop.wsl.error.boltNotInstalled": "Bolt, {{distro}} içinde kurulu değil",
   "desktop.wsl.error.updateVersion":
     "Bolt güncellemesi tamamlandı ancak {{distro}} hâlâ {{installed}} sürümünü bildiriyor; beklenen sürüm: {{expected}}",
   "desktop.wsl.error.noVersion": "sürüm yok",
@@ -212,9 +212,9 @@ export const dict = {
   "dialog.provider.group.other": "Diğer",
   "dialog.provider.custom.label": "Özel OpenAI uyumlu sağlayıcı",
   "dialog.provider.tag.recommended": "Önerilen",
-  "dialog.provider.opencode.note": "Claude, GPT, Gemini ve daha fazlasını içeren seçilmiş modeller",
-  "dialog.provider.opencode.tagline": "Güvenilir, optimize edilmiş modeller",
-  "dialog.provider.opencodeGo.tagline": "Herkes için düşük maliyetli abonelik",
+  "dialog.provider.bolt.note": "Claude, GPT, Gemini ve daha fazlasını içeren seçilmiş modeller",
+  "dialog.provider.bolt.tagline": "Güvenilir, optimize edilmiş modeller",
+  "dialog.provider.boltGo.tagline": "Herkes için düşük maliyetli abonelik",
   "dialog.provider.anthropic.note": "Pro ve Max dahil Claude modellerine doğrudan erişim",
   "dialog.provider.copilot.note": "GitHub Copilot üzerinden kodlama yardımı için yapay zekâ modelleri",
   "dialog.provider.openai.note": "Hızlı ve yetenekli genel yapay zekâ görevleri için GPT modelleri",
@@ -229,7 +229,7 @@ export const dict = {
   "dialog.model.manage.description": "Model seçicide hangi modellerin görüneceğini özelleştirin.",
   "dialog.model.manage.provider.toggle": "Tüm {{provider}} modellerini aç/kapat",
 
-  "dialog.model.unpaid.freeModels.title": "OpenCode tarafından sunulan ücretsiz modeller",
+  "dialog.model.unpaid.freeModels.title": "Bolt tarafından sunulan ücretsiz modeller",
   "dialog.model.unpaid.addMore.title": "Popüler sağlayıcılardan daha fazla model ekleyin",
   "dialog.model.unpaid.viewMoreProviders": "70'ten fazla sağlayıcı daha görüntüle",
 
@@ -249,13 +249,13 @@ export const dict = {
   "provider.connect.apiKey.label": "{{provider}} API anahtarı",
   "provider.connect.apiKey.placeholder": "API anahtarı",
   "provider.connect.apiKey.required": "API anahtarı gerekli",
-  "provider.connect.opencodeZen.line1":
-    "OpenCode Zen, kodlama ajanları için seçilmiş güvenilir optimize edilmiş modellere erişim sağlar.",
-  "provider.connect.opencodeZen.line2":
+  "provider.connect.boltZen.line1":
+    "Bolt Zen, kodlama ajanları için seçilmiş güvenilir optimize edilmiş modellere erişim sağlar.",
+  "provider.connect.boltZen.line2":
     "Tek bir API anahtarıyla Claude, GPT, Gemini, GLM ve daha fazlası gibi modellere erişebilirsiniz.",
-  "provider.connect.opencodeZen.visit.prefix": "",
-  "provider.connect.opencodeZen.visit.link": "opencode.ai/zen",
-  "provider.connect.opencodeZen.visit.suffix": " adresini ziyaret ederek API anahtarınızı alın.",
+  "provider.connect.boltZen.visit.prefix": "",
+  "provider.connect.boltZen.visit.link": "bolt.ai/zen",
+  "provider.connect.boltZen.visit.suffix": " adresini ziyaret ederek API anahtarınızı alın.",
   "provider.connect.oauth.code.visit.prefix": "Yetkilendirme kodunuzu almak için ",
   "provider.connect.oauth.code.visit.link": "bu bağlantıya",
   "provider.connect.oauth.code.visit.suffix":
@@ -427,7 +427,7 @@ export const dict = {
   "dialog.mcp.empty": "Yapılandırılmış MCP yok",
 
   "dialog.lsp.empty": "LSP'ler dosya türlerinden otomatik algılanır",
-  "dialog.plugins.empty": "Eklentiler opencode.json içinde yapılandırılır",
+  "dialog.plugins.empty": "Eklentiler bolt.json içinde yapılandırılır",
 
   "mcp.status.connected": "bağlı",
   "mcp.status.failed": "başarısız",
@@ -481,7 +481,7 @@ export const dict = {
   "wsl.server.retryStart": "Başlatmayı yeniden dene",
   "wsl.server.updating": "Güncelleniyor...",
   "wsl.onboarding.step.distro": "Dağıtım seç",
-  "wsl.onboarding.step.opencode": "Bolt",
+  "wsl.onboarding.step.bolt": "Bolt",
   "wsl.onboarding.checkingRuntime": "WSL kontrol ediliyor...",
   "wsl.onboarding.restartRequired": "WSL kurulumunu tamamlamak için Windows'un yeniden başlatılması gerekiyor.",
   "wsl.onboarding.ready": "WSL hazır.",
@@ -501,8 +501,8 @@ export const dict = {
   "wsl.onboarding.updatingOpencodeIn": "{{distro}} içinde Bolt güncelleniyor...",
   "wsl.onboarding.updateOpencodeIn": "{{distro}} içindeki Bolt'u güncelleyin.",
   "wsl.onboarding.updateOpencode": "Bolt'u güncelle",
-  "wsl.onboarding.opencodeReadyIn": "{{distro}} içinde Bolt hazır.",
-  "wsl.onboarding.opencodeReady": "Bolt hazır.",
+  "wsl.onboarding.boltReadyIn": "{{distro}} içinde Bolt hazır.",
+  "wsl.onboarding.boltReady": "Bolt hazır.",
   "wsl.onboarding.installOpencodeIn": "Bolt'u {{distro}} içine kurun.",
   "wsl.onboarding.installOpencode": "Bolt'u kur",
   "wsl.onboarding.chooseDistroFirst": "Önce bir dağıtım seçin.",
@@ -512,7 +512,7 @@ export const dict = {
   "wsl.onboarding.checkAgain": "Tekrar kontrol et",
   "wsl.onboarding.distroStatus.ready": "Hazır",
   "wsl.onboarding.distroStatus.checking": "Kontrol ediliyor...",
-  "wsl.onboarding.distroStatus.opencodeMissing": "Bolt kurulu değil",
+  "wsl.onboarding.distroStatus.boltMissing": "Bolt kurulu değil",
   "wsl.onboarding.distroStatus.missingTools": "bash ve curl eksik",
   "wsl.onboarding.distroStatus.unsupported": "Desteklenmiyor · WSL 2 kullanın",
   "wsl.onboarding.needAnotherDistro": "Başka bir dağıtım mı gerekiyor?",
@@ -706,7 +706,7 @@ export const dict = {
   "error.chain.responseBody": "Yanıt gövdesi:\n{{body}}",
   "error.chain.didYouMean": "Bunu mu demek istediniz: {{suggestions}}",
   "error.chain.modelNotFound": "Model bulunamadı: {{provider}}/{{model}}",
-  "error.chain.checkConfig": "Yapılandırma dosyanızdaki (opencode.json) sağlayıcı/model adlarını kontrol edin",
+  "error.chain.checkConfig": "Yapılandırma dosyanızdaki (bolt.json) sağlayıcı/model adlarını kontrol edin",
   "error.chain.mcpFailed":
     'MCP sunucusu "{{name}}" çalıştırılamadı. Not: Bolt henüz MCP kimlik doğrulamasını desteklemiyor.',
   "error.chain.providerAuthFailed": "Sağlayıcı kimlik doğrulaması başarısız ({{provider}}): {{message}}",

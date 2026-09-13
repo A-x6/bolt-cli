@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import { SessionV1 } from "@opencode-ai/core/v1/session"
+import { SessionV1 } from "@bolt-ai/core/v1/session"
 import { SessionPin } from "@/session/pin"
 
 function message(parts: Partial<SessionV1.Part>[]): SessionV1.WithParts {

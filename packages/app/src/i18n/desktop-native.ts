@@ -304,9 +304,9 @@ export const DESKTOP_NATIVE_ENGLISH = {
   "desktop.wsl.error.installDistro": "Failed to install distro: {{distro}}",
   "desktop.wsl.error.installOpencode": "Bolt installation failed",
   "desktop.wsl.error.alreadyAdded": "{{distro}} is already added",
-  "desktop.wsl.error.opencodeMissing": "opencode is not installed in this distro",
-  "desktop.wsl.error.opencodeCannotRun": "opencode is installed but could not run",
-  "desktop.wsl.error.opencodeNotInstalled": "Bolt is not installed in {{distro}}",
+  "desktop.wsl.error.boltMissing": "bolt is not installed in this distro",
+  "desktop.wsl.error.boltCannotRun": "bolt is installed but could not run",
+  "desktop.wsl.error.boltNotInstalled": "Bolt is not installed in {{distro}}",
   "desktop.wsl.error.updateVersion":
     "Bolt update finished but {{distro}} still reports {{installed}}; expected {{expected}}",
   "desktop.wsl.error.noVersion": "no version",

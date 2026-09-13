@@ -88,14 +88,14 @@ describe("memory recall lexical fixtures", () => {
         root: t.root,
         file: "environment.md",
         section: "Commands",
-        key: "opencode_memory_tests",
-        text: "Run bun test ./test/kilocode/memory from packages/opencode.",
+        key: "bolt_memory_tests",
+        text: "Run bun test ./test/kilocode/memory from packages/bolt.",
       })
 
       const result = await MemoryRecall.search({ root: t.root, query: "bun packages/opencode memory" })
 
       expect(result?.hits[0]?.source).toBe("environment.md")
-      expect(result?.block).toContain("opencode_memory_tests")
+      expect(result?.block).toContain("bolt_memory_tests")
     })
   })
 
@@ -257,7 +257,7 @@ describe("memory recall lexical fixtures", () => {
       await Memory.remember({ root: t.root, key: "deploy_staging", text: "Deploy uses the staging cluster." })
       await Memory.remember({ root: t.root, key: "deploy_prod", text: "Deploy to prod needs an approval." })
       await Memory.remember({ root: t.root, key: "lint_rule", text: "Lint runs before the commit hook." })
-      await Memory.remember({ root: t.root, key: "test_rule", text: "Tests run from packages/opencode." })
+      await Memory.remember({ root: t.root, key: "test_rule", text: "Tests run from packages/bolt." })
 
       const result = await MemoryRecall.search({ root: t.root, query: "deploy staging" })
 

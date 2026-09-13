@@ -1,11 +1,11 @@
 import path from "path"
 import { existsSync } from "fs"
 import { Effect } from "effect"
-import { Global } from "@opencode-ai/core/global"
+import { Global } from "@bolt-ai/core/global"
 import { UI } from "../../ui"
 import { effectCmd } from "../../effect-cmd"
 
-const GLOBAL_FILES = ["config.json", "opencode.json", "opencode.jsonc", "bolt.json", "bolt.jsonc"]
+const GLOBAL_FILES = ["config.json", "bolt.json", "bolt.jsonc", "bolt.json", "bolt.jsonc"]
 
 export const DoctorCommand = effectCmd({
   command: "doctor",

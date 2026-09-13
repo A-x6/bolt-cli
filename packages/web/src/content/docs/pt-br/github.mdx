@@ -37,9 +37,9 @@ Ou você pode configurá-lo manualmente.
 
 2. **Adicione o fluxo de trabalho**
 
-   Adicione o seguinte arquivo de fluxo de trabalho em `.github/workflows/opencode.yml` no seu repositório. Certifique-se de definir o `model` apropriado e as chaves de API necessárias em `env`.
+   Adicione o seguinte arquivo de fluxo de trabalho em `.github/workflows/bolt.yml` no seu repositório. Certifique-se de definir o `model` apropriado e as chaves de API necessárias em `env`.
 
-   ```yml title=".github/workflows/opencode.yml" {24,26}
+   ```yml title=".github/workflows/bolt.yml" {24,26}
    name: opencode
 
    on:
@@ -63,7 +63,7 @@ Ou você pode configurá-lo manualmente.
               fetch-depth: 1
               persist-credentials: false
 
-          - name: Run OpenCode
+          - name: Run Bolt
            uses: bolt-builder/bolt-cli/github@latest
            env:
              ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -81,13 +81,13 @@ Ou você pode configurá-lo manualmente.
 
 ## Configuração
 
-- `model`: O modelo a ser usado com o opencode. Tem o formato de `provider/model`. Isso é **obrigatório**.
+- `model`: O modelo a ser usado com o bolt. Tem o formato de `provider/model`. Isso é **obrigatório**.
 - `agent`: O agente a ser usado. Deve ser um agente primário. Retorna ao `default_agent` da configuração ou `"build"` se não encontrado.
-- `share`: Se deve compartilhar a sessão do opencode. O padrão é **true** para repositórios públicos.
+- `share`: Se deve compartilhar a sessão do bolt. O padrão é **true** para repositórios públicos.
 - `prompt`: Prompt personalizado opcional para substituir o comportamento padrão. Use isso para personalizar como o opencode processa solicitações.
-- `token`: Token de acesso do GitHub opcional para realizar operações como criar comentários, confirmar alterações e abrir pull requests. Por padrão, o opencode usa o token de acesso da instalação do aplicativo GitHub opencode, então commits, comentários e pull requests aparecem como se fossem da aplicação.
+- `token`: Token de acesso do GitHub opcional para realizar operações como criar comentários, confirmar alterações e abrir pull requests. Por padrão, o opencode usa o token de acesso da instalação do aplicativo GitHub bolt, então commits, comentários e pull requests aparecem como se fossem da aplicação.
 
-  Alternativamente, você pode usar o [`GITHUB_TOKEN`](https://docs.github.com/en/actions/tutorials/authenticate-with-github_token) embutido do runner do GitHub Action sem instalar o aplicativo GitHub opencode. Apenas certifique-se de conceder as permissões necessárias em seu fluxo de trabalho:
+  Alternativamente, você pode usar o [`GITHUB_TOKEN`](https://docs.github.com/en/actions/tutorials/authenticate-with-github_token) embutido do runner do GitHub Action sem instalar o aplicativo GitHub bolt. Apenas certifique-se de conceder as permissões necessárias em seu fluxo de trabalho:
 
   ```yaml
   permissions:
@@ -119,7 +119,7 @@ O opencode pode ser acionado pelos seguintes eventos do GitHub:
 Execute o opencode em um cronograma para realizar tarefas automatizadas:
 
 ```yaml title=".github/workflows/opencode-scheduled.yml"
-name: Scheduled OpenCode Task
+name: Scheduled Bolt Task
 
 on:
   schedule:
@@ -139,7 +139,7 @@ jobs:
         with:
           persist-credentials: false
 
-       - name: Run OpenCode
+       - name: Run Bolt
          uses: bolt-builder/bolt-cli/github@latest
          env:
            ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -254,7 +254,7 @@ Para eventos de `issues`, a entrada `prompt` é **obrigatória** uma vez que nã
 
 Substitua o prompt padrão para personalizar o comportamento do opencode para seu fluxo de trabalho.
 
-```yaml title=".github/workflows/opencode.yml"
+```yaml title=".github/workflows/bolt.yml"
 - uses: bolt-builder/bolt-cli/github@latest
   with:
     model: anthropic/claude-sonnet-4-5

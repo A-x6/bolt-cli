@@ -1,4 +1,4 @@
-import { Wildcard } from "@opencode-ai/core/util/wildcard"
+import { Wildcard } from "@bolt-ai/core/util/wildcard"
 
 /**
  * Return the first protected-path pattern matching a worktree-relative path,

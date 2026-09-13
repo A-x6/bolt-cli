@@ -6,7 +6,7 @@ import type { LSPClient } from "@/lsp/client"
 import DESCRIPTION from "./diagnostics.txt"
 import { InstanceState } from "@/effect/instance-state"
 import { assertExternalDirectoryEffect } from "./external-directory"
-import { FSUtil } from "@opencode-ai/core/fs-util"
+import { FSUtil } from "@bolt-ai/core/fs-util"
 
 const severities = ["error", "warning", "info", "hint"] as const
 export type Severity = (typeof severities)[number]

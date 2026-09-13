@@ -25,8 +25,8 @@ Options:
   -c, --continue      continue the last session                                            [boolean]
   -s, --session       session id to continue                                                [string]
       --fork          fork the session when continuing (use with --continue or --session)  [boolean]
-  -p, --password      basic auth password (defaults to OPENCODE_SERVER_PASSWORD)            [string]
-  -u, --username      basic auth username (defaults to OPENCODE_SERVER_USERNAME or 'opencode')
+  -p, --password      basic auth password (defaults to BOLT_SERVER_PASSWORD)            [string]
+  -u, --username      basic auth username (defaults to BOLT_SERVER_USERNAME or 'bolt')
                                                                                             [string]
       --mini          start the minimal interactive interface             [boolean] [default: false]
       --no-replay     disable mini session history replay on resume and after resize       [boolean]

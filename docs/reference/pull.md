@@ -21,8 +21,8 @@ Options:
       --quiet       suppress non-essential output on stderr (errors still print)           [boolean]
       --verbose     print debug logs to stderr (implies --print-logs and --log-level DEBUG)[boolean]
       --offline     fail fast on network access instead of hanging                         [boolean]
-  -p, --password    basic auth password (defaults to OPENCODE_SERVER_PASSWORD)              [string]
-  -u, --username    basic auth username (defaults to OPENCODE_SERVER_USERNAME or 'opencode')[string]
+  -p, --password    basic auth password (defaults to BOLT_SERVER_PASSWORD)              [string]
+  -u, --username    basic auth username (defaults to BOLT_SERVER_USERNAME or 'bolt')[string]
       --dir         project directory on the remote machine (defaults to the remote server's working
                     directory)                                                              [string]
 ```

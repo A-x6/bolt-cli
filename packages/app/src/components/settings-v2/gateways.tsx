@@ -1,10 +1,10 @@
-import { Button } from "@opencode-ai/ui/button"
-import { ButtonV2 } from "@opencode-ai/ui/v2/button-v2"
-import { Tag } from "@opencode-ai/ui/v2/badge-v2"
-import { Dialog } from "@opencode-ai/ui/dialog"
-import { useDialog } from "@opencode-ai/ui/context/dialog"
-import { ProviderIcon } from "@opencode-ai/ui/provider-icon"
-import { TextField } from "@opencode-ai/ui/text-field"
+import { Button } from "@bolt-ai/ui/button"
+import { ButtonV2 } from "@bolt-ai/ui/v2/button-v2"
+import { Tag } from "@bolt-ai/ui/v2/badge-v2"
+import { Dialog } from "@bolt-ai/ui/dialog"
+import { useDialog } from "@bolt-ai/ui/context/dialog"
+import { ProviderIcon } from "@bolt-ai/ui/provider-icon"
+import { TextField } from "@bolt-ai/ui/text-field"
 import { useMutation } from "@tanstack/solid-query"
 import { showToast } from "@/utils/toast"
 import { useProviders } from "@/hooks/use-providers"
@@ -18,7 +18,7 @@ import { gateways, gatewayProviderConfig, type CustomGateway, type Gateway } fro
 import "./settings-v2.css"
 
 const GATEWAY_NOTES = [
-  { id: "opencode", key: "dialog.provider.opencode.note" },
+  { id: "bolt", key: "dialog.provider.bolt.note" },
   { id: "openrouter", key: "dialog.provider.openrouter.note" },
   { id: "vercel", key: "dialog.provider.vercel.note" },
   { id: "kilo", key: "settings.gateways.note.kilo" },

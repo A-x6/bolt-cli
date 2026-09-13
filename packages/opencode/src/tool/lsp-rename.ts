@@ -8,9 +8,9 @@ import DESCRIPTION from "./lsp-rename.txt"
 import { InstanceState } from "@/effect/instance-state"
 import { containsPath } from "@/project/instance-context"
 import { assertExternalDirectoryEffect } from "./external-directory"
-import { FSUtil } from "@opencode-ai/core/fs-util"
-import { FileSystem } from "@opencode-ai/core/filesystem"
-import { Watcher } from "@opencode-ai/core/filesystem/watcher"
+import { FSUtil } from "@bolt-ai/core/fs-util"
+import { FileSystem } from "@bolt-ai/core/filesystem"
+import { Watcher } from "@bolt-ai/core/filesystem/watcher"
 import { EventV2Bridge } from "@/event-v2-bridge"
 
 export const Parameters = Schema.Struct({

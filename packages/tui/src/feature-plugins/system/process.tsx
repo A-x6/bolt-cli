@@ -1,5 +1,5 @@
-import type { TuiPlugin, TuiPluginApi } from "@opencode-ai/plugin/tui"
-import type { BackgroundJob } from "@opencode-ai/sdk/v2"
+import type { TuiPlugin, TuiPluginApi } from "@bolt-ai/plugin/tui"
+import type { BackgroundJob } from "@bolt-ai/sdk/v2"
 import { TextAttributes, type ScrollBoxRenderable } from "@opentui/core"
 import { useTerminalDimensions } from "@opentui/solid"
 import { createMemo, createSignal, onCleanup, onMount, Show } from "solid-js"

@@ -92,8 +92,8 @@ export const MemoryExportCommand = effectCmd({
     const ctx = yield* InstanceRef
     if (!ctx) return yield* fail("Could not load instance context")
 
-    const { Memory } = yield* Effect.promise(() => import("@opencode-ai/memory/memory"))
-    const { MemoryPaths } = yield* Effect.promise(() => import("@opencode-ai/memory/effect/paths"))
+    const { Memory } = yield* Effect.promise(() => import("@bolt-ai/memory/memory"))
+    const { MemoryPaths } = yield* Effect.promise(() => import("@bolt-ai/memory/effect/paths"))
     const dumped = yield* Effect.promise(() => Memory.dump({ root: MemoryPaths.root({ ctx }) }))
     if (dumped.count === 0) return yield* fail("No project memory stored for this project yet.")
     if (!args.out) {
@@ -123,8 +123,8 @@ export const MemoryImportCommand = effectCmd({
     if (!exists) return yield* fail(`File not found: ${args.file}`)
     const text = yield* Effect.promise(() => Bun.file(args.file).text())
 
-    const { Memory } = yield* Effect.promise(() => import("@opencode-ai/memory/memory"))
-    const { MemoryPaths } = yield* Effect.promise(() => import("@opencode-ai/memory/effect/paths"))
+    const { Memory } = yield* Effect.promise(() => import("@bolt-ai/memory/memory"))
+    const { MemoryPaths } = yield* Effect.promise(() => import("@bolt-ai/memory/effect/paths"))
     const loaded = yield* Effect.promise(() => Memory.load({ root: MemoryPaths.root({ ctx }), text }))
     if (loaded.ops === 0) return yield* fail("No memory entries found in that file.")
     UI.println(`Imported ${loaded.applied} of ${loaded.ops} memory entries (${loaded.added} added).`)
@@ -154,7 +154,7 @@ export const MemoryTeamCommand = effectCmd({
     const ctx = yield* InstanceRef
     if (!ctx) return yield* fail("Could not load instance context")
 
-    const { MemoryTeam } = yield* Effect.promise(() => import("@opencode-ai/memory/team"))
+    const { MemoryTeam } = yield* Effect.promise(() => import("@bolt-ai/memory/team"))
     if (args.action === "init") {
       const output = yield* Effect.promise(() => MemoryTeam.init(ctx.worktree))
       UI.println(
@@ -166,8 +166,8 @@ export const MemoryTeamCommand = effectCmd({
     }
 
     if (!args.query) return yield* fail("Pass the key or id of the fact to share.")
-    const { MemoryFiles } = yield* Effect.promise(() => import("@opencode-ai/memory/store"))
-    const { MemoryPaths } = yield* Effect.promise(() => import("@opencode-ai/memory/effect/paths"))
+    const { MemoryFiles } = yield* Effect.promise(() => import("@bolt-ai/memory/store"))
+    const { MemoryPaths } = yield* Effect.promise(() => import("@bolt-ai/memory/effect/paths"))
     const inventory = yield* Effect.promise(() => MemoryFiles.deriveInventory(MemoryPaths.root({ ctx })))
     const matched = MemoryTeam.match({
       items: Object.entries(inventory.items).map(([id, item]) => ({
@@ -204,8 +204,8 @@ export const MemoryDiffCommand = effectCmd({
     const ctx = yield* InstanceRef
     if (!ctx) return yield* fail("Could not load instance context")
 
-    const { Memory } = yield* Effect.promise(() => import("@opencode-ai/memory/memory"))
-    const { MemoryPaths } = yield* Effect.promise(() => import("@opencode-ai/memory/effect/paths"))
+    const { Memory } = yield* Effect.promise(() => import("@bolt-ai/memory/memory"))
+    const { MemoryPaths } = yield* Effect.promise(() => import("@bolt-ai/memory/effect/paths"))
     const root = MemoryPaths.root({ ctx })
     const output = yield* Effect.promise(() => Memory.pending({ root }))
     if (output.items.length === 0) {
@@ -250,8 +250,8 @@ export const MemoryReviewCommand = effectCmd({
     const ctx = yield* InstanceRef
     if (!ctx) return yield* fail("Could not load instance context")
 
-    const { Memory } = yield* Effect.promise(() => import("@opencode-ai/memory/memory"))
-    const { MemoryPaths } = yield* Effect.promise(() => import("@opencode-ai/memory/effect/paths"))
+    const { Memory } = yield* Effect.promise(() => import("@bolt-ai/memory/memory"))
+    const { MemoryPaths } = yield* Effect.promise(() => import("@bolt-ai/memory/effect/paths"))
     const output = yield* Effect.promise(() =>
       Memory.review({ root: MemoryPaths.root({ ctx }), review: args.mode === "on" }),
     )
@@ -284,8 +284,8 @@ export const MemorySearchCommand = effectCmd({
     const ctx = yield* InstanceRef
     if (!ctx) return yield* fail("Could not load instance context")
 
-    const { MemorySearch } = yield* Effect.promise(() => import("@opencode-ai/memory/search"))
-    const { MemoryPaths } = yield* Effect.promise(() => import("@opencode-ai/memory/effect/paths"))
+    const { MemorySearch } = yield* Effect.promise(() => import("@bolt-ai/memory/search"))
+    const { MemoryPaths } = yield* Effect.promise(() => import("@bolt-ai/memory/effect/paths"))
     const output = yield* Effect.promise(() =>
       MemorySearch.search({ root: MemoryPaths.root({ ctx }), query: args.query, limit: args.limit }),
     )
@@ -321,8 +321,8 @@ export const MemoryConflictsCommand = effectCmd({
     const ctx = yield* InstanceRef
     if (!ctx) return yield* fail("Could not load instance context")
 
-    const { Memory } = yield* Effect.promise(() => import("@opencode-ai/memory/memory"))
-    const { MemoryPaths } = yield* Effect.promise(() => import("@opencode-ai/memory/effect/paths"))
+    const { Memory } = yield* Effect.promise(() => import("@bolt-ai/memory/memory"))
+    const { MemoryPaths } = yield* Effect.promise(() => import("@bolt-ai/memory/effect/paths"))
     const output = yield* Effect.promise(() => Memory.conflicts({ root: MemoryPaths.root({ ctx }), fix: args.fix }))
 
     if (output.conflicts.length === 0) {
@@ -377,12 +377,12 @@ export const MemoryWhyCommand = effectCmd({
     const ctx = yield* InstanceRef
     if (!ctx) return yield* fail("Could not load instance context")
 
-    const { MemoryService } = yield* Effect.promise(() => import("@opencode-ai/memory/effect/service"))
-    const { MemoryPaths } = yield* Effect.promise(() => import("@opencode-ai/memory/effect/paths"))
+    const { MemoryService } = yield* Effect.promise(() => import("@bolt-ai/memory/effect/service"))
+    const { MemoryPaths } = yield* Effect.promise(() => import("@bolt-ai/memory/effect/paths"))
     const memory = MemoryService.make()
     const shown = yield* memory.show({ ctx }).pipe(Effect.orDie)
     const digests = yield* memory.recent({ root: MemoryPaths.root({ ctx }), limit: 10, max: 200 }).pipe(Effect.orDie)
-    const { Memory } = yield* Effect.promise(() => import("@opencode-ai/memory/memory"))
+    const { Memory } = yield* Effect.promise(() => import("@bolt-ai/memory/memory"))
     const taught = yield* Effect.promise(() => Memory.origins({ root: MemoryPaths.root({ ctx }) }))
     const entries = Object.entries(shown.inventory.items).map(([id, item]) => {
       const source = taught.items[id]

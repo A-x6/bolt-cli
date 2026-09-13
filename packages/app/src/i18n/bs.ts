@@ -82,9 +82,9 @@ export const dict = {
   "desktop.wsl.error.installDistro": "Instalacija distribucije nije uspjela: {{distro}}",
   "desktop.wsl.error.installOpencode": "Instalacija Bolt-a nije uspjela",
   "desktop.wsl.error.alreadyAdded": "Distribucija {{distro}} je već dodana",
-  "desktop.wsl.error.opencodeMissing": "opencode nije instaliran u ovoj distribuciji",
-  "desktop.wsl.error.opencodeCannotRun": "opencode je instaliran, ali se ne može pokrenuti",
-  "desktop.wsl.error.opencodeNotInstalled": "Bolt nije instaliran u distribuciji {{distro}}",
+  "desktop.wsl.error.boltMissing": "bolt nije instaliran u ovoj distribuciji",
+  "desktop.wsl.error.boltCannotRun": "bolt je instaliran, ali se ne može pokrenuti",
+  "desktop.wsl.error.boltNotInstalled": "Bolt nije instaliran u distribuciji {{distro}}",
   "desktop.wsl.error.updateVersion":
     "Ažuriranje Bolt-a je završeno, ali {{distro}} i dalje prijavljuje {{installed}}; očekivano je {{expected}}",
   "desktop.wsl.error.noVersion": "nema verzije",
@@ -208,9 +208,9 @@ export const dict = {
   "dialog.provider.group.other": "Ostalo",
   "dialog.provider.custom.label": "Prilagođeni provajder kompatibilan s OpenAI-jem",
   "dialog.provider.tag.recommended": "Preporučeno",
-  "dialog.provider.opencode.note": "Kurirani modeli uključujući Claude, GPT, Gemini i druge",
-  "dialog.provider.opencode.tagline": "Pouzdani optimizovani modeli",
-  "dialog.provider.opencodeGo.tagline": "Povoljna pretplata za sve",
+  "dialog.provider.bolt.note": "Kurirani modeli uključujući Claude, GPT, Gemini i druge",
+  "dialog.provider.bolt.tagline": "Pouzdani optimizovani modeli",
+  "dialog.provider.boltGo.tagline": "Povoljna pretplata za sve",
   "dialog.provider.anthropic.note": "Direktan pristup Claude modelima, uključujući Pro i Max",
   "dialog.provider.copilot.note": "AI modeli za pomoć pri kodiranju putem GitHub Copilot",
   "dialog.provider.openai.note": "GPT modeli za brze, sposobne opšte AI zadatke",
@@ -225,7 +225,7 @@ export const dict = {
   "dialog.model.manage.description": "Prilagodi koji se modeli prikazuju u izborniku modela.",
   "dialog.model.manage.provider.toggle": "Uključi/isključi sve {{provider}} modele",
 
-  "dialog.model.unpaid.freeModels.title": "Besplatni modeli koje obezbjeđuje OpenCode",
+  "dialog.model.unpaid.freeModels.title": "Besplatni modeli koje obezbjeđuje Bolt",
   "dialog.model.unpaid.addMore.title": "Dodaj još modela od popularnih provajdera",
   "dialog.model.unpaid.viewMoreProviders": "Pogledaj još više od 70 provajdera",
 
@@ -245,13 +245,13 @@ export const dict = {
   "provider.connect.apiKey.label": "{{provider}} API ključ",
   "provider.connect.apiKey.placeholder": "API ključ",
   "provider.connect.apiKey.required": "API ključ je obavezan",
-  "provider.connect.opencodeZen.line1":
-    "OpenCode Zen ti daje pristup kuriranom skupu pouzdanih, optimizovanih modela za coding agente.",
-  "provider.connect.opencodeZen.line2":
+  "provider.connect.boltZen.line1":
+    "Bolt Zen ti daje pristup kuriranom skupu pouzdanih, optimizovanih modela za coding agente.",
+  "provider.connect.boltZen.line2":
     "Sa jednim API ključem dobijaš pristup modelima kao što su Claude, GPT, Gemini, GLM i drugi.",
-  "provider.connect.opencodeZen.visit.prefix": "Posjeti ",
-  "provider.connect.opencodeZen.visit.link": "opencode.ai/zen",
-  "provider.connect.opencodeZen.visit.suffix": " da preuzmeš svoj API ključ.",
+  "provider.connect.boltZen.visit.prefix": "Posjeti ",
+  "provider.connect.boltZen.visit.link": "bolt.ai/zen",
+  "provider.connect.boltZen.visit.suffix": " da preuzmeš svoj API ključ.",
   "provider.connect.oauth.code.visit.prefix": "Posjeti ",
   "provider.connect.oauth.code.visit.link": "ovaj link",
   "provider.connect.oauth.code.visit.suffix":
@@ -423,7 +423,7 @@ export const dict = {
   "dialog.mcp.empty": "Nema konfigurisanih MCP-ova",
 
   "dialog.lsp.empty": "LSP-ovi se automatski otkrivaju prema tipu datoteke",
-  "dialog.plugins.empty": "Plugini su konfigurisani u opencode.json",
+  "dialog.plugins.empty": "Plugini su konfigurisani u bolt.json",
 
   "mcp.status.connected": "povezano",
   "mcp.status.failed": "neuspjelo",
@@ -477,7 +477,7 @@ export const dict = {
   "wsl.server.retryStart": "Ponovi pokretanje",
   "wsl.server.updating": "Ažuriranje...",
   "wsl.onboarding.step.distro": "Odaberi distribuciju",
-  "wsl.onboarding.step.opencode": "Bolt",
+  "wsl.onboarding.step.bolt": "Bolt",
   "wsl.onboarding.checkingRuntime": "Provjera WSL-a...",
   "wsl.onboarding.restartRequired": "Potrebno je ponovo pokrenuti Windows da bi se završila instalacija WSL-a.",
   "wsl.onboarding.ready": "WSL je spreman.",
@@ -497,8 +497,8 @@ export const dict = {
   "wsl.onboarding.updatingOpencodeIn": "Ažuriranje Bolt u distribuciji {{distro}}...",
   "wsl.onboarding.updateOpencodeIn": "Ažuriraj Bolt u distribuciji {{distro}}.",
   "wsl.onboarding.updateOpencode": "Ažuriraj Bolt",
-  "wsl.onboarding.opencodeReadyIn": "Bolt je spreman u distribuciji {{distro}}.",
-  "wsl.onboarding.opencodeReady": "Bolt je spreman.",
+  "wsl.onboarding.boltReadyIn": "Bolt je spreman u distribuciji {{distro}}.",
+  "wsl.onboarding.boltReady": "Bolt je spreman.",
   "wsl.onboarding.installOpencodeIn": "Instaliraj Bolt u distribuciji {{distro}}.",
   "wsl.onboarding.installOpencode": "Instaliraj Bolt",
   "wsl.onboarding.chooseDistroFirst": "Prvo odaberi distribuciju.",
@@ -508,7 +508,7 @@ export const dict = {
   "wsl.onboarding.checkAgain": "Provjeri ponovo",
   "wsl.onboarding.distroStatus.ready": "Spremno",
   "wsl.onboarding.distroStatus.checking": "Provjera...",
-  "wsl.onboarding.distroStatus.opencodeMissing": "Bolt nije instaliran",
+  "wsl.onboarding.distroStatus.boltMissing": "Bolt nije instaliran",
   "wsl.onboarding.distroStatus.missingTools": "Nedostaju bash i curl",
   "wsl.onboarding.distroStatus.unsupported": "Nije podržano · Koristi WSL 2",
   "wsl.onboarding.needAnotherDistro": "Treba ti druga distribucija?",
@@ -703,7 +703,7 @@ export const dict = {
   "error.chain.responseBody": "Tijelo odgovora:\n{{body}}",
   "error.chain.didYouMean": "Da li si mislio: {{suggestions}}",
   "error.chain.modelNotFound": "Model nije pronađen: {{provider}}/{{model}}",
-  "error.chain.checkConfig": "Provjeri nazive provajdera/modela u konfiguraciji (opencode.json)",
+  "error.chain.checkConfig": "Provjeri nazive provajdera/modela u konfiguraciji (bolt.json)",
   "error.chain.mcpFailed": 'MCP server "{{name}}" nije uspio. Napomena: Bolt još ne podržava MCP autentifikaciju.',
   "error.chain.providerAuthFailed": "Autentifikacija provajdera nije uspjela ({{provider}}): {{message}}",
   "error.chain.providerInitFailed":

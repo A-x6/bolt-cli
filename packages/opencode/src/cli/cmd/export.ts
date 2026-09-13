@@ -1,5 +1,5 @@
 import type { Session } from "@/session/session"
-import { SessionV1 } from "@opencode-ai/core/v1/session"
+import { SessionV1 } from "@bolt-ai/core/v1/session"
 import { effectCmd, fail } from "../effect-cmd"
 import { UI } from "../ui"
 import { Envelope } from "../envelope"

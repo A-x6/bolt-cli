@@ -53,8 +53,8 @@ export const LearnCommand = effectCmd({
     const ctx = yield* InstanceRef
     if (!ctx) return yield* fail("Could not load instance context")
 
-    const { MemoryService } = yield* Effect.promise(() => import("@opencode-ai/memory/effect/service"))
-    const { MemoryPaths } = yield* Effect.promise(() => import("@opencode-ai/memory/effect/paths"))
+    const { MemoryService } = yield* Effect.promise(() => import("@bolt-ai/memory/effect/service"))
+    const { MemoryPaths } = yield* Effect.promise(() => import("@bolt-ai/memory/effect/paths"))
     const memory = MemoryService.make()
     const status = yield* memory.status({ ctx }).pipe(Effect.orDie)
     // memory_save is a no-op against a disabled store, so a learn run must enable it first.
@@ -62,7 +62,7 @@ export const LearnCommand = effectCmd({
 
     // Deterministic pass first: build/test commands come straight from the repo's manifests,
     // no model required, so they land even if the LLM pass saves nothing new about them.
-    const { MemoryToolchain } = yield* Effect.promise(() => import("@opencode-ai/memory/toolchain"))
+    const { MemoryToolchain } = yield* Effect.promise(() => import("@bolt-ai/memory/toolchain"))
     const detected = yield* Effect.promise(() =>
       MemoryToolchain.learn({ root: MemoryPaths.root({ ctx }), worktree: ctx.worktree }),
     )

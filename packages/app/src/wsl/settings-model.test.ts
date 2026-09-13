@@ -6,7 +6,7 @@ import {
   autoProbePlan,
   createProbeFailureGate,
   runAddableProbePlan,
-  wslOpencodeAction,
+  wslBoltAction,
   wslRuntimeRetryable,
 } from "./settings-model"
 import type { WslServersState } from "./types"
@@ -19,7 +19,7 @@ function readyState(input: Partial<WslServersState> = {}): WslServersState {
     installed: [],
     online: [],
     distroProbes: {},
-    opencodeChecks: {},
+    boltChecks: {},
     pendingRestart: false,
     servers: [],
     job: null,
@@ -37,10 +37,10 @@ describe("WSL server settings presentation", () => {
     expect(wslRuntimeRetryable({ kind: "stopped" })).toBe(true)
   })
 
-  test("offers install and update only when OpenCode needs attention", () => {
-    expect(wslOpencodeAction(undefined)).toBeUndefined()
+  test("offers install and update only when Bolt needs attention", () => {
+    expect(wslBoltAction(undefined)).toBeUndefined()
     expect(
-      wslOpencodeAction({
+      wslBoltAction({
         distro: "Debian",
         resolvedPath: null,
         version: null,
@@ -50,7 +50,7 @@ describe("WSL server settings presentation", () => {
       }),
     ).toBe("wsl.onboarding.installOpencode")
     expect(
-      wslOpencodeAction({
+      wslBoltAction({
         distro: "Debian",
         resolvedPath: "/usr/local/bin/opencode",
         version: "1.2.2",
@@ -60,7 +60,7 @@ describe("WSL server settings presentation", () => {
       }),
     ).toBe("wsl.onboarding.updateOpencode")
     expect(
-      wslOpencodeAction({
+      wslBoltAction({
         distro: "Debian",
         resolvedPath: "/usr/local/bin/opencode",
         version: "1.2.3",
@@ -179,7 +179,7 @@ describe("WSL server settings presentation", () => {
     expect(model.busy).toBe(true)
   })
 
-  test("does not report ready when OpenCode is present but cannot run", () => {
+  test("does not report ready when Bolt is present but cannot run", () => {
     const model = addServerViewModel({
       state: {
         ...readyWslState,
@@ -188,14 +188,14 @@ describe("WSL server settings presentation", () => {
         distroProbes: {
           Debian: { name: "Debian", canExecute: true, hasBash: true, hasCurl: true, error: null },
         },
-        opencodeChecks: {
+        boltChecks: {
           Debian: {
             distro: "Debian",
-            resolvedPath: "/home/me/.opencode/bin/opencode",
+            resolvedPath: "/home/me/.bolt/bin/opencode",
             version: null,
             expectedVersion: "1.2.3",
             matchesDesktop: null,
-            error: "opencode is installed but could not run",
+            error: "bolt is installed but could not run",
           },
         },
       },

@@ -16,7 +16,7 @@ is wrong. The shapes below cover the common surface area, but they are a
 The authoritative list of every config option — with field types, enums,
 defaults, and descriptions — lives in the published JSON Schema:
 
-**<https://opencode.ai/config.json>**
+**<https://bolt.ai/config.json>**
 
 If a field is not documented in this skill, or you need to confirm an exact
 shape before writing config, **fetch that URL and read the schema directly**
@@ -24,7 +24,7 @@ rather than guessing. bolt hard-fails on invalid config, so the cost of a
 wrong shape is a broken startup.
 
 Independently, every `bolt.json` should declare
-`"$schema": "https://opencode.ai/config.json"` so the user's editor catches
+`"$schema": "https://bolt.ai/config.json"` so the user's editor catches
 mistakes as they type.
 
 ## Applying changes
@@ -39,17 +39,17 @@ already-loaded config until then.
 
 | Scope                         | Path                                                                                                               |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| Project config                | `./bolt.json`, `./bolt.jsonc`, or inside `.bolt/` / `.opencode/` (bolt walks up from the cwd to the worktree root) |
+| Project config                | `./bolt.json`, `./bolt.jsonc`, or inside `.bolt/` / `.bolt/` (bolt walks up from the cwd to the worktree root) |
 | Global config                 | `~/.config/opencode/bolt.json` (NOT `~/.bolt/`)                                                                    |
-| Project agents                | `.bolt/agent(s)/<name>.md` or `.opencode/agent(s)/<name>.md`                                                       |
+| Project agents                | `.bolt/agent(s)/<name>.md` or `.bolt/agent(s)/<name>.md`                                                       |
 | Global agents                 | `~/.config/opencode/agent(s)/<name>.md`                                                                            |
-| Project commands              | `.bolt/command(s)/<name>.md` or `.opencode/command(s)/<name>.md`                                                   |
+| Project commands              | `.bolt/command(s)/<name>.md` or `.bolt/command(s)/<name>.md`                                                   |
 | Global commands               | `~/.config/opencode/command(s)/<name>.md`                                                                          |
-| Project skills                | `.bolt/skill(s)/<name>/SKILL.md` or `.opencode/skill(s)/<name>/SKILL.md`                                           |
+| Project skills                | `.bolt/skill(s)/<name>/SKILL.md` or `.bolt/skill(s)/<name>/SKILL.md`                                           |
 | Global skills                 | `~/.config/opencode/skill(s)/<name>/SKILL.md`                                                                      |
 | External skills (auto-loaded) | `~/.claude/skills/<name>/SKILL.md`, `~/.agents/skills/<name>/SKILL.md`                                             |
 
-Legacy `opencode.json` / `opencode.jsonc` files are still honored in every
+Legacy `bolt.json` / `bolt.jsonc` files are still honored in every
 location; when both exist, the `bolt.*` file wins. Prefer `bolt.jsonc` when
 creating new config.
 
@@ -62,7 +62,7 @@ Every field is optional.
 
 ```json
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://bolt.ai/config.json",
   "username": "string",
   "model": "provider/model-id",
   "small_model": "provider/model-id",
@@ -75,7 +75,7 @@ Every field is optional.
   "instructions": ["AGENTS.md", "docs/style.md"],
 
   "skills": {
-    "paths": [".opencode/skills", "/abs/path/to/skills"],
+    "paths": [".bolt/skills", "/abs/path/to/skills"],
     "urls": ["https://example.com/.well-known/skills/"]
   },
 
@@ -126,10 +126,10 @@ Every field is optional.
   },
 
   "plugin": [
-    "opencode-gemini-auth",
-    "opencode-foo@1.2.3",
+    "bolt-gemini-auth",
+    "bolt-foo@1.2.3",
     "./local-plugin.ts",
-    ["opencode-bar", { "option": "value" }]
+    ["bolt-bar", { "option": "value" }]
   ],
 
   "permission": {
@@ -169,7 +169,7 @@ file is named `SKILL.md` exactly, and lives in its own folder named after the
 skill:
 
 ```
-.opencode/skills/my-skill/SKILL.md
+.bolt/skills/my-skill/SKILL.md
 ```
 
 Frontmatter:
@@ -248,7 +248,7 @@ Two ways to define an agent. Use the file form for anything non-trivial.
 ### File
 
 ```
-.opencode/agent/my-reviewer.md      OR     .opencode/agents/my-reviewer.md
+.bolt/agent/my-reviewer.md      OR     .bolt/agents/my-reviewer.md
 ```
 
 ```markdown
@@ -290,7 +290,7 @@ bolt's command loader scans for `**/*.md` inside command directories. The
 file is named after the command, and lives directly inside the `command` folder:
 
 ```
-.opencode/command/deploy.md
+.bolt/command/deploy.md
 ```
 
 Frontmatter:
@@ -315,16 +315,16 @@ model: anthropic/claude-sonnet-4-6
 
 ```json
 "plugin": [
-  "opencode-gemini-auth",            // npm spec, latest
-  "opencode-foo@1.2.3",              // npm spec, pinned
+  "bolt-gemini-auth",            // npm spec, latest
+  "bolt-foo@1.2.3",              // npm spec, pinned
   "./local-plugin.ts",               // file path, relative to the declaring config
   "file:///abs/path/plugin.js",      // file URL
-  ["opencode-bar", { "key": "val" }] // tuple form with options
+  ["bolt-bar", { "key": "val" }] // tuple form with options
 ]
 ```
 
 Auto-discovered plugins (no config entry needed): any `*.ts` or `*.js` file in
-`.opencode/plugin/` or `.opencode/plugins/`.
+`.bolt/plugin/` or `.bolt/plugins/`.
 
 A plugin module exports `default` (or any named export) of type
 `Plugin = (input: PluginInput, options?) => Promise<Hooks>`. The export is a
@@ -332,7 +332,7 @@ function, not a plain object literal, and the function returns an object
 (return `{}` if there is nothing to register).
 
 ```ts
-import type { Plugin } from "@opencode-ai/plugin"
+import type { Plugin } from "@bolt-ai/plugin"
 
 export default (async ({ client, project, directory, $ }) => {
   return {
@@ -430,23 +430,23 @@ the `plan` agent's permission ruleset (`edit: deny *`).
 
 When a user's config is broken and bolt won't start, these env vars help:
 
-- `OPENCODE_DISABLE_PROJECT_CONFIG=1`: skip the project's local `bolt.json` / `opencode.json`
+- `BOLT_DISABLE_PROJECT_CONFIG=1`: skip the project's local `bolt.json` / `bolt.json`
   and start from globals only. Run from the project directory, bolt loads,
   the user edits the broken file, then they restart without the flag.
-- `OPENCODE_CONFIG=/path/to/file.json`: load an additional explicit config.
-- `OPENCODE_CONFIG_CONTENT='{"$schema":"https://opencode.ai/config.json"}'`:
+- `BOLT_CONFIG=/path/to/file.json`: load an additional explicit config.
+- `BOLT_CONFIG_CONTENT='{"$schema":"https://bolt.ai/config.json"}'`:
   inject inline JSON as a final local-scope merge.
-- `OPENCODE_DISABLE_DEFAULT_PLUGINS=1`: skip default plugins.
-- `OPENCODE_PURE=1`: skip external plugins entirely.
-- `OPENCODE_DISABLE_EXTERNAL_SKILLS=1`,
-  `OPENCODE_DISABLE_CLAUDE_CODE_SKILLS=1`: skip the external skill scans under
+- `BOLT_DISABLE_DEFAULT_PLUGINS=1`: skip default plugins.
+- `BOLT_PURE=1`: skip external plugins entirely.
+- `BOLT_DISABLE_EXTERNAL_SKILLS=1`,
+  `BOLT_DISABLE_CLAUDE_CODE_SKILLS=1`: skip the external skill scans under
   `~/.claude/` and `~/.agents/`.
 
 ## When proposing edits
 
 - Validate against the schema before writing. If you are unsure of a field's
   exact shape, or the field is not covered in this skill, fetch
-  `https://opencode.ai/config.json` and read the schema rather than guessing.
+  `https://bolt.ai/config.json` and read the schema rather than guessing.
 - Preserve `$schema` and any existing fields the user did not ask to change.
 - For agent, command, skill, and plugin definitions, prefer creating new files
   in the correct location over inlining everything in `bolt.json`.

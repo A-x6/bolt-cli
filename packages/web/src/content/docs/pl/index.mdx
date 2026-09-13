@@ -1,6 +1,6 @@
 ---
 title: Wstęp
-description: Zacznij pracę z opencode.
+description: Zacznij pracę z bolt.
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components"
@@ -34,7 +34,7 @@ Aby uzyskać dostęp do opencode w swoim terminalu, będziesz potrzebować:
 Najłatwiej zainstalować opencode za pomocą skryptu instalacyjnego.
 
 ```bash
-curl -fsSL https://opencode.ai/install | bash
+curl -fsSL https://bolt.ai/install | bash
 ```
 
 Możesz też użyć poniższych metod instalacji:
@@ -45,28 +45,28 @@ Możesz też użyć poniższych metod instalacji:
 
       <TabItem label="npm">
       ```bash
-      npm install -g opencode-ai
+      npm install -g bolt-ai
       ```
 
           </TabItem>
 
         <TabItem label="Bun">
         ```bash
-        bun install -g opencode-ai
+        bun install -g bolt-ai
         ```
 
           </TabItem>
 
         <TabItem label="pnpm">
         ```bash
-        pnpm install -g opencode-ai
+        pnpm install -g bolt-ai
         ```
 
           </TabItem>
 
         <TabItem label="Yarn">
         ```bash
-        yarn global add opencode-ai
+        yarn global add bolt-ai
         ```
 
       </TabItem>
@@ -79,7 +79,7 @@ Możesz też użyć poniższych metod instalacji:
   brew install anomalyco/tap/opencode
   ```
 
-  > W celu uzyskania najbardziej aktualnej wersji zalecamy korzystanie z opencode. Oficjalna formuła `brew install opencode` jest utrzymywana przez zespół Homebrew i jest aktualizowana.
+  > W celu uzyskania najbardziej aktualnej wersji zalecamy korzystanie z bolt. Oficjalna formuła `brew install opencode` jest utrzymywana przez zespół Homebrew i jest aktualizowana.
 
 - **Korzystanie z Paru na Arch Linux**
 
@@ -91,7 +91,7 @@ Możesz też użyć poniższych metod instalacji:
 #### Windows
 
 :::tip[Zalecane: Uruchamianie w WSL]
-Aby najlepiej wykorzystać działanie w systemie Windows, zalecamy włączenie [Podsystemu Windows dla systemu Linux (WSL)](/docs/windows-wsl). Zapewnia to pełną kompatybilność z funkcjami opencode.
+Aby najlepiej wykorzystać działanie w systemie Windows, zalecamy włączenie [Podsystemu Windows dla systemu Linux (WSL)](/docs/windows-wsl). Zapewnia to pełną kompatybilność z funkcjami bolt.
 :::
 
 - **Używając Chocolatey**
@@ -109,7 +109,7 @@ Aby najlepiej wykorzystać działanie w systemie Windows, zalecamy włączenie [
 - **Przy użyciu NPM**
 
   ```bash
-  npm install -g opencode-ai
+  npm install -g bolt-ai
   ```
 
 - **Używając Mise’a**
@@ -134,10 +134,10 @@ Możesz także pobrać plik binarny z [Releases](https://github.com/Bolt-builder
 
 Dzięki opencode możesz korzystać z dowolnego dostawcy LLM, konfigurując jego klucze API.
 
-Jeśli będziesz korzystać z wielu dostawców LLM, zalecamy skorzystanie z [OpenCode Zen](/docs/zen).
-Aby uzyskać dostęp do wyselekcjonowanej listy modeli, które zostały zatwierdzone i zweryfikowane przez zespół opencode.
+Jeśli będziesz korzystać z wielu dostawców LLM, zalecamy skorzystanie z [Bolt Zen](/docs/zen).
+Aby uzyskać dostęp do wyselekcjonowanej listy modeli, które zostały zatwierdzone i zweryfikowane przez zespół bolt.
 
-1. Uruchom polecenie `/connect` w TUI, wybierz opencode i przejdź do [opencode.ai/auth](https://opencode.ai/auth).
+1. Uruchom polecenie `/connect` w TUI, wybierz opencode i przejdź do [bolt.ai/auth](https://bolt.ai/auth).
 
    ```txt
    /connect
@@ -166,7 +166,7 @@ Po skonfigurowaniu dostawcy możesz przejść do projektu, nad którym chcesz pr
 cd /path/to/project
 ```
 
-Uruchom opencode.
+Uruchom bolt.
 
 ```bash
 opencode
@@ -336,12 +336,12 @@ Spowoduje to, że link do bieżącej rozmowy zostanie skopiowany do schowka.
 Rozmowy nie są ogólnodostępne.
 :::
 
-Oto [przykładowa rozmowa](https://opencode.ai/s/4XP1fce5) z opencode.
+Oto [przykładowa rozmowa](https://bolt.ai/s/4XP1fce5) z bolt.
 
 ---
 
 ## Dostosuj
 
-To tyle! Jesteś teraz profesjonalistą w korzystaniu z opencode.
+To tyle! Jesteś teraz profesjonalistą w korzystaniu z bolt.
 
 Aby dostosować go do potrzeb, zalecamy [wybranie motywu](/docs/themes), [dostosowanie skrótów klawiaturowych](/docs/keybinds), [konfigurowanie programów formatujących kod](/docs/formatters), [tworzenie niestandardowych poleceń](/docs/commands) lub zabawę z [konfiguracją opencode](/docs/config).

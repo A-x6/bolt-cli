@@ -22,7 +22,7 @@ Options:
       --hostname     hostname to listen on                           [string] [default: "127.0.0.1"]
       --mdns         enable mDNS service discovery (defaults hostname to 0.0.0.0)
                                                                           [boolean] [default: false]
-      --mdns-domain  custom domain name for mDNS service (default: opencode.local)
-                                                                [string] [default: "opencode.local"]
+      --mdns-domain  custom domain name for mDNS service (default: bolt.local)
+                                                                [string] [default: "bolt.local"]
       --cors         additional domains to allow for CORS                      [array] [default: []]
 ```

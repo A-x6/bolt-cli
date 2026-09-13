@@ -1,6 +1,6 @@
-import type { PermissionV1 } from "@opencode-ai/core/v1/permission"
-import { FSUtil } from "@opencode-ai/core/fs-util"
-// CLI entry point for `opencode run` and `opencode --mini`.
+import type { PermissionV1 } from "@bolt-ai/core/v1/permission"
+import { FSUtil } from "@bolt-ai/core/fs-util"
+// CLI entry point for `bolt run` and `opencode --mini`.
 //
 // Handles three modes:
 //   1. Non-interactive (default): sends a single prompt, streams events to
@@ -25,7 +25,7 @@ import { ExitCode } from "../exit"
 import { Porcelain } from "../porcelain"
 import { EOL } from "os"
 import { Filesystem } from "@/util/filesystem"
-import { createOpencodeClient, type OpencodeClient, type ToolPart } from "@opencode-ai/sdk/v2"
+import { createBoltClient, type OpencodeClient, type ToolPart } from "@bolt-ai/sdk/v2"
 import { FormatError, FormatUnknownError } from "../error"
 import { INTERACTIVE_INPUT_ERROR, resolveInteractiveStdin } from "./run/runtime.stdin"
 import { Budget } from "./run/budget"
@@ -270,12 +270,12 @@ export const RunCommand = effectCmd({
       .option("password", {
         alias: ["p"],
         type: "string",
-        describe: "basic auth password (defaults to OPENCODE_SERVER_PASSWORD)",
+        describe: "basic auth password (defaults to BOLT_SERVER_PASSWORD)",
       })
       .option("username", {
         alias: ["u"],
         type: "string",
-        describe: "basic auth username (defaults to OPENCODE_SERVER_USERNAME or 'opencode')",
+        describe: "basic auth username (defaults to BOLT_SERVER_USERNAME or 'bolt')",
       })
       .option("dir", {
         type: "string",
@@ -552,7 +552,7 @@ export const RunCommand = effectCmd({
         ? ServerAuth.headers({ password: args.password, username: args.username })
         : undefined
       const attachSDK = (baseUrl: string, dir?: string) => {
-        return createOpencodeClient({
+        return createBoltClient({
           baseUrl,
           directory: dir,
           headers: attachHeaders,
@@ -1508,7 +1508,7 @@ export const RunCommand = effectCmd({
       const daemon = await Daemon.detect()
       if (daemon) {
         const { ServerAuth } = await import("@/server/auth")
-        const sdk = createOpencodeClient({
+        const sdk = createBoltClient({
           baseUrl: daemon.url,
           headers: ServerAuth.headers(),
           directory,
@@ -1516,8 +1516,8 @@ export const RunCommand = effectCmd({
         return await execute(sdk)
       }
 
-      const sdk = createOpencodeClient({
-        baseUrl: "http://opencode.internal",
+      const sdk = createBoltClient({
+        baseUrl: "http://bolt.internal",
         fetch: fetchFn,
         directory,
       })
@@ -1546,7 +1546,7 @@ type MiniCommandInput = {
 export async function runMini(input: MiniCommandInput) {
   if (!RunCommand.handler) throw new Error("Mini command handler is unavailable")
   await RunCommand.handler({
-    $0: "opencode",
+    $0: "bolt",
     _: ["mini"],
     message: input.prompt ? [input.prompt] : [],
     command: undefined,

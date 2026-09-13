@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "@opencode-ai/protocol",
+  "name": "@bolt-ai/protocol",
   "private": true,
   "type": "module",
   "license": "AGPL-3.0-only",
@@ -11,7 +11,7 @@
     "typecheck": "tsgo --noEmit"
   },
   "dependencies": {
-    "@opencode-ai/schema": "workspace:*",
+    "@bolt-ai/schema": "workspace:*",
     "effect": "catalog:"
   },
   "devDependencies": {

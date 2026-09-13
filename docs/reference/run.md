@@ -65,8 +65,8 @@ Options:
                           bolt preinstalled on the remote                                   [string]
       --voice             record a voice prompt and transcribe it locally with whisper.cpp (press
                           Enter to stop)                                  [boolean] [default: false]
-  -p, --password          basic auth password (defaults to OPENCODE_SERVER_PASSWORD)        [string]
-  -u, --username          basic auth username (defaults to OPENCODE_SERVER_USERNAME or 'opencode')
+  -p, --password          basic auth password (defaults to BOLT_SERVER_PASSWORD)        [string]
+  -u, --username          basic auth username (defaults to BOLT_SERVER_USERNAME or 'bolt')
                                                                                             [string]
       --dir               directory to run in, path on remote server if attaching           [string]
       --port              port for the local server (defaults to random port if no value provided)

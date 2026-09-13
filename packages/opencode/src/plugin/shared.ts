@@ -4,10 +4,10 @@ import npa from "npm-package-arg"
 import semver from "semver"
 import { Filesystem } from "@/util/filesystem"
 import { isRecord } from "@/util/record"
-import { Npm } from "@opencode-ai/core/npm"
+import { Npm } from "@bolt-ai/core/npm"
 
 // Old npm package names for plugins that are now built-in
-export const DEPRECATED_PLUGIN_PACKAGES = ["opencode-openai-codex-auth", "opencode-copilot-auth"]
+export const DEPRECATED_PLUGIN_PACKAGES = ["bolt-openai-codex-auth", "bolt-copilot-auth"]
 
 export function isDeprecatedPlugin(spec: string) {
   return DEPRECATED_PLUGIN_PACKAGES.some((pkg) => spec.includes(pkg))
@@ -197,7 +197,7 @@ export async function checkPluginCompatibility(target: string, opencodeVersion: 
   if (!hit) return
   const engines = hit.json.engines
   if (!isRecord(engines)) return
-  const range = engines.opencode
+  const range = engines.bolt
   if (typeof range !== "string") return
   if (!semver.satisfies(opencodeVersion, range)) {
     throw new Error(`Plugin requires opencode ${range} but running ${opencodeVersion}`)

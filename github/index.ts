@@ -5,7 +5,7 @@ import { graphql } from "@octokit/graphql"
 import * as core from "@actions/core"
 import * as github from "@actions/github"
 import type { IssueCommentEvent, PullRequestReviewCommentEvent } from "@octokit/webhooks-types"
-import { createOpencodeClient } from "@opencode-ai/sdk"
+import { createBoltClient } from "@bolt-ai/sdk"
 import { spawn } from "node:child_process"
 import { setTimeout as sleep } from "node:timers/promises"
 
@@ -112,7 +112,7 @@ type IssueQueryResponse = {
   }
 }
 
-const { client, server } = createOpencode()
+const { client, server } = createBolt()
 let accessToken: string
 let octoRest: Octokit
 let octoGraph: typeof graphql
@@ -151,7 +151,7 @@ try {
     await client.session.share<true>({ path: session })
     return session.id.slice(-8)
   })()
-  console.log("opencode session", session.id)
+  console.log("bolt session", session.id)
   if (shareId) {
     console.log("Share link:", `${useShareUrl()}/s/${shareId}`)
   }
@@ -227,12 +227,12 @@ try {
 }
 process.exit(exitCode)
 
-function createOpencode() {
+function createBolt() {
   const host = "127.0.0.1"
   const port = 4096
   const url = `http://${host}:${port}`
-  const proc = spawn(`opencode`, [`serve`, `--hostname=${host}`, `--port=${port}`])
-  const client = createOpencodeClient({ baseUrl: url })
+  const proc = spawn(`bolt`, [`serve`, `--hostname=${host}`, `--port=${port}`])
+  const client = createBoltClient({ baseUrl: url })
 
   return {
     server: { url, close: () => proc.kill() },
@@ -362,7 +362,7 @@ function useIssueId() {
 }
 
 function useShareUrl() {
-  return isMock() ? "https://dev.opencode.ai" : "https://opencode.ai"
+  return isMock() ? "https://dev.bolt.ai" : "https://bolt.ai"
 }
 
 async function getAccessToken() {
@@ -373,7 +373,7 @@ async function getAccessToken() {
 
   let response
   if (isMock()) {
-    response = await fetch("https://api.opencode.ai/exchange_github_app_token_with_pat", {
+    response = await fetch("https://api.bolt.ai/exchange_github_app_token_with_pat", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${useEnvMock().mockToken}`,
@@ -381,8 +381,8 @@ async function getAccessToken() {
       body: JSON.stringify({ owner: repo.owner, repo: repo.repo }),
     })
   } else {
-    const oidcToken = await core.getIDToken("opencode-github-action")
-    response = await fetch("https://api.opencode.ai/exchange_github_app_token", {
+    const oidcToken = await core.getIDToken("bolt-github-action")
+    response = await fetch("https://api.bolt.ai/exchange_github_app_token", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${oidcToken}`,
@@ -606,7 +606,7 @@ async function resolveAgent(): Promise<string | undefined> {
 }
 
 async function chat(text: string, files: PromptFiles = []) {
-  console.log("Sending message to opencode...")
+  console.log("Sending message to bolt...")
   const { providerID, modelID } = useEnvModel()
   const agent = await resolveAgent()
 

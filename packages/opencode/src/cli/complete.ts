@@ -1,7 +1,7 @@
 import path from "path"
-import { Database } from "@opencode-ai/core/database/database"
-import { Global } from "@opencode-ai/core/global"
-import { Glob } from "@opencode-ai/core/util/glob"
+import { Database } from "@bolt-ai/core/database/database"
+import { Global } from "@bolt-ai/core/global"
+import { Glob } from "@bolt-ai/core/util/glob"
 import { configEntryNameFromPath } from "@/config/entry-name"
 
 // Built-in agents from src/agent/agent.ts; config-defined agents are merged in
@@ -55,7 +55,7 @@ export async function models() {
 /** Built-in agent names plus agents defined in the global and project config directories. */
 export async function agents() {
   const names = new Set(BUILTIN)
-  const dirs = [Global.Path.config, path.join(process.cwd(), ".opencode")]
+  const dirs = [Global.Path.config, path.join(process.cwd(), ".bolt")]
   for (const dir of dirs) {
     const items: string[] = await Glob.scan("{agent,agents}/**/*.md", {
       cwd: dir,

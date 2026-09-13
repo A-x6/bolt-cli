@@ -1,7 +1,7 @@
 import * as path from "path"
 import { fileURLToPath, pathToFileURL } from "url"
 import { Effect } from "effect"
-import { FSUtil } from "@opencode-ai/core/fs-util"
+import { FSUtil } from "@bolt-ai/core/fs-util"
 import { LSP } from "./lsp"
 
 export const SYMBOLS = 8

@@ -1,8 +1,8 @@
-import { ConfigV1 } from "@opencode-ai/core/v1/config/config"
-import { EventV2 } from "@opencode-ai/core/event"
+import { ConfigV1 } from "@bolt-ai/core/v1/config/config"
+import { EventV2 } from "@bolt-ai/core/event"
 import { EventManifest } from "@/event-manifest"
 import { InstanceDisposed } from "@/server/event"
-import "@opencode-ai/core/account"
+import "@bolt-ai/core/account"
 import "@/server/event"
 import { Schema } from "effect"
 import { HttpApi, HttpApiEndpoint, HttpApiError, HttpApiGroup, OpenApi } from "effect/unstable/httpapi"
@@ -82,7 +82,7 @@ export const GlobalApi = HttpApi.make("global").add(
         OpenApi.annotations({
           identifier: "global.health",
           summary: "Get health",
-          description: "Get health information about the OpenCode server.",
+          description: "Get health information about the Bolt server.",
         }),
       ),
       HttpApiEndpoint.get("event", GlobalPaths.event, {
@@ -91,7 +91,7 @@ export const GlobalApi = HttpApi.make("global").add(
         OpenApi.annotations({
           identifier: "global.event",
           summary: "Get global events",
-          description: "Subscribe to global events from the OpenCode system using server-sent events.",
+          description: "Subscribe to global events from the Bolt system using server-sent events.",
         }),
       ),
       HttpApiEndpoint.get("configGet", GlobalPaths.config, {
@@ -100,7 +100,7 @@ export const GlobalApi = HttpApi.make("global").add(
         OpenApi.annotations({
           identifier: "global.config.get",
           summary: "Get global configuration",
-          description: "Retrieve the current global OpenCode configuration settings and preferences.",
+          description: "Retrieve the current global Bolt configuration settings and preferences.",
         }),
       ),
       HttpApiEndpoint.patch("configUpdate", GlobalPaths.config, {
@@ -111,7 +111,7 @@ export const GlobalApi = HttpApi.make("global").add(
         OpenApi.annotations({
           identifier: "global.config.update",
           summary: "Update global configuration",
-          description: "Update global OpenCode configuration settings and preferences.",
+          description: "Update global Bolt configuration settings and preferences.",
         }),
       ),
       HttpApiEndpoint.post("dispose", GlobalPaths.dispose, {
@@ -120,7 +120,7 @@ export const GlobalApi = HttpApi.make("global").add(
         OpenApi.annotations({
           identifier: "global.dispose",
           summary: "Dispose instance",
-          description: "Clean up and dispose all OpenCode instances, releasing all resources.",
+          description: "Clean up and dispose all Bolt instances, releasing all resources.",
         }),
       ),
       HttpApiEndpoint.post("upgrade", GlobalPaths.upgrade, {

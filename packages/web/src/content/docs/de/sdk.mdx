@@ -18,7 +18,7 @@ Damit kannst du Integrationen bauen und opencode programmatisch steuern.
 Installiere das SDK ueber npm:
 
 ```bash
-npm install @opencode-ai/sdk
+npm install @bolt-ai/sdk
 ```
 
 ---
@@ -28,9 +28,9 @@ npm install @opencode-ai/sdk
 Erstelle eine opencode-Instanz:
 
 ```javascript
-import { createOpencode } from "@opencode-ai/sdk"
+import { createBolt } from "@bolt-ai/sdk"
 
-const { client } = await createOpencode()
+const { client } = await createBolt()
 ```
 
 Das startet Server und Client.
@@ -50,12 +50,12 @@ Das startet Server und Client.
 ## Config
 
 Du kannst ein Konfigurationsobjekt uebergeben, um das Verhalten anzupassen.
-`opencode.json` wird weiterhin geladen, kann aber inline ueberschrieben oder erweitert werden:
+`bolt.json` wird weiterhin geladen, kann aber inline ueberschrieben oder erweitert werden:
 
 ```javascript
-import { createOpencode } from "@opencode-ai/sdk"
+import { createBolt } from "@bolt-ai/sdk"
 
-const opencode = await createOpencode({
+const bolt = await createBolt({
   hostname: "127.0.0.1",
   port: 4096,
   config: {
@@ -63,9 +63,9 @@ const opencode = await createOpencode({
   },
 })
 
-console.log(`Server running at ${opencode.server.url}`)
+console.log(`Server running at ${bolt.server.url}`)
 
-opencode.server.close()
+bolt.server.close()
 ```
 
 ## Nur Client
@@ -73,9 +73,9 @@ opencode.server.close()
 Wenn opencode bereits laeuft, kannst du nur einen Client erstellen und verbinden:
 
 ```javascript
-import { createOpencodeClient } from "@opencode-ai/sdk"
+import { createBoltClient } from "@bolt-ai/sdk"
 
-const client = createOpencodeClient({
+const client = createBoltClient({
   baseUrl: "http://localhost:4096",
 })
 ```
@@ -98,7 +98,7 @@ Das SDK bringt TypeScript-Definitionen fuer alle API-Typen mit.
 Du kannst sie direkt importieren:
 
 ```typescript
-import type { Session, Message, Part } from "@opencode-ai/sdk"
+import type { Session, Message, Part } from "@bolt-ai/sdk"
 ```
 
 Alle Typen werden aus der OpenAPI-Spezifikation des Servers generiert und sind in der <a href={typesUrl}>Typdatei</a> verfuegbar.

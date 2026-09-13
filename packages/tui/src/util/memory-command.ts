@@ -7,9 +7,9 @@
  * of UI imports.
  */
 
-import { MEMORY_USAGE, parseMemoryCommand, type ParsedMemoryCommand } from "@opencode-ai/memory/commands"
-import { MemoryControls } from "@opencode-ai/memory/controls"
-import type { OpencodeClient } from "@opencode-ai/sdk/v2"
+import { MEMORY_USAGE, parseMemoryCommand, type ParsedMemoryCommand } from "@bolt-ai/memory/commands"
+import { MemoryControls } from "@bolt-ai/memory/controls"
+import type { OpencodeClient } from "@bolt-ai/sdk/v2"
 import { errorMessage } from "./error"
 
 export { MEMORY_USAGE }

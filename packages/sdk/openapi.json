@@ -1,9 +1,9 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "opencode",
+    "title": "bolt",
     "version": "1.0.0",
-    "description": "opencode api"
+    "description": "bolt api"
   },
   "paths": {
     "/auth/{providerID}": {
@@ -64,7 +64,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.auth.set({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.auth.set({\n  ...\n})"
           }
         ]
       },
@@ -116,7 +116,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.auth.remove({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.auth.remove({\n  ...\n})"
           }
         ]
       }
@@ -207,7 +207,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.app.log({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.app.log({\n  ...\n})"
           }
         ]
       }
@@ -267,7 +267,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.experimental.controlPlane.moveSession({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.experimental.controlPlane.moveSession({\n  ...\n})"
           }
         ]
       }
@@ -311,12 +311,12 @@
             }
           }
         },
-        "description": "Get health information about the OpenCode server.",
+        "description": "Get health information about the Bolt server.",
         "summary": "Get health",
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.global.health({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.global.health({\n  ...\n})"
           }
         ]
       }
@@ -348,12 +348,12 @@
             }
           }
         },
-        "description": "Subscribe to global events from the OpenCode system using server-sent events.",
+        "description": "Subscribe to global events from the Bolt system using server-sent events.",
         "summary": "Get global events",
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.global.event({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.global.event({\n  ...\n})"
           }
         ]
       }
@@ -385,12 +385,12 @@
             }
           }
         },
-        "description": "Retrieve the current global OpenCode configuration settings and preferences.",
+        "description": "Retrieve the current global Bolt configuration settings and preferences.",
         "summary": "Get global configuration",
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.global.config.get({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.global.config.get({\n  ...\n})"
           }
         ]
       },
@@ -427,7 +427,7 @@
             }
           }
         },
-        "description": "Update global OpenCode configuration settings and preferences.",
+        "description": "Update global Bolt configuration settings and preferences.",
         "summary": "Update global configuration",
         "requestBody": {
           "content": {
@@ -441,7 +441,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.global.config.update({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.global.config.update({\n  ...\n})"
           }
         ]
       }
@@ -474,12 +474,12 @@
             }
           }
         },
-        "description": "Clean up and dispose all OpenCode instances, releasing all resources.",
+        "description": "Clean up and dispose all Bolt instances, releasing all resources.",
         "summary": "Dispose instance",
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.global.dispose({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.global.dispose({\n  ...\n})"
           }
         ]
       }
@@ -569,7 +569,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.global.upgrade({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.global.upgrade({\n  ...\n})"
           }
         ]
       }
@@ -613,7 +613,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.event.subscribe({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.event.subscribe({\n  ...\n})"
           }
         ]
       }
@@ -662,12 +662,12 @@
             }
           }
         },
-        "description": "Retrieve the current OpenCode configuration settings and preferences.",
+        "description": "Retrieve the current Bolt configuration settings and preferences.",
         "summary": "Get configuration",
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.config.get({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.config.get({\n  ...\n})"
           }
         ]
       },
@@ -721,7 +721,7 @@
             }
           }
         },
-        "description": "Update OpenCode configuration settings and preferences.",
+        "description": "Update Bolt configuration settings and preferences.",
         "summary": "Update configuration",
         "requestBody": {
           "content": {
@@ -735,7 +735,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.config.update({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.config.update({\n  ...\n})"
           }
         ]
       }
@@ -806,7 +806,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.config.providers({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.config.providers({\n  ...\n})"
           }
         ]
       }
@@ -855,12 +855,12 @@
             }
           }
         },
-        "description": "Get experimental features enabled on the OpenCode server.",
+        "description": "Get experimental features enabled on the Bolt server.",
         "summary": "Get experimental capabilities",
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.experimental.capabilities.get({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.experimental.capabilities.get({\n  ...\n})"
           }
         ]
       }
@@ -924,7 +924,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.experimental.console.get({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.experimental.console.get({\n  ...\n})"
           }
         ]
       }
@@ -1021,7 +1021,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.experimental.console.listOrgs({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.experimental.console.listOrgs({\n  ...\n})"
           }
         ]
       }
@@ -1061,7 +1061,7 @@
             }
           }
         },
-        "description": "Persist a new active Console account/org selection for the current local OpenCode state.",
+        "description": "Persist a new active Console account/org selection for the current local Bolt state.",
         "summary": "Switch active Console org",
         "requestBody": {
           "content": {
@@ -1085,7 +1085,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.experimental.console.switchOrg({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.experimental.console.switchOrg({\n  ...\n})"
           }
         ]
       }
@@ -1162,7 +1162,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.tool.list({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.tool.list({\n  ...\n})"
           }
         ]
       }
@@ -1223,7 +1223,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.tool.ids({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.tool.ids({\n  ...\n})"
           }
         ]
       }
@@ -1288,7 +1288,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.worktree.list({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.worktree.list({\n  ...\n})"
           }
         ]
       },
@@ -1356,7 +1356,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.worktree.create({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.worktree.create({\n  ...\n})"
           }
         ]
       },
@@ -1425,7 +1425,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.worktree.remove({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.worktree.remove({\n  ...\n})"
           }
         ]
       }
@@ -1496,7 +1496,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.worktree.reset({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.worktree.reset({\n  ...\n})"
           }
         ]
       }
@@ -1613,12 +1613,12 @@
             }
           }
         },
-        "description": "Get a list of all OpenCode sessions across projects, sorted by most recently updated. Archived sessions are excluded by default.",
+        "description": "Get a list of all Bolt sessions across projects, sorted by most recently updated. Archived sessions are excluded by default.",
         "summary": "List sessions",
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.experimental.session.list({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.experimental.session.list({\n  ...\n})"
           }
         ]
       }
@@ -1689,7 +1689,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.experimental.session.background({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.experimental.session.background({\n  ...\n})"
           }
         ]
       }
@@ -1743,7 +1743,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.experimental.job.list({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.experimental.job.list({\n  ...\n})"
           }
         ]
       }
@@ -1815,7 +1815,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.experimental.job.cancel({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.experimental.job.cancel({\n  ...\n})"
           }
         ]
       }
@@ -1873,7 +1873,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.experimental.resource.list({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.experimental.resource.list({\n  ...\n})"
           }
         ]
       }
@@ -1999,7 +1999,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.find.text({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.find.text({\n  ...\n})"
           }
         ]
       }
@@ -2093,7 +2093,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.find.files({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.find.files({\n  ...\n})"
           }
         ]
       }
@@ -2159,7 +2159,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.find.symbols({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.find.symbols({\n  ...\n})"
           }
         ]
       }
@@ -2225,7 +2225,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.file.list({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.file.list({\n  ...\n})"
           }
         ]
       }
@@ -2287,7 +2287,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.file.read({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.file.read({\n  ...\n})"
           }
         ]
       }
@@ -2345,7 +2345,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.file.status({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.file.status({\n  ...\n})"
           }
         ]
       }
@@ -2395,12 +2395,12 @@
             }
           }
         },
-        "description": "Clean up and dispose the current OpenCode instance, releasing all resources.",
+        "description": "Clean up and dispose the current Bolt instance, releasing all resources.",
         "summary": "Dispose instance",
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.instance.dispose({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.instance.dispose({\n  ...\n})"
           }
         ]
       }
@@ -2465,7 +2465,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.instance.reload({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.instance.reload({\n  ...\n})"
           }
         ]
       }
@@ -2514,12 +2514,12 @@
             }
           }
         },
-        "description": "Retrieve the current working directory and related path information for the OpenCode instance.",
+        "description": "Retrieve the current working directory and related path information for the Bolt instance.",
         "summary": "Get paths",
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.path.get({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.path.get({\n  ...\n})"
           }
         ]
       }
@@ -2573,7 +2573,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.vcs.get({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.vcs.get({\n  ...\n})"
           }
         ]
       }
@@ -2631,7 +2631,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.vcs.status({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.vcs.status({\n  ...\n})"
           }
         ]
       }
@@ -2707,7 +2707,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.vcs.diff({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.vcs.diff({\n  ...\n})"
           }
         ]
       }
@@ -2761,7 +2761,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.vcs.diff.raw({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.vcs.diff.raw({\n  ...\n})"
           }
         ]
       }
@@ -2846,7 +2846,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.vcs.apply({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.vcs.apply({\n  ...\n})"
           }
         ]
       }
@@ -2899,12 +2899,12 @@
             }
           }
         },
-        "description": "Get a list of all available commands in the OpenCode system.",
+        "description": "Get a list of all available commands in the Bolt system.",
         "summary": "List commands",
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.command.list({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.command.list({\n  ...\n})"
           }
         ]
       }
@@ -2957,12 +2957,12 @@
             }
           }
         },
-        "description": "Get a list of all available AI agents in the OpenCode system.",
+        "description": "Get a list of all available AI agents in the Bolt system.",
         "summary": "List agents",
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.app.agents({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.app.agents({\n  ...\n})"
           }
         ]
       }
@@ -3031,12 +3031,12 @@
             }
           }
         },
-        "description": "Get a list of all available skills in the OpenCode system.",
+        "description": "Get a list of all available skills in the Bolt system.",
         "summary": "List skills",
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.app.skills({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.app.skills({\n  ...\n})"
           }
         ]
       }
@@ -3094,7 +3094,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.lsp.status({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.lsp.status({\n  ...\n})"
           }
         ]
       }
@@ -3152,7 +3152,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.formatter.status({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.formatter.status({\n  ...\n})"
           }
         ]
       }
@@ -3210,7 +3210,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.mcp.status({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.mcp.status({\n  ...\n})"
           }
         ]
       },
@@ -3299,7 +3299,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.mcp.add({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.mcp.add({\n  ...\n})"
           }
         ]
       }
@@ -3389,7 +3389,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.mcp.auth.start({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.mcp.auth.start({\n  ...\n})"
           }
         ]
       },
@@ -3468,7 +3468,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.mcp.auth.remove({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.mcp.auth.remove({\n  ...\n})"
           }
         ]
       }
@@ -3563,7 +3563,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.mcp.auth.callback({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.mcp.auth.callback({\n  ...\n})"
           }
         ]
       }
@@ -3642,7 +3642,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.mcp.auth.authenticate({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.mcp.auth.authenticate({\n  ...\n})"
           }
         ]
       }
@@ -3714,7 +3714,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.mcp.connect({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.mcp.connect({\n  ...\n})"
           }
         ]
       }
@@ -3786,7 +3786,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.mcp.disconnect({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.mcp.disconnect({\n  ...\n})"
           }
         ]
       }
@@ -4045,7 +4045,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.memory.status({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.memory.status({\n  ...\n})"
           }
         ]
       }
@@ -4303,7 +4303,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.memory.show({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.memory.show({\n  ...\n})"
           }
         ]
       }
@@ -4552,7 +4552,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.memory.enable({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.memory.enable({\n  ...\n})"
           }
         ]
       }
@@ -4782,7 +4782,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.memory.disable({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.memory.disable({\n  ...\n})"
           }
         ]
       }
@@ -5030,7 +5030,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.memory.configure({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.memory.configure({\n  ...\n})"
           }
         ]
       }
@@ -5279,7 +5279,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.memory.rebuild({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.memory.rebuild({\n  ...\n})"
           }
         ]
       }
@@ -5435,7 +5435,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.memory.remember({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.memory.remember({\n  ...\n})"
           }
         ]
       }
@@ -5582,7 +5582,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.memory.correct({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.memory.correct({\n  ...\n})"
           }
         ]
       }
@@ -5725,7 +5725,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.memory.forget({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.memory.forget({\n  ...\n})"
           }
         ]
       }
@@ -5824,7 +5824,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.memory.purge({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.memory.purge({\n  ...\n})"
           }
         ]
       }
@@ -5877,12 +5877,12 @@
             }
           }
         },
-        "description": "Get a list of projects that have been opened with OpenCode.",
+        "description": "Get a list of projects that have been opened with Bolt.",
         "summary": "List all projects",
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.project.list({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.project.list({\n  ...\n})"
           }
         ]
       }
@@ -5931,12 +5931,12 @@
             }
           }
         },
-        "description": "Retrieve the currently active project that OpenCode is working with.",
+        "description": "Retrieve the currently active project that Bolt is working with.",
         "summary": "Get current project",
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.project.current({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.project.current({\n  ...\n})"
           }
         ]
       }
@@ -5990,7 +5990,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.project.initGit({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.project.initGit({\n  ...\n})"
           }
         ]
       }
@@ -6090,7 +6090,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.project.update({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.project.update({\n  ...\n})"
           }
         ]
       }
@@ -6152,7 +6152,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.project.directories({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.project.directories({\n  ...\n})"
           }
         ]
       }
@@ -6236,7 +6236,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.experimental.projectCopy.generateName({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.experimental.projectCopy.generateName({\n  ...\n})"
           }
         ]
       }
@@ -6307,7 +6307,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.pty.shells({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.pty.shells({\n  ...\n})"
           }
         ]
       }
@@ -6360,12 +6360,12 @@
             }
           }
         },
-        "description": "Get a list of all active pseudo-terminal (PTY) sessions managed by OpenCode.",
+        "description": "Get a list of all active pseudo-terminal (PTY) sessions managed by Bolt.",
         "summary": "List PTY sessions",
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.pty.list({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.pty.list({\n  ...\n})"
           }
         ]
       },
@@ -6457,7 +6457,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.pty.create({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.pty.create({\n  ...\n})"
           }
         ]
       }
@@ -6530,7 +6530,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.pty.get({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.pty.get({\n  ...\n})"
           }
         ]
       },
@@ -6638,7 +6638,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.pty.update({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.pty.update({\n  ...\n})"
           }
         ]
       },
@@ -6710,7 +6710,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.pty.remove({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.pty.remove({\n  ...\n})"
           }
         ]
       }
@@ -6793,7 +6793,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.pty.connectToken({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.pty.connectToken({\n  ...\n})"
           }
         ]
       }
@@ -6851,7 +6851,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.question.list({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.question.list({\n  ...\n})"
           }
         ]
       }
@@ -6952,7 +6952,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.question.reply({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.question.reply({\n  ...\n})"
           }
         ]
       }
@@ -7033,7 +7033,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.question.reject({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.question.reject({\n  ...\n})"
           }
         ]
       }
@@ -7091,7 +7091,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.permission.list({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.permission.list({\n  ...\n})"
           }
         ]
       }
@@ -7192,7 +7192,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.permission.reply({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.permission.reply({\n  ...\n})"
           }
         ]
       }
@@ -7269,7 +7269,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.provider.list({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.provider.list({\n  ...\n})"
           }
         ]
       }
@@ -7330,7 +7330,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.provider.auth({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.provider.auth({\n  ...\n})"
           }
         ]
       }
@@ -7422,7 +7422,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.provider.oauth.authorize({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.provider.oauth.authorize({\n  ...\n})"
           }
         ]
       }
@@ -7512,7 +7512,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.provider.oauth.callback({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.provider.oauth.callback({\n  ...\n})"
           }
         ]
       }
@@ -7622,12 +7622,12 @@
             }
           }
         },
-        "description": "Get a list of all OpenCode sessions, sorted by most recently updated.",
+        "description": "Get a list of all Bolt sessions, sorted by most recently updated.",
         "summary": "List sessions",
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.session.list({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.session.list({\n  ...\n})"
           }
         ]
       },
@@ -7681,7 +7681,7 @@
             }
           }
         },
-        "description": "Create a new OpenCode session for interacting with AI assistants and managing conversations.",
+        "description": "Create a new Bolt session for interacting with AI assistants and managing conversations.",
         "summary": "Create session",
         "requestBody": {
           "content": {
@@ -7734,7 +7734,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.session.create({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.session.create({\n  ...\n})"
           }
         ]
       }
@@ -7799,7 +7799,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.session.status({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.session.status({\n  ...\n})"
           }
         ]
       }
@@ -7874,12 +7874,12 @@
             }
           }
         },
-        "description": "Retrieve detailed information about a specific OpenCode session.",
+        "description": "Retrieve detailed information about a specific Bolt session.",
         "summary": "Get session",
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.session.get({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.session.get({\n  ...\n})"
           }
         ]
       },
@@ -7958,7 +7958,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.session.delete({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.session.delete({\n  ...\n})"
           }
         ]
       },
@@ -8066,7 +8066,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.session.update({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.session.update({\n  ...\n})"
           }
         ]
       }
@@ -8150,7 +8150,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.session.children({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.session.children({\n  ...\n})"
           }
         ]
       }
@@ -8234,7 +8234,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.session.todo({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.session.todo({\n  ...\n})"
           }
         ]
       }
@@ -8310,7 +8310,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.session.diff({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.session.diff({\n  ...\n})"
           }
         ]
       }
@@ -8425,7 +8425,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.session.messages({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.session.messages({\n  ...\n})"
           }
         ]
       },
@@ -8585,7 +8585,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.session.prompt({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.session.prompt({\n  ...\n})"
           }
         ]
       }
@@ -8688,7 +8688,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.session.message({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.session.message({\n  ...\n})"
           }
         ]
       },
@@ -8786,7 +8786,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.session.deleteMessage({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.session.deleteMessage({\n  ...\n})"
           }
         ]
       }
@@ -8882,7 +8882,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.session.fork({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.session.fork({\n  ...\n})"
           }
         ]
       }
@@ -8953,7 +8953,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.session.abort({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.session.abort({\n  ...\n})"
           }
         ]
       }
@@ -9057,7 +9057,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.session.init({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.session.init({\n  ...\n})"
           }
         ]
       }
@@ -9140,7 +9140,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.session.share({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.session.share({\n  ...\n})"
           }
         ]
       },
@@ -9221,7 +9221,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.session.unshare({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.session.unshare({\n  ...\n})"
           }
         ]
       }
@@ -9324,7 +9324,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.session.summarize({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.session.summarize({\n  ...\n})"
           }
         ]
       }
@@ -9467,7 +9467,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.session.prompt_async({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.session.prompt_async({\n  ...\n})"
           }
         ]
       }
@@ -9621,7 +9621,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.session.command({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.session.command({\n  ...\n})"
           }
         ]
       }
@@ -9761,7 +9761,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.session.shell({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.session.shell({\n  ...\n})"
           }
         ]
       }
@@ -9872,7 +9872,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.session.revert({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.session.revert({\n  ...\n})"
           }
         ]
       }
@@ -9962,7 +9962,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.session.unrevert({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.session.unrevert({\n  ...\n})"
           }
         ]
       }
@@ -10077,7 +10077,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.permission.respond({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.permission.respond({\n  ...\n})"
           }
         ]
       }
@@ -10175,7 +10175,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.part.delete({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.part.delete({\n  ...\n})"
           }
         ]
       },
@@ -10279,7 +10279,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.part.update({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.part.update({\n  ...\n})"
           }
         ]
       }
@@ -10334,7 +10334,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.sync.start({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.sync.start({\n  ...\n})"
           }
         ]
       }
@@ -10447,7 +10447,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.sync.replay({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.sync.replay({\n  ...\n})"
           }
         ]
       }
@@ -10534,7 +10534,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.sync.steal({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.sync.steal({\n  ...\n})"
           }
         ]
       }
@@ -10633,7 +10633,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.sync.history.list({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.sync.history.list({\n  ...\n})"
           }
         ]
       }
@@ -10711,7 +10711,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.tui.appendPrompt({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.tui.appendPrompt({\n  ...\n})"
           }
         ]
       }
@@ -10766,7 +10766,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.tui.openHelp({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.tui.openHelp({\n  ...\n})"
           }
         ]
       }
@@ -10821,7 +10821,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.tui.openSessions({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.tui.openSessions({\n  ...\n})"
           }
         ]
       }
@@ -10876,7 +10876,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.tui.openThemes({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.tui.openThemes({\n  ...\n})"
           }
         ]
       }
@@ -10931,7 +10931,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.tui.openModels({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.tui.openModels({\n  ...\n})"
           }
         ]
       }
@@ -10986,7 +10986,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.tui.submitPrompt({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.tui.submitPrompt({\n  ...\n})"
           }
         ]
       }
@@ -11041,7 +11041,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.tui.clearPrompt({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.tui.clearPrompt({\n  ...\n})"
           }
         ]
       }
@@ -11119,7 +11119,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.tui.executeCommand({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.tui.executeCommand({\n  ...\n})"
           }
         ]
       }
@@ -11201,7 +11201,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.tui.showToast({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.tui.showToast({\n  ...\n})"
           }
         ]
       }
@@ -11285,7 +11285,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.tui.publish({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.tui.publish({\n  ...\n})"
           }
         ]
       }
@@ -11375,7 +11375,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.tui.selectSession({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.tui.selectSession({\n  ...\n})"
           }
         ]
       }
@@ -11438,7 +11438,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.tui.control.next({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.tui.control.next({\n  ...\n})"
           }
         ]
       }
@@ -11500,7 +11500,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.tui.control.response({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.tui.control.response({\n  ...\n})"
           }
         ]
       }
@@ -11580,7 +11580,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.voice.transcribe({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.voice.transcribe({\n  ...\n})"
           }
         ]
       }
@@ -11651,7 +11651,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.experimental.workspace.adapter.list({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.experimental.workspace.adapter.list({\n  ...\n})"
           }
         ]
       }
@@ -11709,7 +11709,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.experimental.workspace.list({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.experimental.workspace.list({\n  ...\n})"
           }
         ]
       },
@@ -11809,7 +11809,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.experimental.workspace.create({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.experimental.workspace.create({\n  ...\n})"
           }
         ]
       }
@@ -11856,7 +11856,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.experimental.workspace.syncList({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.experimental.workspace.syncList({\n  ...\n})"
           }
         ]
       }
@@ -11914,7 +11914,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.experimental.workspace.status({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.experimental.workspace.status({\n  ...\n})"
           }
         ]
       }
@@ -11984,7 +11984,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.experimental.workspace.remove({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.experimental.workspace.remove({\n  ...\n})"
           }
         ]
       }
@@ -12082,14 +12082,14 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.experimental.workspace.warp({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.experimental.workspace.warp({\n  ...\n})"
           }
         ]
       }
     },
     "/api/health": {
       "get": {
-        "tags": ["opencode HttpApi"],
+        "tags": ["bolt HttpApi"],
         "operationId": "v2.health.get",
         "parameters": [],
         "security": [],
@@ -12138,14 +12138,14 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.health.get({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.health.get({\n  ...\n})"
           }
         ]
       }
     },
     "/api/location": {
       "get": {
-        "tags": ["opencode HttpApi"],
+        "tags": ["bolt HttpApi"],
         "operationId": "v2.location.get",
         "parameters": [
           {
@@ -12206,14 +12206,14 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.location.get({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.location.get({\n  ...\n})"
           }
         ]
       }
     },
     "/api/agent": {
       "get": {
-        "tags": ["opencode HttpApi"],
+        "tags": ["bolt HttpApi"],
         "operationId": "v2.agent.list",
         "parameters": [
           {
@@ -12287,7 +12287,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.agent.list({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.agent.list({\n  ...\n})"
           }
         ]
       }
@@ -12413,7 +12413,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.session.list({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.session.list({\n  ...\n})"
           }
         ]
       },
@@ -12492,7 +12492,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.session.create({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.session.create({\n  ...\n})"
           }
         ]
       }
@@ -12547,12 +12547,12 @@
             }
           }
         },
-        "description": "Retrieve foreground Session drains currently owned by this OpenCode process. Sessions absent from the result are inactive.",
+        "description": "Retrieve foreground Session drains currently owned by this Bolt process. Sessions absent from the result are inactive.",
         "summary": "List active sessions",
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.session.active({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.session.active({\n  ...\n})"
           }
         ]
       }
@@ -12634,7 +12634,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.session.get({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.session.get({\n  ...\n})"
           }
         ]
       }
@@ -12719,7 +12719,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.session.switchAgent({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.session.switchAgent({\n  ...\n})"
           }
         ]
       }
@@ -12804,7 +12804,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.session.switchModel({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.session.switchModel({\n  ...\n})"
           }
         ]
       }
@@ -12924,7 +12924,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.session.prompt({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.session.prompt({\n  ...\n})"
           }
         ]
       }
@@ -13002,7 +13002,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.session.compact({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.session.compact({\n  ...\n})"
           }
         ]
       }
@@ -13080,7 +13080,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.session.wait({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.session.wait({\n  ...\n})"
           }
         ]
       }
@@ -13196,7 +13196,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.session.revert.stage({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.session.revert.stage({\n  ...\n})"
           }
         ]
       }
@@ -13273,7 +13273,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.session.revert.clear({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.session.revert.clear({\n  ...\n})"
           }
         ]
       }
@@ -13340,7 +13340,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.session.revert.commit({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.session.revert.commit({\n  ...\n})"
           }
         ]
       }
@@ -13435,7 +13435,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.session.context({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.session.context({\n  ...\n})"
           }
         ]
       }
@@ -13526,7 +13526,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.session.history({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.session.history({\n  ...\n})"
           }
         ]
       }
@@ -13683,7 +13683,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.session.events({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.session.events({\n  ...\n})"
           }
         ]
       }
@@ -13746,12 +13746,12 @@
             }
           }
         },
-        "description": "Interrupt active execution owned by this OpenCode process. Idle interruption is a no-op.",
+        "description": "Interrupt active execution owned by this Bolt process. Idle interruption is a no-op.",
         "summary": "Interrupt session execution",
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.session.interrupt({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.session.interrupt({\n  ...\n})"
           }
         ]
       }
@@ -13845,7 +13845,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.session.message({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.session.message({\n  ...\n})"
           }
         ]
       }
@@ -13963,7 +13963,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.session.messages({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.session.messages({\n  ...\n})"
           }
         ]
       }
@@ -14054,7 +14054,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.model.list({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.model.list({\n  ...\n})"
           }
         ]
       }
@@ -14145,7 +14145,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.provider.list({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.provider.list({\n  ...\n})"
           }
         ]
       }
@@ -14251,7 +14251,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.provider.get({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.provider.get({\n  ...\n})"
           }
         ]
       }
@@ -14332,7 +14332,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.integration.list({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.integration.list({\n  ...\n})"
           }
         ]
       }
@@ -14418,7 +14418,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.integration.get({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.integration.get({\n  ...\n})"
           }
         ]
       }
@@ -14514,7 +14514,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.integration.connect.key({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.integration.connect.key({\n  ...\n})"
           }
         ]
       }
@@ -14633,7 +14633,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.integration.connect.oauth({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.integration.connect.oauth({\n  ...\n})"
           }
         ]
       }
@@ -14719,7 +14719,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.integration.attempt.status({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.integration.attempt.status({\n  ...\n})"
           }
         ]
       },
@@ -14786,7 +14786,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.integration.attempt.cancel({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.integration.attempt.cancel({\n  ...\n})"
           }
         ]
       }
@@ -14878,14 +14878,14 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.integration.attempt.complete({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.integration.attempt.complete({\n  ...\n})"
           }
         ]
       }
     },
     "/api/credential/{credentialID}": {
       "patch": {
-        "tags": ["opencode HttpApi"],
+        "tags": ["bolt HttpApi"],
         "operationId": "v2.credential.update",
         "parameters": [
           {
@@ -14964,12 +14964,12 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.credential.update({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.credential.update({\n  ...\n})"
           }
         ]
       },
       "delete": {
-        "tags": ["opencode HttpApi"],
+        "tags": ["bolt HttpApi"],
         "operationId": "v2.credential.remove",
         "parameters": [
           {
@@ -15031,7 +15031,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.credential.remove({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.credential.remove({\n  ...\n})"
           }
         ]
       }
@@ -15112,7 +15112,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.permission.request.list({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.permission.request.list({\n  ...\n})"
           }
         ]
       }
@@ -15179,7 +15179,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.permission.saved.list({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.permission.saved.list({\n  ...\n})"
           }
         ]
       }
@@ -15229,7 +15229,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.permission.saved.remove({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.permission.saved.remove({\n  ...\n})"
           }
         ]
       }
@@ -15364,7 +15364,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.session.permission.create({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.session.permission.create({\n  ...\n})"
           }
         ]
       },
@@ -15447,7 +15447,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.session.permission.list({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.session.permission.list({\n  ...\n})"
           }
         ]
       }
@@ -15541,7 +15541,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.session.permission.get({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.session.permission.get({\n  ...\n})"
           }
         ]
       }
@@ -15641,7 +15641,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.session.permission.reply({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.session.permission.reply({\n  ...\n})"
           }
         ]
       }
@@ -15710,7 +15710,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.fs.read({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.fs.read({\n  ...\n})"
           }
         ]
       }
@@ -15799,7 +15799,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.fs.list({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.fs.list({\n  ...\n})"
           }
         ]
       }
@@ -15905,7 +15905,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.fs.find({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.fs.find({\n  ...\n})"
           }
         ]
       }
@@ -15986,7 +15986,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.command.list({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.command.list({\n  ...\n})"
           }
         ]
       }
@@ -16067,7 +16067,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.skill.list({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.skill.list({\n  ...\n})"
           }
         ]
       }
@@ -16115,7 +16115,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.event.subscribe({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.event.subscribe({\n  ...\n})"
           }
         ]
       }
@@ -16196,7 +16196,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.pty.list({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.pty.list({\n  ...\n})"
           }
         ]
       },
@@ -16306,7 +16306,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.pty.create({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.pty.create({\n  ...\n})"
           }
         ]
       }
@@ -16403,7 +16403,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.pty.get({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.pty.get({\n  ...\n})"
           }
         ]
       },
@@ -16529,7 +16529,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.pty.update({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.pty.update({\n  ...\n})"
           }
         ]
       },
@@ -16607,7 +16607,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.pty.remove({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.pty.remove({\n  ...\n})"
           }
         ]
       }
@@ -16714,7 +16714,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.pty.connectToken({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.pty.connectToken({\n  ...\n})"
           }
         ]
       }
@@ -16821,7 +16821,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.pty.connect({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.pty.connect({\n  ...\n})"
           }
         ]
       }
@@ -16902,7 +16902,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.question.request.list({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.question.request.list({\n  ...\n})"
           }
         ]
       }
@@ -16987,7 +16987,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.session.question.list({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.session.question.list({\n  ...\n})"
           }
         ]
       }
@@ -17077,7 +17077,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.session.question.reply({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.session.question.reply({\n  ...\n})"
           }
         ]
       }
@@ -17157,7 +17157,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.session.question.reject({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.session.question.reject({\n  ...\n})"
           }
         ]
       }
@@ -17238,7 +17238,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.reference.list({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.reference.list({\n  ...\n})"
           }
         ]
       }
@@ -17330,7 +17330,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.projectCopy.create({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.projectCopy.create({\n  ...\n})"
           }
         ]
       },
@@ -17410,7 +17410,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.projectCopy.remove({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.projectCopy.remove({\n  ...\n})"
           }
         ]
       }
@@ -17473,7 +17473,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.v2.projectCopy.refresh({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.v2.projectCopy.refresh({\n  ...\n})"
           }
         ]
       }
@@ -17559,7 +17559,7 @@
         "x-codeSamples": [
           {
             "lang": "js",
-            "source": "import { createOpencodeClient } from \"@opencode-ai/sdk\n\nconst client = createOpencodeClient()\nawait client.pty.connect({\n  ...\n})"
+            "source": "import { createBoltClient } from \"@bolt-ai/sdk\n\nconst client = createBoltClient()\nawait client.pty.connect({\n  ...\n})"
           }
         ]
       }
@@ -39431,15 +39431,15 @@
       "description": "Experimental HttpApi workspace routes."
     },
     {
-      "name": "opencode HttpApi",
+      "name": "bolt HttpApi",
       "description": "Experimental HttpApi surface for selected instance routes."
     },
     {
-      "name": "opencode HttpApi",
+      "name": "bolt HttpApi",
       "description": "Experimental HttpApi surface for selected instance routes."
     },
     {
-      "name": "opencode HttpApi",
+      "name": "bolt HttpApi",
       "description": "Experimental HttpApi surface for selected instance routes."
     },
     {
@@ -39463,7 +39463,7 @@
       "description": "Integration discovery and authentication routes."
     },
     {
-      "name": "opencode HttpApi",
+      "name": "bolt HttpApi",
       "description": "Experimental HttpApi surface for selected instance routes."
     },
     {

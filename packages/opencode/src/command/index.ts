@@ -1,4 +1,4 @@
-import { LayerNode } from "@opencode-ai/core/effect/layer-node"
+import { LayerNode } from "@bolt-ai/core/effect/layer-node"
 import path from "path"
 import { InstanceState } from "@/effect/instance-state"
 import { EffectBridge } from "@/effect/bridge"
@@ -10,7 +10,7 @@ import { Skill } from "../skill"
 import PROMPT_INITIALIZE from "./template/initialize.txt"
 import PROMPT_REVIEW from "./template/review.txt"
 import PROMPT_BUG from "./template/bug.txt"
-import { LegacyEvent } from "@opencode-ai/schema/legacy-event"
+import { LegacyEvent } from "@bolt-ai/schema/legacy-event"
 
 type State = {
   commands: Record<string, Info>
@@ -55,7 +55,7 @@ export interface Interface {
   readonly list: () => Effect.Effect<Info[]>
 }
 
-export class Service extends Context.Service<Service, Interface>()("@opencode/Command") {}
+export class Service extends Context.Service<Service, Interface>()("@bolt/Command") {}
 
 const layer = Layer.effect(
   Service,

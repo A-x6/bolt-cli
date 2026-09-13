@@ -18,7 +18,7 @@ opencode JS/TS SDK 提供了一個型別安全的用戶端，用於與伺服器�
 從 npm 安裝 SDK：
 
 ```bash
-npm install @opencode-ai/sdk
+npm install @bolt-ai/sdk
 ```
 
 ---
@@ -28,9 +28,9 @@ npm install @opencode-ai/sdk
 建立一個 opencode 實例：
 
 ```javascript
-import { createOpencode } from "@opencode-ai/sdk"
+import { createBolt } from "@bolt-ai/sdk"
 
-const { client } = await createOpencode()
+const { client } = await createBolt()
 ```
 
 這會同時啟動伺服器和用戶端。
@@ -49,12 +49,12 @@ const { client } = await createOpencode()
 
 ## 設定
 
-您可以傳入一個設定物件來自訂行為。實例仍然會讀取您的 `opencode.json`，但您可以透過內嵌方式覆寫或新增設定：
+您可以傳入一個設定物件來自訂行為。實例仍然會讀取您的 `bolt.json`，但您可以透過內嵌方式覆寫或新增設定：
 
 ```javascript
-import { createOpencode } from "@opencode-ai/sdk"
+import { createBolt } from "@bolt-ai/sdk"
 
-const opencode = await createOpencode({
+const bolt = await createBolt({
   hostname: "127.0.0.1",
   port: 4096,
   config: {
@@ -62,9 +62,9 @@ const opencode = await createOpencode({
   },
 })
 
-console.log(`Server running at ${opencode.server.url}`)
+console.log(`Server running at ${bolt.server.url}`)
 
-opencode.server.close()
+bolt.server.close()
 ```
 
 ## 僅用戶端模式
@@ -72,9 +72,9 @@ opencode.server.close()
 如果您已經有一個正在執行的 opencode 實例，可以建立一個用戶端實例來連線：
 
 ```javascript
-import { createOpencodeClient } from "@opencode-ai/sdk"
+import { createBoltClient } from "@bolt-ai/sdk"
 
-const client = createOpencodeClient({
+const client = createBoltClient({
   baseUrl: "http://localhost:4096",
 })
 ```
@@ -96,7 +96,7 @@ const client = createOpencodeClient({
 SDK 包含所有 API 型別的 TypeScript 定義。您可以直接匯入它們：
 
 ```typescript
-import type { Session, Message, Part } from "@opencode-ai/sdk"
+import type { Session, Message, Part } from "@bolt-ai/sdk"
 ```
 
 所有型別均根據伺服器的 OpenAPI 規範產生，可在<a href={typesUrl}>型別檔案</a>中查看。

@@ -17,7 +17,7 @@
     "upgrade-opentui": "bun run script/upgrade-opentui.ts",
     "postinstall": "bun run --cwd packages/core fix-node-pty",
     "prepare": "husky",
-    "sso": "aws sso login --sso-session=opencode --no-browser",
+    "sso": "aws sso login --sso-session=bolt --no-browser",
     "translate:app": "bun run script/translate-app.ts",
     "test": "echo 'do not run tests from root' && exit 1"
   },
@@ -105,9 +105,9 @@
     "turbo": "2.10.2"
   },
   "dependencies": {
-    "@opencode-ai/plugin": "workspace:*",
-    "@opencode-ai/script": "workspace:*",
-    "@opencode-ai/sdk": "workspace:*",
+    "@bolt-ai/plugin": "workspace:*",
+    "@bolt-ai/script": "workspace:*",
+    "@bolt-ai/sdk": "workspace:*",
     "typescript": "catalog:"
   },
   "repository": {

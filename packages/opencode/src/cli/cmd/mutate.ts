@@ -85,7 +85,7 @@ export const MutateCommand = effectCmd({
     if (!Number.isFinite(args.timeout) || args.timeout <= 0)
       return yield* fail("--timeout must be a positive number of milliseconds")
     const { InstanceRef } = yield* Effect.promise(() => import("@/effect/instance-ref"))
-    const { FSUtil } = yield* Effect.promise(() => import("@opencode-ai/core/fs-util"))
+    const { FSUtil } = yield* Effect.promise(() => import("@bolt-ai/core/fs-util"))
     const { detect } = yield* Effect.promise(() => import("@/tool/testrun"))
     const ctx = yield* InstanceRef
     if (!ctx) return yield* fail("Could not load instance context")

@@ -1,4 +1,4 @@
-import { SessionV1 } from "@opencode-ai/core/v1/session"
+import { SessionV1 } from "@bolt-ai/core/v1/session"
 
 // Collect every file path the conversation touched: attached file parts plus
 // filePath arguments of completed tool calls (read/edit/write and friends).

@@ -1,10 +1,10 @@
 import path from "path"
 import { existsSync, readFileSync } from "fs"
 import { parse } from "jsonc-parser"
-import { Global } from "@opencode-ai/core/global"
+import { Global } from "@bolt-ai/core/global"
 import { isRecord } from "@/util/record"
 
-const NAMES = ["opencode.json", "opencode.jsonc", "bolt.json", "bolt.jsonc"]
+const NAMES = ["bolt.json", "bolt.jsonc", "bolt.json", "bolt.jsonc"]
 
 /** Split an alias value into argv tokens, honoring single and double quotes. */
 export function tokenize(value: string) {
@@ -33,7 +33,7 @@ export function load(directory: string): Record<string, string> {
     ...["config.json", ...NAMES].map((name) => path.join(Global.Path.config, name)),
     ...up(directory).flatMap((dir) => [
       ...NAMES.map((name) => path.join(dir, name)),
-      ...NAMES.flatMap((name) => [path.join(dir, ".opencode", name), path.join(dir, ".bolt", name)]),
+      ...NAMES.flatMap((name) => [path.join(dir, ".bolt", name), path.join(dir, ".bolt", name)]),
     ]),
   ]
   return files.reduce((result, file) => ({ ...result, ...aliases(file) }), {})

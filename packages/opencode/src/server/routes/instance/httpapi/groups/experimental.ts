@@ -4,7 +4,7 @@ import { MCP } from "@/mcp"
 import { Session } from "@/session/session"
 import { SessionID } from "@/session/schema"
 import { Worktree } from "@/worktree"
-import { NonNegativeInt } from "@opencode-ai/core/schema"
+import { NonNegativeInt } from "@bolt-ai/core/schema"
 import { Schema } from "effect"
 import { HttpApi, HttpApiEndpoint, HttpApiError, HttpApiGroup, HttpApiSchema, OpenApi } from "effect/unstable/httpapi"
 import { Authorization } from "../middleware/authorization"
@@ -16,8 +16,8 @@ import {
 } from "../middleware/workspace-routing"
 import { described } from "./metadata"
 import { QueryBoolean } from "./query"
-import { ProviderV2 } from "@opencode-ai/core/provider"
-import { ModelV2 } from "@opencode-ai/core/model"
+import { ProviderV2 } from "@bolt-ai/core/provider"
+import { ModelV2 } from "@bolt-ai/core/model"
 
 const ConsoleStateResponse = Schema.Struct({
   consoleManagedProviders: Schema.mutable(Schema.Array(Schema.String)),
@@ -127,7 +127,7 @@ export const ExperimentalApi = HttpApi.make("experimental")
           OpenApi.annotations({
             identifier: "experimental.capabilities.get",
             summary: "Get experimental capabilities",
-            description: "Get experimental features enabled on the OpenCode server.",
+            description: "Get experimental features enabled on the Bolt server.",
           }),
         ),
         HttpApiEndpoint.get("console", ExperimentalPaths.console, {
@@ -161,7 +161,7 @@ export const ExperimentalApi = HttpApi.make("experimental")
           OpenApi.annotations({
             identifier: "experimental.console.switchOrg",
             summary: "Switch active Console org",
-            description: "Persist a new active Console account/org selection for the current local OpenCode state.",
+            description: "Persist a new active Console account/org selection for the current local Bolt state.",
           }),
         ),
         HttpApiEndpoint.get("tool", ExperimentalPaths.tool, {
@@ -244,7 +244,7 @@ export const ExperimentalApi = HttpApi.make("experimental")
             identifier: "experimental.session.list",
             summary: "List sessions",
             description:
-              "Get a list of all OpenCode sessions across projects, sorted by most recently updated. Archived sessions are excluded by default.",
+              "Get a list of all Bolt sessions across projects, sorted by most recently updated. Archived sessions are excluded by default.",
           }),
         ),
         HttpApiEndpoint.post("sessionBackground", ExperimentalPaths.sessionBackground, {
@@ -305,7 +305,7 @@ export const ExperimentalApi = HttpApi.make("experimental")
   )
   .annotateMerge(
     OpenApi.annotations({
-      title: "opencode experimental HttpApi",
+      title: "bolt experimental HttpApi",
       version: "0.0.1",
       description: "Experimental HttpApi surface for selected instance routes.",
     }),

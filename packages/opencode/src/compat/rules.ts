@@ -1,7 +1,7 @@
 import path from "path"
 import { Effect } from "effect"
-import type { FSUtil } from "@opencode-ai/core/fs-util"
-import { ConfigMarkdown } from "@opencode-ai/core/config/markdown"
+import type { FSUtil } from "@bolt-ai/core/fs-util"
+import { ConfigMarkdown } from "@bolt-ai/core/config/markdown"
 
 export interface Entry {
   readonly path: string

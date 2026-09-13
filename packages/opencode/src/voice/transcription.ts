@@ -1,8 +1,8 @@
 import { Auth } from "@/auth"
 import { Env } from "@/env"
-import { FSUtil } from "@opencode-ai/core/fs-util"
-import { Global } from "@opencode-ai/core/global"
-import { AppProcess } from "@opencode-ai/core/process"
+import { FSUtil } from "@bolt-ai/core/fs-util"
+import { Global } from "@bolt-ai/core/global"
+import { AppProcess } from "@bolt-ai/core/process"
 import { rm } from "node:fs/promises"
 import path from "node:path"
 import { Effect, Schema } from "effect"
@@ -32,7 +32,7 @@ const EXTENSIONS: Record<string, string> = {
 
 // Default location for the local whisper.cpp model installed by
 // `install --voice` (large-v3-turbo q5, ~0.6 GB). Override with
-// OPENCODE_VOICE_MODEL.
+// BOLT_VOICE_MODEL.
 const MODEL = path.join(Global.Path.data, "models", "ggml-large-v3-turbo-q5_0.bin")
 
 // Single speech-to-text entrypoint. Prefers a local whisper.cpp install
@@ -101,9 +101,9 @@ export const local = Effect.fnUntraced(function* (mime: string) {
   if (!mime.includes("wav")) return undefined
   const env = yield* Env.Service
   const binary =
-    (yield* env.get("OPENCODE_VOICE_WHISPER")) ?? Bun.which("whisper-cli") ?? Bun.which("whisper-cpp") ?? undefined
+    (yield* env.get("BOLT_VOICE_WHISPER")) ?? Bun.which("whisper-cli") ?? Bun.which("whisper-cpp") ?? undefined
   if (!binary) return undefined
-  const model = (yield* env.get("OPENCODE_VOICE_MODEL")) ?? MODEL
+  const model = (yield* env.get("BOLT_VOICE_MODEL")) ?? MODEL
   const fsys = yield* FSUtil.Service
   if (!(yield* fsys.isFile(model))) return undefined
   return { binary, model }

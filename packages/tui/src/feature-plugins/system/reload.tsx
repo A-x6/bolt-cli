@@ -1,4 +1,4 @@
-import type { TuiPlugin } from "@opencode-ai/plugin/tui"
+import type { TuiPlugin } from "@bolt-ai/plugin/tui"
 import type { BuiltinTuiPlugin } from "../builtins"
 
 const id = "internal:reload"

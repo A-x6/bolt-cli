@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "@opencode-ai/stats-core",
+  "name": "@bolt-ai/stats-core",
   "version": "1.20.7",
   "private": true,
   "type": "module",

@@ -3,7 +3,7 @@ import path from "node:path"
 import { Effect, Schema, Stream } from "effect"
 import { ChildProcess } from "effect/unstable/process"
 import { ChildProcessSpawner } from "effect/unstable/process/ChildProcessSpawner"
-import { Global } from "@opencode-ai/core/global"
+import { Global } from "@bolt-ai/core/global"
 import DESCRIPTION from "./browser.txt"
 import * as Tool from "./tool"
 

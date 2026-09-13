@@ -1,6 +1,6 @@
 import { SessionID, MessageID } from "./schema"
-import { SessionV1 } from "@opencode-ai/core/v1/session"
-import { ProviderV2 } from "@opencode-ai/core/provider"
+import { SessionV1 } from "@bolt-ai/core/v1/session"
+import { ProviderV2 } from "@bolt-ai/core/provider"
 import {
   APIError,
   AbortedError,
@@ -14,15 +14,15 @@ import {
   SubtaskPart,
   User,
   WithParts,
-} from "@opencode-ai/core/v1/session"
+} from "@bolt-ai/core/v1/session"
 
-import { NamedError } from "@opencode-ai/core/util/error"
+import { NamedError } from "@bolt-ai/core/util/error"
 import { APICallError, convertToModelMessages, LoadAPIKeyError, type ModelMessage, type UIMessage } from "ai"
-import { Database } from "@opencode-ai/core/database/database"
-import { LayerNode } from "@opencode-ai/core/effect/layer-node"
+import { Database } from "@bolt-ai/core/database/database"
+import { LayerNode } from "@bolt-ai/core/effect/layer-node"
 import { NotFoundError } from "@/storage/storage"
 import { and, desc, eq, inArray, lt, or } from "drizzle-orm"
-import { MessageTable, PartTable, SessionTable } from "@opencode-ai/core/session/sql"
+import { MessageTable, PartTable, SessionTable } from "@bolt-ai/core/session/sql"
 import { ProviderError } from "@/provider/error"
 import { iife } from "@/util/iife"
 import { errorMessage } from "@/util/error"

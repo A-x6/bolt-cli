@@ -18,7 +18,7 @@ export interface Interface {
   readonly grep: (input: FileSystem.GrepInput) => Effect.Effect<readonly FileSystem.Match[]>
 }
 
-export class Service extends Context.Service<Service, Interface>()("@opencode/v2/FileSystem/Search") {}
+export class Service extends Context.Service<Service, Interface>()("@bolt/v2/FileSystem/Search") {}
 
 export const ripgrepLayer = Layer.effect(
   Service,
@@ -236,7 +236,7 @@ export const fffLayer = Layer.effect(
 // the ripgrep backend to keep hidden files out of glob/find/grep results.
 const layer = Layer.unwrap(
   Effect.gen(function* () {
-    if (Flag.OPENCODE_DISABLE_FFF || !Fff.available()) return ripgrepLayer
+    if (Flag.BOLT_DISABLE_FFF || !Fff.available()) return ripgrepLayer
     const location = yield* Location.Service
     if (Ripgrep.ignored(location.directory)) return ripgrepLayer
     return fffLayer

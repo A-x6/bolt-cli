@@ -27,10 +27,10 @@ export const DoctorCommand = effectCmd({
   describe: "check binary, config, credentials, gateway reachability, and disk state",
   instance: false,
   handler: Effect.fn("Cli.doctor")(function* () {
-    const { InstallationVersion } = yield* Effect.promise(() => import("@opencode-ai/core/installation/version"))
+    const { InstallationVersion } = yield* Effect.promise(() => import("@bolt-ai/core/installation/version"))
     const { Installation } = yield* Effect.promise(() => import("@/installation"))
-    const { Global } = yield* Effect.promise(() => import("@opencode-ai/core/global"))
-    const { Flag } = yield* Effect.promise(() => import("@opencode-ai/core/flag/flag"))
+    const { Global } = yield* Effect.promise(() => import("@bolt-ai/core/global"))
+    const { Flag } = yield* Effect.promise(() => import("@bolt-ai/core/flag/flag"))
     const results: Result[] = []
 
     // Binary: where bolt runs from and how it was installed.
@@ -86,7 +86,7 @@ export const DoctorCommand = effectCmd({
     results.push(credentials)
 
     // Gateway: the models catalog endpoint every prompt path depends on.
-    const gateway = Flag.OPENCODE_MODELS_URL || "https://models.opencode.ai"
+    const gateway = Flag.BOLT_MODELS_URL || "https://models.bolt.ai"
     const reachable = yield* Effect.promise(() =>
       fetch(gateway, { method: "HEAD", signal: AbortSignal.timeout(5000) })
         .then((response) => response.ok || response.status < 500)
@@ -96,7 +96,7 @@ export const DoctorCommand = effectCmd({
       name: "gateway",
       ok: reachable,
       detail: reachable ? `${gateway} reachable` : `${gateway} unreachable`,
-      fix: "check your network connection, proxy settings, and OPENCODE_MODELS_URL",
+      fix: "check your network connection, proxy settings, and BOLT_MODELS_URL",
     })
 
     // Disk: every state directory must exist and be writable.
@@ -121,7 +121,7 @@ export const DoctorCommand = effectCmd({
     }
 
     // Log file growth is the most common disk-state surprise.
-    const log = path.join(Global.Path.log, "opencode.log")
+    const log = path.join(Global.Path.log, "bolt.log")
     const size = fs.existsSync(log) ? fs.statSync(log).size : 0
     results.push({
       name: "log file",

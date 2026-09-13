@@ -67,7 +67,7 @@ export default function Home() {
               <span>
                 <span>curl -fsSL </span>
                 <span data-slot="protocol">https://</span>
-                <span data-slot="highlight">opencode.ai/install</span>
+                <span data-slot="highlight">bolt.ai/install</span>
                 <span> | bash</span>
               </span>
               <CopyStatus />
@@ -113,7 +113,7 @@ export default function Home() {
             <h3 data-component="title">npm</h3>
             <button data-copy data-slot="button">
               <span>
-                npm install -g <strong>opencode-ai</strong>
+                npm install -g <strong>bolt-ai</strong>
               </span>
               <CopyStatus />
             </button>
@@ -122,7 +122,7 @@ export default function Home() {
             <h3 data-component="title">bun</h3>
             <button data-copy data-slot="button">
               <span>
-                bun install -g <strong>opencode-ai</strong>
+                bun install -g <strong>bolt-ai</strong>
               </span>
               <CopyStatus />
             </button>
@@ -164,7 +164,7 @@ export default function Home() {
             <a href="https://github.com/Bolt-builder/bolt-cli">{i18n.t("footer.github")}</a>
           </div>
           <div data-slot="cell">
-            <a href="https://opencode.ai/discord">{i18n.t("footer.discord")}</a>
+            <a href="https://bolt.ai/discord">{i18n.t("footer.discord")}</a>
           </div>
         </footer>
       </div>

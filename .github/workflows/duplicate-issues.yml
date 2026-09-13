@@ -12,7 +12,7 @@ jobs:
       contents: read
       issues: write
     env:
-      OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+      BOLT_API_KEY: ${{ secrets.BOLT_API_KEY }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
@@ -39,27 +39,27 @@ jobs:
       - name: Check opencode API key
         id: opencode
         env:
-          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+          BOLT_API_KEY: ${{ secrets.BOLT_API_KEY }}
         run: |
-          if [ -n "$OPENCODE_API_KEY" ]; then
+          if [ -n "$BOLT_API_KEY" ]; then
             echo "configured=true" >> "$GITHUB_OUTPUT"
           else
             echo "configured=false" >> "$GITHUB_OUTPUT"
-            echo "Skipping duplicate check: OPENCODE_API_KEY secret is not configured"
+            echo "Skipping duplicate check: BOLT_API_KEY secret is not configured"
           fi
 
       - uses: ./.github/actions/setup-bun
-        if: steps.author.outputs.skip != 'true' && steps.opencode.outputs.configured == 'true'
+        if: steps.author.outputs.skip != 'true' && steps.bolt.outputs.configured == 'true'
 
       - name: Install opencode
-        if: steps.author.outputs.skip != 'true' && steps.opencode.outputs.configured == 'true'
-        run: curl -fsSL https://opencode.ai/install | bash
+        if: steps.author.outputs.skip != 'true' && steps.bolt.outputs.configured == 'true'
+        run: curl -fsSL https://bolt.ai/install | bash
 
       - name: Check duplicates and compliance
-        if: steps.author.outputs.skip != 'true' && steps.opencode.outputs.configured == 'true'
+        if: steps.author.outputs.skip != 'true' && steps.bolt.outputs.configured == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OPENCODE_PERMISSION: |
+          BOLT_PERMISSION: |
             {
               "bash": {
                 "*": "deny",
@@ -68,7 +68,7 @@ jobs:
               "webfetch": "deny"
             }
         run: |
-          opencode run -m opencode/claude-sonnet-4-6 "A new issue has been created:
+          bolt run -m opencode/claude-sonnet-4-6 "A new issue has been created:
 
           Issue number: ${{ github.event.issue.number }}
           Issue author association: ${{ github.event.issue.author_association }}
@@ -160,7 +160,7 @@ jobs:
       contents: read
       issues: write
     env:
-      OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+      BOLT_API_KEY: ${{ secrets.BOLT_API_KEY }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
@@ -187,27 +187,27 @@ jobs:
       - name: Check opencode API key
         id: opencode
         env:
-          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+          BOLT_API_KEY: ${{ secrets.BOLT_API_KEY }}
         run: |
-          if [ -n "$OPENCODE_API_KEY" ]; then
+          if [ -n "$BOLT_API_KEY" ]; then
             echo "configured=true" >> "$GITHUB_OUTPUT"
           else
             echo "configured=false" >> "$GITHUB_OUTPUT"
-            echo "Skipping compliance recheck: OPENCODE_API_KEY secret is not configured"
+            echo "Skipping compliance recheck: BOLT_API_KEY secret is not configured"
           fi
 
       - uses: ./.github/actions/setup-bun
-        if: steps.author.outputs.skip != 'true' && steps.opencode.outputs.configured == 'true'
+        if: steps.author.outputs.skip != 'true' && steps.bolt.outputs.configured == 'true'
 
       - name: Install opencode
-        if: steps.author.outputs.skip != 'true' && steps.opencode.outputs.configured == 'true'
-        run: curl -fsSL https://opencode.ai/install | bash
+        if: steps.author.outputs.skip != 'true' && steps.bolt.outputs.configured == 'true'
+        run: curl -fsSL https://bolt.ai/install | bash
 
       - name: Recheck compliance
-        if: steps.author.outputs.skip != 'true' && steps.opencode.outputs.configured == 'true'
+        if: steps.author.outputs.skip != 'true' && steps.bolt.outputs.configured == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OPENCODE_PERMISSION: |
+          BOLT_PERMISSION: |
             {
               "bash": {
                 "*": "deny",
@@ -216,7 +216,7 @@ jobs:
               "webfetch": "deny"
             }
         run: |
-          opencode run -m opencode/claude-sonnet-4-6 "Issue #${{ github.event.issue.number }} was previously flagged as non-compliant and has been edited.
+          bolt run -m opencode/claude-sonnet-4-6 "Issue #${{ github.event.issue.number }} was previously flagged as non-compliant and has been edited.
           Issue author association: ${{ github.event.issue.author_association }}
 
           Lookup this issue with gh issue view ${{ github.event.issue.number }}.

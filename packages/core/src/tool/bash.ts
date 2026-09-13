@@ -2,7 +2,7 @@ export * as BashTool from "./bash"
 
 import path from "path"
 import { eq } from "drizzle-orm"
-import { ToolFailure } from "@opencode-ai/llm"
+import { ToolFailure } from "@bolt-ai/llm"
 import { Duration, Effect, Layer, Schema } from "effect"
 import { ChildProcess } from "effect/unstable/process"
 import { Config } from "../config"

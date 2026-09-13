@@ -9,17 +9,17 @@ import type {
   TuiAttentionSoundName,
   TuiAttentionSoundPack,
   TuiAttentionSoundPackInfo,
-} from "@opencode-ai/plugin/tui"
+} from "@bolt-ai/plugin/tui"
 import { AttentionSoundName, type TuiConfig } from "./config"
 import { Schema } from "effect"
 import stripAnsi from "strip-ansi"
 import * as TuiAudio from "./audio"
-import defaultSoundPath from "@opencode-ai/ui/audio/bip-bop-01.mp3" with { type: "file" }
-import questionSoundPath from "@opencode-ai/ui/audio/bip-bop-03.mp3" with { type: "file" }
-import permissionSoundPath from "@opencode-ai/ui/audio/staplebops-06.mp3" with { type: "file" }
-import errorSoundPath from "@opencode-ai/ui/audio/nope-03.mp3" with { type: "file" }
-import doneSoundPath from "@opencode-ai/ui/audio/bip-bop-01.mp3" with { type: "file" }
-import subagentDoneSoundPath from "@opencode-ai/ui/audio/yup-01.mp3" with { type: "file" }
+import defaultSoundPath from "@bolt-ai/ui/audio/bip-bop-01.mp3" with { type: "file" }
+import questionSoundPath from "@bolt-ai/ui/audio/bip-bop-03.mp3" with { type: "file" }
+import permissionSoundPath from "@bolt-ai/ui/audio/staplebops-06.mp3" with { type: "file" }
+import errorSoundPath from "@bolt-ai/ui/audio/nope-03.mp3" with { type: "file" }
+import doneSoundPath from "@bolt-ai/ui/audio/bip-bop-01.mp3" with { type: "file" }
+import subagentDoneSoundPath from "@bolt-ai/ui/audio/yup-01.mp3" with { type: "file" }
 
 type FocusState = "unknown" | "focused" | "blurred"
 
@@ -39,13 +39,13 @@ type TuiAttentionHost = TuiAttention & {
 }
 
 const DEFAULT_TITLE = "bolt"
-const DEFAULT_PACK_ID = "opencode.default"
+const DEFAULT_PACK_ID = "bolt.default"
 const KV_SOUND_PACK = "attention_sound_pack"
 const TITLE_LIMIT = 80
 const MESSAGE_LIMIT = 240
 const BUILTIN_PACK: RegisteredSoundPack = {
   id: DEFAULT_PACK_ID,
-  name: "OpenCode Default",
+  name: "Bolt Default",
   builtin: true,
   sounds: {
     default: defaultSoundPath,

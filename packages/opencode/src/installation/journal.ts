@@ -1,7 +1,7 @@
 export * as UpdateJournal from "./journal"
 
 import path from "node:path"
-import { Global } from "@opencode-ai/core/global"
+import { Global } from "@bolt-ai/core/global"
 
 // Records the last completed update so `bolt update --undo` can roll back to
 // the previously installed version through the normal install path.

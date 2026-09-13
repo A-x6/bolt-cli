@@ -1,5 +1,5 @@
 import { NodeFileSystem, NodePath } from "@effect/platform-node"
-import { LLMClient, RequestExecutor } from "@opencode-ai/llm/route"
+import { LLMClient, RequestExecutor } from "@bolt-ai/llm/route"
 import { FileSystem, Path } from "effect"
 import { FetchHttpClient, HttpClient } from "effect/unstable/http"
 import { makeGlobalNode } from "./app-node"

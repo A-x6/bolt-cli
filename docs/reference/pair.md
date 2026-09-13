@@ -22,6 +22,6 @@ Options:
   -s, --session     session id to join (defaults to the most recent session on the server)  [string]
       --port        port for the local server (defaults to a random port)      [number] [default: 0]
       --hostname    hostname for the local server                    [string] [default: "127.0.0.1"]
-  -p, --password    basic auth password (defaults to OPENCODE_SERVER_PASSWORD)              [string]
-  -u, --username    basic auth username (defaults to OPENCODE_SERVER_USERNAME or 'opencode')[string]
+  -p, --password    basic auth password (defaults to BOLT_SERVER_PASSWORD)              [string]
+  -u, --username    basic auth username (defaults to BOLT_SERVER_USERNAME or 'bolt')[string]
 ```

@@ -33,7 +33,7 @@ describe("session.replay.serialize", () => {
 
 describe("session.replay.record", () => {
   test("roundtrips through record, list, and load", async () => {
-    const base = await fs.mkdtemp(path.join(os.tmpdir(), "opencode-replay-"))
+    const base = await fs.mkdtemp(path.join(os.tmpdir(), "bolt-replay-"))
     await SessionReplay.record(input, base)
     await SessionReplay.record({ ...input, time: input.time + 1 }, base)
 
@@ -47,7 +47,7 @@ describe("session.replay.record", () => {
   })
 
   test("lists nothing for sessions without recordings", async () => {
-    const base = await fs.mkdtemp(path.join(os.tmpdir(), "opencode-replay-"))
+    const base = await fs.mkdtemp(path.join(os.tmpdir(), "bolt-replay-"))
     expect(await SessionReplay.list("ses_missing", base)).toEqual([])
     await fs.rm(base, { recursive: true, force: true })
   })

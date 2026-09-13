@@ -1,7 +1,7 @@
-import { LayerNode } from "@opencode-ai/core/effect/layer-node"
+import { LayerNode } from "@bolt-ai/core/effect/layer-node"
 import { Context, Effect, Layer, Stream } from "effect"
-import { SessionV1 } from "@opencode-ai/core/v1/session"
-import { LLMEvent } from "@opencode-ai/llm"
+import { SessionV1 } from "@bolt-ai/core/v1/session"
+import { LLMEvent } from "@bolt-ai/llm"
 import { Provider } from "@/provider/provider"
 import { LLM } from "@/session/llm"
 import type { Agent } from "@/agent/agent"
@@ -47,7 +47,7 @@ export interface Interface {
   readonly review: (input: ReviewInput) => Effect.Effect<{ approved: boolean; feedback: string }>
 }
 
-export class Service extends Context.Service<Service, Interface>()("@opencode/Approval") {}
+export class Service extends Context.Service<Service, Interface>()("@bolt/Approval") {}
 
 const layer = Layer.effect(
   Service,

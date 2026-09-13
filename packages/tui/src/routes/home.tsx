@@ -15,7 +15,7 @@ import { useEditorContext } from "../context/editor"
 import { useTerminalDimensions } from "@opentui/solid"
 import { useTuiConfig } from "../config"
 import { useDialog } from "../ui/dialog"
-import { OPENCODE_BASE_MODE, useBindings } from "../keymap"
+import { BOLT_BASE_MODE, useBindings } from "../keymap"
 import { HomeSessionDestinationProvider } from "./home/session-destination"
 
 let once = false
@@ -80,7 +80,7 @@ export function Home() {
     ],
   }))
   useBindings(() => ({
-    mode: OPENCODE_BASE_MODE,
+    mode: BOLT_BASE_MODE,
     bindings: tuiConfig.keybinds.gather("home", ["session.sidebar.toggle"]),
   }))
   useBindings(() => ({

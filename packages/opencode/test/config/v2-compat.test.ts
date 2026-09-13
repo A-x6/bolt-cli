@@ -1,10 +1,10 @@
 import { describe, expect, test } from "bun:test"
-import { ConfigV1 } from "@opencode-ai/core/v1/config/config"
-import { LayerNode } from "@opencode-ai/core/effect/layer-node"
-import { httpClient } from "@opencode-ai/core/effect/app-node-platform"
-import { FSUtil } from "@opencode-ai/core/fs-util"
-import { CrossSpawnSpawner } from "@opencode-ai/core/cross-spawn-spawner"
-import { Npm } from "@opencode-ai/core/npm"
+import { ConfigV1 } from "@bolt-ai/core/v1/config/config"
+import { LayerNode } from "@bolt-ai/core/effect/layer-node"
+import { httpClient } from "@bolt-ai/core/effect/app-node-platform"
+import { FSUtil } from "@bolt-ai/core/fs-util"
+import { CrossSpawnSpawner } from "@bolt-ai/core/cross-spawn-spawner"
+import { Npm } from "@bolt-ai/core/npm"
 import { Effect, Layer, Logger } from "effect"
 import { HttpClient } from "effect/unstable/http"
 import path from "path"
@@ -288,9 +288,9 @@ describe("V2 configuration loading", () => {
     Effect.gen(function* () {
       const instance = yield* TestInstance
       const fs = yield* FSUtil.Service
-      const file = path.join(instance.directory, "opencode.jsonc")
+      const file = path.join(instance.directory, "bolt.jsonc")
       const text =
-        '{\n  // Retain this comment\n  "$schema": "https://opencode.ai/config.json",\n  "plugins": ["native-only"]\n}\n'
+        '{\n  // Retain this comment\n  "$schema": "https://bolt.ai/config.json",\n  "plugins": ["native-only"]\n}\n'
       yield* fs.writeWithDirs(file, text)
       const messages: unknown[] = []
       const config = yield* Config.use.get().pipe(
@@ -317,9 +317,9 @@ describe("V2 configuration loading", () => {
       const instance = yield* TestInstance
       const fs = yield* FSUtil.Service
       yield* fs.writeWithDirs(
-        path.join(instance.directory, "opencode.json"),
+        path.join(instance.directory, "bolt.json"),
         JSON.stringify({
-          $schema: "https://opencode.ai/config.json",
+          $schema: "https://bolt.ai/config.json",
           model: { providerID: "anthropic", model: "claude-sonnet", variant: "fast" },
           snapshots: false,
           skills: ["./skills", "https://example.com/skills"],
@@ -373,9 +373,9 @@ describe("V2 configuration loading", () => {
       const instance = yield* TestInstance
       const fs = yield* FSUtil.Service
       yield* fs.writeWithDirs(
-        path.join(instance.directory, "opencode.json"),
+        path.join(instance.directory, "bolt.json"),
         JSON.stringify({
-          $schema: "https://opencode.ai/config.json",
+          $schema: "https://bolt.ai/config.json",
           model: { providerID: "openai", model: "gpt-4.1" },
           theme: "legacy",
           keybinds: { leader: "ctrl+x" },

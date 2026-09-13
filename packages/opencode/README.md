@@ -110,7 +110,7 @@ Configuration lives in `.bolt/bolt.jsonc` in your project root (created on first
 
 ```jsonc
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://bolt.ai/config.json",
   "provider": {
     // Provider config goes here
   },

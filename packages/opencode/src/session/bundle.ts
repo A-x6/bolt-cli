@@ -1,7 +1,7 @@
 import path from "path"
 import { Effect, Schema } from "effect"
-import type { Session as SDKSession, Message, Part } from "@opencode-ai/sdk/v2"
-import { SessionV1 } from "@opencode-ai/core/v1/session"
+import type { Session as SDKSession, Message, Part } from "@bolt-ai/sdk/v2"
+import { SessionV1 } from "@bolt-ai/core/v1/session"
 import type { Session } from "@/session/session"
 import type { InstanceContext } from "@/project/instance-context"
 
@@ -44,8 +44,8 @@ export const dump = Effect.fn("SessionBundle.dump")(function* (sessionID: string
 /** Insert a bundle into the local database, rebinding it to the given instance. */
 export const load = Effect.fn("SessionBundle.load")(function* (data: Data, ctx: InstanceContext) {
   const { Info, toRow } = yield* Effect.promise(() => import("@/session/session"))
-  const { Database } = yield* Effect.promise(() => import("@opencode-ai/core/database/database"))
-  const { SessionTable, MessageTable, PartTable } = yield* Effect.promise(() => import("@opencode-ai/core/session/sql"))
+  const { Database } = yield* Effect.promise(() => import("@bolt-ai/core/database/database"))
+  const { SessionTable, MessageTable, PartTable } = yield* Effect.promise(() => import("@bolt-ai/core/session/sql"))
   const { db } = yield* Database.Service
 
   const info = Schema.decodeUnknownSync(Info)({

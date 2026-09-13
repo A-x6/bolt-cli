@@ -1,6 +1,6 @@
 import { Effect } from "effect"
-import type { FSUtil } from "@opencode-ai/core/fs-util"
-import type { ConfigAgentV1 } from "@opencode-ai/core/v1/config/agent"
+import type { FSUtil } from "@bolt-ai/core/fs-util"
+import type { ConfigAgentV1 } from "@bolt-ai/core/v1/config/agent"
 
 // Custom mode files written by Roo Code and Kilo Code. Both use the same shape:
 // { customModes: [{ slug, name, description?, roleDefinition, whenToUse?,

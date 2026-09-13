@@ -40,8 +40,8 @@ describe("buildRequestParts", () => {
         (part) =>
           part.type === "text" &&
           part.synthetic &&
-          part.metadata?.opencodeComment &&
-          (part.metadata.opencodeComment as { comment?: string }).comment === "check this",
+          part.metadata?.boltComment &&
+          (part.metadata.boltComment as { comment?: string }).comment === "check this",
       ),
     ).toBe(true)
 
@@ -83,8 +83,8 @@ describe("buildRequestParts", () => {
         {
           type: "image",
           id: "img_external",
-          filename: "opencode.global.dat",
-          sourcePath: "C:\\Users\\Luke\\AppData\\Roaming\\ai.opencode.desktop.beta\\opencode.global.dat",
+          filename: "bolt.global.dat",
+          sourcePath: "C:\\Users\\Luke\\AppData\\Roaming\\ai.bolt.desktop.beta\\bolt.global.dat",
           mime: "text/plain",
           dataUrl: "data:text/plain;base64,AAA",
         },
@@ -96,7 +96,7 @@ describe("buildRequestParts", () => {
     })
 
     expect(result.requestParts.find((part) => part.type === "file")?.filename).toBe(
-      "C:\\Users\\Luke\\AppData\\Roaming\\ai.opencode.desktop.beta\\opencode.global.dat",
+      "C:\\Users\\Luke\\AppData\\Roaming\\ai.bolt.desktop.beta\\bolt.global.dat",
     )
   })
 

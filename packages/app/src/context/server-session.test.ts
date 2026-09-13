@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test"
-import type { retry } from "@opencode-ai/core/util/retry"
-import type { OpenCodeEvent, SessionApi } from "@opencode-ai/client/promise"
-import type { Message, OpencodeClient, Part, Session } from "@opencode-ai/sdk/v2/client"
+import type { retry } from "@bolt-ai/core/util/retry"
+import type { OpenCodeEvent as BoltEvent, SessionApi } from "@bolt-ai/client/promise"
+import type { Message, OpencodeClient, Part, Session } from "@bolt-ai/sdk/v2/client"
 import { createServerSession } from "./server-session"
 import type { ServerApi } from "@/utils/server"
 
@@ -173,7 +173,7 @@ describe("server session", () => {
         time: { created: 1 },
       },
     ])
-    const apply = (input: object) => ctx.store.applyV2(input as OpenCodeEvent)
+    const apply = (input: object) => ctx.store.applyV2(input as BoltEvent)
 
     apply({
       id: "evt_step",

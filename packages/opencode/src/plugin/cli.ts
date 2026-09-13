@@ -1,5 +1,5 @@
 import path from "node:path"
-import type { CliCommand, Hooks } from "@opencode-ai/plugin"
+import type { CliCommand, Hooks } from "@bolt-ai/plugin"
 
 // Plugin-defined top-level subcommands: `bolt <name> [args...]` dispatches to
 // a plugin's `cli` hook registration when <name> is not a builtin command and

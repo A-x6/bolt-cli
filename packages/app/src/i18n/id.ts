@@ -82,9 +82,9 @@ export const dict = {
   "desktop.wsl.error.installDistro": "Gagal menginstal distro: {{distro}}",
   "desktop.wsl.error.installOpencode": "Instalasi Bolt gagal",
   "desktop.wsl.error.alreadyAdded": "{{distro}} sudah ditambahkan",
-  "desktop.wsl.error.opencodeMissing": "opencode belum terinstal di distro ini",
-  "desktop.wsl.error.opencodeCannotRun": "opencode telah terinstal, tetapi tidak dapat dijalankan",
-  "desktop.wsl.error.opencodeNotInstalled": "Bolt belum terinstal di {{distro}}",
+  "desktop.wsl.error.boltMissing": "bolt belum terinstal di distro ini",
+  "desktop.wsl.error.boltCannotRun": "bolt telah terinstal, tetapi tidak dapat dijalankan",
+  "desktop.wsl.error.boltNotInstalled": "Bolt belum terinstal di {{distro}}",
   "desktop.wsl.error.updateVersion":
     "Pembaruan Bolt selesai, tetapi {{distro}} masih melaporkan {{installed}}; seharusnya {{expected}}",
   "desktop.wsl.error.noVersion": "tanpa versi",
@@ -208,9 +208,9 @@ export const dict = {
   "dialog.provider.group.other": "Lainnya",
   "dialog.provider.custom.label": "Penyedia kustom yang kompatibel dengan OpenAI",
   "dialog.provider.tag.recommended": "Direkomendasikan",
-  "dialog.provider.opencode.note": "Model pilihan, termasuk Claude, GPT, Gemini, dan lainnya",
-  "dialog.provider.opencode.tagline": "Model andal yang dioptimalkan",
-  "dialog.provider.opencodeGo.tagline": "Langganan terjangkau untuk semua orang",
+  "dialog.provider.bolt.note": "Model pilihan, termasuk Claude, GPT, Gemini, dan lainnya",
+  "dialog.provider.bolt.tagline": "Model andal yang dioptimalkan",
+  "dialog.provider.boltGo.tagline": "Langganan terjangkau untuk semua orang",
   "dialog.provider.anthropic.note": "Akses langsung ke model Claude, termasuk Pro dan Max",
   "dialog.provider.copilot.note": "Model AI untuk bantuan pengodean melalui GitHub Copilot",
   "dialog.provider.openai.note": "Model GPT untuk tugas AI umum yang cepat dan mumpuni",
@@ -225,7 +225,7 @@ export const dict = {
   "dialog.model.manage.description": "Sesuaikan model mana yang muncul di pemilih model.",
   "dialog.model.manage.provider.toggle": "Alihkan semua model {{provider}}",
 
-  "dialog.model.unpaid.freeModels.title": "Model gratis disediakan oleh OpenCode",
+  "dialog.model.unpaid.freeModels.title": "Model gratis disediakan oleh Bolt",
   "dialog.model.unpaid.addMore.title": "Tambahkan lebih banyak model dari penyedia populer",
   "dialog.model.unpaid.viewMoreProviders": "Lihat 70+ penyedia lainnya",
 
@@ -245,13 +245,13 @@ export const dict = {
   "provider.connect.apiKey.label": "Kunci API {{provider}}",
   "provider.connect.apiKey.placeholder": "Kunci API",
   "provider.connect.apiKey.required": "Kunci API diperlukan",
-  "provider.connect.opencodeZen.line1":
-    "OpenCode Zen memberi Anda akses ke serangkaian model andal yang dioptimalkan untuk agen pengodean.",
-  "provider.connect.opencodeZen.line2":
+  "provider.connect.boltZen.line1":
+    "Bolt Zen memberi Anda akses ke serangkaian model andal yang dioptimalkan untuk agen pengodean.",
+  "provider.connect.boltZen.line2":
     "Dengan satu kunci API, Anda akan mendapatkan akses ke model seperti Claude, GPT, Gemini, GLM dan lainnya.",
-  "provider.connect.opencodeZen.visit.prefix": "Kunjungi ",
-  "provider.connect.opencodeZen.visit.link": "opencode.ai/zen",
-  "provider.connect.opencodeZen.visit.suffix": " untuk mendapatkan kunci API Anda.",
+  "provider.connect.boltZen.visit.prefix": "Kunjungi ",
+  "provider.connect.boltZen.visit.link": "bolt.ai/zen",
+  "provider.connect.boltZen.visit.suffix": " untuk mendapatkan kunci API Anda.",
   "provider.connect.oauth.code.visit.prefix": "Kunjungi ",
   "provider.connect.oauth.code.visit.link": "tautan ini",
   "provider.connect.oauth.code.visit.suffix":
@@ -423,7 +423,7 @@ export const dict = {
   "dialog.mcp.empty": "Tidak ada MCP yang dikonfigurasi",
 
   "dialog.lsp.empty": "LSP terdeteksi otomatis dari jenis berkas",
-  "dialog.plugins.empty": "Plugin dikonfigurasi di opencode.json",
+  "dialog.plugins.empty": "Plugin dikonfigurasi di bolt.json",
 
   "mcp.status.connected": "terhubung",
   "mcp.status.failed": "gagal",
@@ -483,7 +483,7 @@ export const dict = {
   "wsl.server.retryStart": "Coba mulai ulang",
   "wsl.server.updating": "Memperbarui...",
   "wsl.onboarding.step.distro": "Pilih distro",
-  "wsl.onboarding.step.opencode": "Bolt",
+  "wsl.onboarding.step.bolt": "Bolt",
   "wsl.onboarding.checkingRuntime": "Memeriksa WSL...",
   "wsl.onboarding.restartRequired": "Windows perlu dimulai ulang untuk menyelesaikan instalasi WSL.",
   "wsl.onboarding.ready": "WSL siap.",
@@ -503,8 +503,8 @@ export const dict = {
   "wsl.onboarding.updatingOpencodeIn": "Memperbarui Bolt di {{distro}}...",
   "wsl.onboarding.updateOpencodeIn": "Perbarui Bolt di {{distro}}.",
   "wsl.onboarding.updateOpencode": "Perbarui Bolt",
-  "wsl.onboarding.opencodeReadyIn": "Bolt siap di {{distro}}.",
-  "wsl.onboarding.opencodeReady": "Bolt siap.",
+  "wsl.onboarding.boltReadyIn": "Bolt siap di {{distro}}.",
+  "wsl.onboarding.boltReady": "Bolt siap.",
   "wsl.onboarding.installOpencodeIn": "Instal Bolt di {{distro}}.",
   "wsl.onboarding.installOpencode": "Instal Bolt",
   "wsl.onboarding.chooseDistroFirst": "Pilih distro terlebih dahulu.",
@@ -514,7 +514,7 @@ export const dict = {
   "wsl.onboarding.checkAgain": "Periksa lagi",
   "wsl.onboarding.distroStatus.ready": "Siap",
   "wsl.onboarding.distroStatus.checking": "Memeriksa...",
-  "wsl.onboarding.distroStatus.opencodeMissing": "Bolt belum terinstal",
+  "wsl.onboarding.distroStatus.boltMissing": "Bolt belum terinstal",
   "wsl.onboarding.distroStatus.missingTools": "bash dan curl tidak tersedia",
   "wsl.onboarding.distroStatus.unsupported": "Tidak didukung · Gunakan WSL 2",
   "wsl.onboarding.needAnotherDistro": "Perlu distro lain?",
@@ -721,7 +721,7 @@ export const dict = {
   "error.chain.responseBody": "Isi respons:\n{{body}}",
   "error.chain.didYouMean": "Maksud Anda: {{suggestions}}",
   "error.chain.modelNotFound": "Model tidak ditemukan: {{provider}}/{{model}}",
-  "error.chain.checkConfig": "Periksa nama penyedia/model di konfigurasi Anda (opencode.json)",
+  "error.chain.checkConfig": "Periksa nama penyedia/model di konfigurasi Anda (bolt.json)",
   "error.chain.mcpFailed": 'Server MCP "{{name}}" gagal. Catatan: Bolt belum mendukung autentikasi MCP.',
   "error.chain.providerAuthFailed": "Autentikasi penyedia gagal ({{provider}}): {{message}}",
   "error.chain.providerInitFailed":

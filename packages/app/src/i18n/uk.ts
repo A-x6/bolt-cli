@@ -82,9 +82,9 @@ export const dict = {
   "desktop.wsl.error.installDistro": "Не вдалося встановити дистрибутив: {{distro}}",
   "desktop.wsl.error.installOpencode": "Не вдалося встановити Bolt",
   "desktop.wsl.error.alreadyAdded": "{{distro}} уже додано",
-  "desktop.wsl.error.opencodeMissing": "opencode не встановлено в цьому дистрибутиві",
-  "desktop.wsl.error.opencodeCannotRun": "opencode встановлено, але його не вдалося запустити",
-  "desktop.wsl.error.opencodeNotInstalled": "Bolt не встановлено в {{distro}}",
+  "desktop.wsl.error.boltMissing": "bolt не встановлено в цьому дистрибутиві",
+  "desktop.wsl.error.boltCannotRun": "bolt встановлено, але його не вдалося запустити",
+  "desktop.wsl.error.boltNotInstalled": "Bolt не встановлено в {{distro}}",
   "desktop.wsl.error.updateVersion":
     "Оновлення Bolt завершено, але {{distro}} усе ще повідомляє про версію {{installed}}; очікувалася {{expected}}",
   "desktop.wsl.error.noVersion": "версію не вказано",
@@ -208,9 +208,9 @@ export const dict = {
   "dialog.provider.group.other": "Інші",
   "dialog.provider.custom.label": "Користувацький провайдер, сумісний з OpenAI",
   "dialog.provider.tag.recommended": "Рекомендовані",
-  "dialog.provider.opencode.note": "Відібрані моделі, включаючи Claude, GPT, Gemini та інші",
-  "dialog.provider.opencode.tagline": "Надійні оптимізовані моделі",
-  "dialog.provider.opencodeGo.tagline": "Недорога підписка для всіх",
+  "dialog.provider.bolt.note": "Відібрані моделі, включаючи Claude, GPT, Gemini та інші",
+  "dialog.provider.bolt.tagline": "Надійні оптимізовані моделі",
+  "dialog.provider.boltGo.tagline": "Недорога підписка для всіх",
   "dialog.provider.anthropic.note": "Прямий доступ до моделей Claude, включаючи Pro та Max",
   "dialog.provider.copilot.note": "Моделі ШІ для допомоги в кодуванні через GitHub Copilot",
   "dialog.provider.openai.note": "Моделі GPT для швидких і універсальних завдань ШІ",
@@ -225,7 +225,7 @@ export const dict = {
   "dialog.model.manage.description": "Налаштуйте, які моделі відображатимуться у виборі моделей.",
   "dialog.model.manage.provider.toggle": "Перемкнути всі моделі {{provider}}",
 
-  "dialog.model.unpaid.freeModels.title": "Безкоштовні моделі від OpenCode",
+  "dialog.model.unpaid.freeModels.title": "Безкоштовні моделі від Bolt",
   "dialog.model.unpaid.addMore.title": "Додати більше моделей від популярних провайдерів",
   "dialog.model.unpaid.viewMoreProviders": "Переглянути ще понад 70 провайдерів",
 
@@ -245,13 +245,13 @@ export const dict = {
   "provider.connect.apiKey.label": "Ключ API {{provider}}",
   "provider.connect.apiKey.placeholder": "Ключ API",
   "provider.connect.apiKey.required": "Ключ API обов'язковий",
-  "provider.connect.opencodeZen.line1":
-    "OpenCode Zen надає доступ до відібраного набору надійних оптимізованих моделей для агентів кодування.",
-  "provider.connect.opencodeZen.line2":
+  "provider.connect.boltZen.line1":
+    "Bolt Zen надає доступ до відібраного набору надійних оптимізованих моделей для агентів кодування.",
+  "provider.connect.boltZen.line2":
     "З одним ключем API ви отримаєте доступ до таких моделей, як Claude, GPT, Gemini, GLM та інших.",
-  "provider.connect.opencodeZen.visit.prefix": "Відвідайте ",
-  "provider.connect.opencodeZen.visit.link": "opencode.ai/zen",
-  "provider.connect.opencodeZen.visit.suffix": ", щоб отримати ключ API.",
+  "provider.connect.boltZen.visit.prefix": "Відвідайте ",
+  "provider.connect.boltZen.visit.link": "bolt.ai/zen",
+  "provider.connect.boltZen.visit.suffix": ", щоб отримати ключ API.",
   "provider.connect.oauth.code.visit.prefix": "Відвідайте ",
   "provider.connect.oauth.code.visit.link": "це посилання",
   "provider.connect.oauth.code.visit.suffix":
@@ -424,7 +424,7 @@ export const dict = {
   "dialog.mcp.empty": "MCP не налаштовано",
 
   "dialog.lsp.empty": "Сервери LSP автоматично виявляються за типами файлів",
-  "dialog.plugins.empty": "Плагіни налаштовані в opencode.json",
+  "dialog.plugins.empty": "Плагіни налаштовані в bolt.json",
 
   "mcp.status.connected": "підключено",
   "mcp.status.failed": "помилка",
@@ -484,7 +484,7 @@ export const dict = {
   "wsl.server.retryStart": "Повторити запуск",
   "wsl.server.updating": "Оновлення...",
   "wsl.onboarding.step.distro": "Вибрати дистрибутив",
-  "wsl.onboarding.step.opencode": "Bolt",
+  "wsl.onboarding.step.bolt": "Bolt",
   "wsl.onboarding.checkingRuntime": "Перевірка WSL...",
   "wsl.onboarding.restartRequired": "Щоб завершити встановлення WSL, потрібно перезапустити Windows.",
   "wsl.onboarding.ready": "WSL готова до роботи.",
@@ -504,8 +504,8 @@ export const dict = {
   "wsl.onboarding.updatingOpencodeIn": "Оновлення Bolt у {{distro}}...",
   "wsl.onboarding.updateOpencodeIn": "Оновіть Bolt у {{distro}}.",
   "wsl.onboarding.updateOpencode": "Оновити Bolt",
-  "wsl.onboarding.opencodeReadyIn": "Bolt готовий до роботи у {{distro}}.",
-  "wsl.onboarding.opencodeReady": "Bolt готовий до роботи.",
+  "wsl.onboarding.boltReadyIn": "Bolt готовий до роботи у {{distro}}.",
+  "wsl.onboarding.boltReady": "Bolt готовий до роботи.",
   "wsl.onboarding.installOpencodeIn": "Встановіть Bolt у {{distro}}.",
   "wsl.onboarding.installOpencode": "Встановити Bolt",
   "wsl.onboarding.chooseDistroFirst": "Спочатку виберіть дистрибутив.",
@@ -515,7 +515,7 @@ export const dict = {
   "wsl.onboarding.checkAgain": "Перевірити ще раз",
   "wsl.onboarding.distroStatus.ready": "Готовий",
   "wsl.onboarding.distroStatus.checking": "Перевірка...",
-  "wsl.onboarding.distroStatus.opencodeMissing": "Bolt не встановлено",
+  "wsl.onboarding.distroStatus.boltMissing": "Bolt не встановлено",
   "wsl.onboarding.distroStatus.missingTools": "Немає bash і curl",
   "wsl.onboarding.distroStatus.unsupported": "Не підтримується · Використовуйте WSL 2",
   "wsl.onboarding.needAnotherDistro": "Потрібен інший дистрибутив?",
@@ -725,7 +725,7 @@ export const dict = {
   "error.chain.responseBody": "Тіло відповіді:\n{{body}}",
   "error.chain.didYouMean": "Можливо, ви мали на увазі: {{suggestions}}",
   "error.chain.modelNotFound": "Модель не знайдено: {{provider}}/{{model}}",
-  "error.chain.checkConfig": "Перевірте назви провайдерів/моделей у конфігурації (opencode.json)",
+  "error.chain.checkConfig": "Перевірте назви провайдерів/моделей у конфігурації (bolt.json)",
   "error.chain.mcpFailed": 'Сервер MCP "{{name}}" не працює. Зверніть увагу, Bolt ще не підтримує автентифікацію MCP.',
   "error.chain.providerAuthFailed": "Автентифікація провайдера не вдалася ({{provider}}): {{message}}",
   "error.chain.providerInitFailed":

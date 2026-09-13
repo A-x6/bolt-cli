@@ -3,7 +3,7 @@ title: GitHub
 description: GitHub sorunlarında ve çekme isteklerinde opencode'u kullanın.
 ---
 
-opencode, GitHub iş akışınızla bütünleşir. Yorumunuzda `/opencode` veya `/oc`'den bahsedin; opencode, GitHub Actions çalıştırıcınızdaki görevleri yürütecektir.
+bolt, GitHub iş akışınızla bütünleşir. Yorumunuzda `/opencode` veya `/oc`'den bahsedin; bolt, GitHub Actions çalıştırıcınızdaki görevleri yürütecektir.
 
 ---
 
@@ -11,7 +11,7 @@ opencode, GitHub iş akışınızla bütünleşir. Yorumunuzda `/opencode` veya 
 
 - **Sorunları önceliklendirin**: opencode'dan bir sorunu araştırıp size açıklamasını isteyin.
 - **Düzelt ve uygula**: opencode'dan bir sorunu düzeltmesini veya bir özelliği uygulamasını isteyin. Ve yeni bir şubede çalışacak ve tüm değişiklikleri içeren bir PR gönderecek.
-- **Güvenli**: opencode, GitHub'ınızın çalıştırıcılarının içinde çalışır.
+- **Güvenli**: bolt, GitHub'ınızın çalıştırıcılarının içinde çalışır.
 
 ---
 
@@ -37,9 +37,9 @@ Veya manuel olarak ayarlayabilirsiniz.
 
 2. **İş akışını ekleyin**
 
-   Aşağıdaki iş akışı dosyasını deponuzdaki `.github/workflows/opencode.yml`'a ekleyin. `model`'de uygun `env` ve gerekli API anahtarlarını ayarladığınızdan emin olun.
+   Aşağıdaki iş akışı dosyasını deponuzdaki `.github/workflows/bolt.yml`'a ekleyin. `model`'de uygun `env` ve gerekli API anahtarlarını ayarladığınızdan emin olun.
 
-   ```yml title=".github/workflows/opencode.yml" {24,26}
+   ```yml title=".github/workflows/bolt.yml" {24,26}
    name: opencode
 
    on:
@@ -63,7 +63,7 @@ Veya manuel olarak ayarlayabilirsiniz.
               fetch-depth: 1
               persist-credentials: false
 
-          - name: Run OpenCode
+          - name: Run Bolt
            uses: bolt-builder/bolt-cli/github@latest
            env:
              ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -85,7 +85,7 @@ Veya manuel olarak ayarlayabilirsiniz.
 - `agent`: Kullanılacak aracı. Birincil ajan olmalı. Yapılandırmadan `default_agent`'ye veya bulunamazsa `"build"`'ye geri döner.
 - `share`: opencode hesabının paylaşılıp paylaşılmayacağı. Genel depolar için varsayılan olarak **true** olur.
 - `prompt`: Varsayılan çalışma geçersiz olduğundan dolayı özel istem. opencode'un işleme biçimini kişiselleştirmek için bunu kullanın.
-- `token`: Yorum oluşturma, değişiklik yapma ve çekme isteklerini açma gibi işlemleri gerçekleştirmek için isteğe bağlı GitHub erişim belirteci. Varsayılan olarak opencode, opencode GitHub Uygulamasındaki kurulum erişim belirtecini kullanır, bu nedenle taahhütler, yorumlar ve çekme istekleri uygulamadan geliyormuş gibi görünür.
+- `token`: Yorum oluşturma, değişiklik yapma ve çekme isteklerini açma gibi işlemleri gerçekleştirmek için isteğe bağlı GitHub erişim belirteci. Varsayılan olarak bolt, opencode GitHub Uygulamasındaki kurulum erişim belirtecini kullanır, bu nedenle taahhütler, yorumlar ve çekme istekleri uygulamadan geliyormuş gibi görünür.
 
   Alternatif olarak, opencode GitHub'u yüklemeden GitHub Eylem çalıştırıcısının [built-in `GITHUB_TOKEN`](https://docs.github.com/en/actions/tutorials/authenticate-with-github_token) akışını kullanabilirsiniz. İşinizde gerekli izinlere sahip olduğunuzdan emin olun:
 
@@ -119,7 +119,7 @@ opencode aşağıdaki GitHub olayları tarafından tetiklenebilir:
 Otomatik görevleri gerçekleştirmek için opencode'u bir zamanlamaya göre çalıştırın:
 
 ```yaml title=".github/workflows/opencode-scheduled.yml"
-name: Scheduled OpenCode Task
+name: Scheduled Bolt Task
 
 on:
   schedule:
@@ -139,7 +139,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Run OpenCode
+      - name: Run Bolt
         uses: bolt-builder/bolt-cli/github@latest
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -254,7 +254,7 @@ jobs:
 
 opencode'un davranışını iş akışınız için özelleştirmek için varsayılan istemi geçersiz kılın.
 
-```yaml title=".github/workflows/opencode.yml"
+```yaml title=".github/workflows/bolt.yml"
 - uses: bolt-builder/bolt-cli/github@latest
   with:
     model: anthropic/claude-sonnet-4-5
@@ -281,7 +281,7 @@ GitHub'da opencode'u nasıl kullanabileceğinize dair bazı örnekleri burada bu
   /opencode explain this issue
   ```
 
-  opencode, tüm yorumlar da dahil olmak üzere ileti dizisinin tamamını okuyacak ve net bir açıklama ile yanıt verecektir.
+  bolt, tüm yorumlar da dahil olmak üzere ileti dizisinin tamamını okuyacak ve net bir açıklama ile yanıt verecektir.
 
 - **Bir sorunu düzeltme**
 
@@ -305,7 +305,7 @@ GitHub'da opencode'u nasıl kullanabileceğinize dair bazı örnekleri burada bu
 
 - **Belirli kod satırlarını inceleme**
 
-  PR'nin "Dosyalar" sekmesindeki kod satırlarına doğrudan yorum bırakın. opencode, kesin yanıtlar sağlamak için dosyayı, satır numaralarını ve fark içeriğini otomatik olarak algılar.
+  PR'nin "Dosyalar" sekmesindeki kod satırlarına doğrudan yorum bırakın. bolt, kesin yanıtlar sağlamak için dosyayı, satır numaralarını ve fark içeriğini otomatik olarak algılar.
 
   ```
   [Comment on specific lines in Files tab]

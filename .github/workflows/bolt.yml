@@ -28,8 +28,8 @@ jobs:
       - name: Run Bolt
         uses: ./github
         env:
-          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
-          OPENCODE_PERMISSION: '{"bash": "deny"}'
+          BOLT_API_KEY: ${{ secrets.BOLT_API_KEY }}
+          BOLT_PERMISSION: '{"bash": "deny"}'
         with:
           model: opencode/claude-fable-5
-          mentions: /opencode,/oc,/bc,/bolt
+          mentions: /bolt,/oc,/bc,/bolt

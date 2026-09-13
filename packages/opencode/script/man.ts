@@ -65,7 +65,7 @@ async function help(args: string[]) {
 
 async function main() {
   const out = path.join(dir, "dist", "man")
-  const version = process.env.OPENCODE_VERSION ?? pkg.version
+  const version = process.env.BOLT_VERSION ?? pkg.version
   const date = new Date().toISOString().slice(0, 10)
   const root = await help([])
   // The root help is prefixed with the wordmark banner; start at the command list.

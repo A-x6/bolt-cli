@@ -1,5 +1,5 @@
 import { Effect } from "effect"
-import { SessionV1 } from "@opencode-ai/core/v1/session"
+import { SessionV1 } from "@bolt-ai/core/v1/session"
 import { effectCmd, fail } from "../effect-cmd"
 import { Session } from "@/session/session"
 import { NotFoundError } from "@/storage/storage"

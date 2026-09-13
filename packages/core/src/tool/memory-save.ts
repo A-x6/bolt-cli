@@ -1,9 +1,9 @@
 export * as MemorySaveTool from "./memory-save"
 
-import { ToolFailure } from "@opencode-ai/llm"
-import { MemoryControls } from "@opencode-ai/memory/controls"
-import { MemoryService } from "@opencode-ai/memory/effect/service"
-import { MemoryTool } from "@opencode-ai/memory/tool"
+import { ToolFailure } from "@bolt-ai/llm"
+import { MemoryControls } from "@bolt-ai/memory/controls"
+import { MemoryService } from "@bolt-ai/memory/effect/service"
+import { MemoryTool } from "@bolt-ai/memory/tool"
 import { eq } from "drizzle-orm"
 import { Effect, Layer, Schema } from "effect"
 import { Database } from "../database/database"

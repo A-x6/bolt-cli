@@ -7,7 +7,7 @@ import { fail } from "./effect-cmd"
 // fallback), and return the transcript to append to the prompt.
 
 export const HINT =
-  "Voice input requires a local whisper.cpp install. Install whisper-cli (e.g. `brew install whisper-cpp`, or https://github.com/ggml-org/whisper.cpp) and a ggml model, then set OPENCODE_VOICE_WHISPER and OPENCODE_VOICE_MODEL if they are not on the default paths."
+  "Voice input requires a local whisper.cpp install. Install whisper-cli (e.g. `brew install whisper-cpp`, or https://github.com/ggml-org/whisper.cpp) and a ggml model, then set BOLT_VOICE_WHISPER and BOLT_VOICE_MODEL if they are not on the default paths."
 
 /** Map a raw stdin byte to a recording action. Enter stops, Ctrl+C aborts. */
 export function keypress(byte: number | undefined): "stop" | "abort" | undefined {
@@ -35,12 +35,12 @@ function key() {
 
 /** Record until Enter (or the recorder's duration cap) and transcribe locally. */
 export const capture = Effect.fn("CliVoice.capture")(function* () {
-  const { voice } = yield* Effect.promise(() => import("@opencode-ai/tui/voice"))
+  const { voice } = yield* Effect.promise(() => import("@bolt-ai/tui/voice"))
   const { VoiceTranscription } = yield* Effect.promise(() => import("@/voice/transcription"))
-  const { AppNodeBuilder } = yield* Effect.promise(() => import("@opencode-ai/core/effect/app-node-builder"))
-  const { LayerNode } = yield* Effect.promise(() => import("@opencode-ai/core/effect/layer-node"))
+  const { AppNodeBuilder } = yield* Effect.promise(() => import("@bolt-ai/core/effect/app-node-builder"))
+  const { LayerNode } = yield* Effect.promise(() => import("@bolt-ai/core/effect/layer-node"))
   const { Env } = yield* Effect.promise(() => import("@/env"))
-  const { AppProcess } = yield* Effect.promise(() => import("@opencode-ai/core/process"))
+  const { AppProcess } = yield* Effect.promise(() => import("@bolt-ai/core/process"))
   // Env and AppProcess are not part of AppServices; build them locally for
   // the whisper preflight and the whisper-cli invocation.
   const services = AppNodeBuilder.build(LayerNode.group([Env.node, AppProcess.node]))

@@ -1,4 +1,4 @@
-import { LayerNode } from "@opencode-ai/core/effect/layer-node"
+import { LayerNode } from "@bolt-ai/core/effect/layer-node"
 import { Context, Effect, Layer } from "effect"
 import { Config } from "@/config/config"
 import { InstanceState } from "@/effect/instance-state"
@@ -15,7 +15,7 @@ export interface Interface {
   readonly consume: (input: { sessionID: SessionID; tool: string }) => Effect.Effect<Verdict>
 }
 
-export class Service extends Context.Service<Service, Interface>()("@opencode/SessionToolBudget") {}
+export class Service extends Context.Service<Service, Interface>()("@bolt/SessionToolBudget") {}
 
 /** A call is allowed while its ordinal stays within the limit; no limit means unlimited. */
 export function verdict(used: number, limit?: number): Verdict {

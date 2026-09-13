@@ -57,11 +57,11 @@ Esse processo acontece em segundo plano, garantindo que seus estilos de código 
 
 ## Configuração
 
-Você pode personalizar os formatadores através da seção `formatter` em sua configuração do opencode.
+Você pode personalizar os formatadores através da seção `formatter` em sua configuração do bolt.
 
-```json title="opencode.json"
+```json title="bolt.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://bolt.ai/config.json",
   "formatter": {}
 }
 ```
@@ -83,18 +83,18 @@ Vamos ver alguns exemplos.
 
 Para desabilitar **todos** os formatadores globalmente, defina `formatter` como `false`:
 
-```json title="opencode.json" {3}
+```json title="bolt.json" {3}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://bolt.ai/config.json",
   "formatter": false
 }
 ```
 
 Para desabilitar um **formatador específico**, defina `disabled` como `true`:
 
-```json title="opencode.json" {5}
+```json title="bolt.json" {5}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://bolt.ai/config.json",
   "formatter": {
     "prettier": {
       "disabled": true
@@ -109,9 +109,9 @@ Para desabilitar um **formatador específico**, defina `disabled` como `true`:
 
 Você pode substituir os formatadores integrados ou adicionar novos especificando o comando, variáveis de ambiente e extensões de arquivo:
 
-```json title="opencode.json" {4-14}
+```json title="bolt.json" {4-14}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://bolt.ai/config.json",
   "formatter": {
     "prettier": {
       "command": ["npx", "prettier", "--write", "$FILE"],

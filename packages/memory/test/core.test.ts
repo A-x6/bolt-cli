@@ -333,10 +333,10 @@ describe("memory core package", () => {
       await Memory.apply({
         root: t.root,
         ops: [
-          { action: "add", key: "repo_tests", text: "Run CLI memory tests from packages/opencode." },
-          { action: "add", key: "repo_tests_copy", text: "Run CLI memory tests from packages/opencode." },
+          { action: "add", key: "repo_tests", text: "Run CLI memory tests from packages/bolt." },
+          { action: "add", key: "repo_tests_copy", text: "Run CLI memory tests from packages/bolt." },
           { action: "remove", query: "repo_tests" },
-          { action: "add", key: "repo_tests", text: "Run CLI memory tests from packages/opencode." },
+          { action: "add", key: "repo_tests", text: "Run CLI memory tests from packages/bolt." },
         ],
       })
       // A secret-like op is skipped (recorded), not thrown, so the sibling clean op still applies.
@@ -629,7 +629,7 @@ describe("memory core package", () => {
       await Memory.recordSession({
         root: t.root,
         sessionID: "ses_memory_tests",
-        summary: "Discussed running memory tests from packages/opencode.",
+        summary: "Discussed running memory tests from packages/bolt.",
         time: Date.UTC(2026, 0, 1),
       })
 
@@ -739,7 +739,7 @@ describe("memory core package", () => {
       await Memory.apply({
         root: t.root,
         ops: [
-          { action: "add", key: "pruebas_cli", text: "Ejecuta las pruebas CLI desde packages/opencode." },
+          { action: "add", key: "pruebas_cli", text: "Ejecuta las pruebas CLI desde packages/bolt." },
           { action: "add", key: "memoire", text: "Les corrections de mémoire restent dans corrections.md." },
           { action: "add", key: "設定", text: "日本語の設定は packages/kilo-vscode に保存します。" },
         ],
@@ -1197,7 +1197,7 @@ describe("memory core package", () => {
             file: "project.md",
             section: "Facts",
             key: "small_model_call_sites",
-            text: "Small model call sites are selected in the OpenCode adapter during memory capture.",
+            text: "Small model call sites are selected in the Bolt adapter during memory capture.",
           },
         ],
       })
@@ -1205,7 +1205,7 @@ describe("memory core package", () => {
         root: t.root,
         sessionID: "ses_small_model",
         topic: "Small model call sites",
-        summary: "Small model call sites are selected in the OpenCode adapter during memory capture.",
+        summary: "Small model call sites are selected in the Bolt adapter during memory capture.",
         time: Date.UTC(2026, 0, 1, 0, 0),
       })
       await Memory.recordSession({

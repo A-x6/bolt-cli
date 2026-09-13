@@ -1,4 +1,4 @@
-import { SessionV1 } from "@opencode-ai/core/v1/session"
+import { SessionV1 } from "@bolt-ai/core/v1/session"
 import { escapeHtml } from "@/util/html"
 
 export interface Step {

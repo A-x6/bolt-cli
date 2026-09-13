@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "@opencode-ai/tui",
+  "name": "@bolt-ai/tui",
   "version": "1.20.7",
   "private": true,
   "type": "module",
@@ -49,11 +49,11 @@
     "./component/register-spinner": "./src/component/register-spinner.ts"
   },
   "dependencies": {
-    "@opencode-ai/core": "workspace:*",
-    "@opencode-ai/memory": "workspace:*",
-    "@opencode-ai/plugin": "workspace:*",
-    "@opencode-ai/sdk": "workspace:*",
-    "@opencode-ai/ui": "workspace:*",
+    "@bolt-ai/core": "workspace:*",
+    "@bolt-ai/memory": "workspace:*",
+    "@bolt-ai/plugin": "workspace:*",
+    "@bolt-ai/sdk": "workspace:*",
+    "@bolt-ai/ui": "workspace:*",
     "@opentui/core": "catalog:",
     "@opentui/keymap": "catalog:",
     "@opentui/solid": "catalog:",

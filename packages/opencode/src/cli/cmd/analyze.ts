@@ -80,7 +80,7 @@ export const AnalyzeCommand = effectCmd({
   handler: Effect.fn("Cli.analyze")(function* (args) {
     const { InstanceRef } = yield* Effect.promise(() => import("@/effect/instance-ref"))
     const { Git } = yield* Effect.promise(() => import("@/git"))
-    const { Ripgrep } = yield* Effect.promise(() => import("@opencode-ai/core/ripgrep"))
+    const { Ripgrep } = yield* Effect.promise(() => import("@bolt-ai/core/ripgrep"))
     const ctx = yield* InstanceRef
     if (!ctx) return yield* fail("Could not load instance context")
     if (ctx.project.vcs !== "git") {

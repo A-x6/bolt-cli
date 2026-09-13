@@ -63,7 +63,7 @@ describe("overrides", () => {
   })
 
   test("ignores reserved vars and non-BOLT vars", () => {
-    const result = ConfigEnv.overrides({ BOLT_SQL_URL: "postgres://x", OPENCODE_MODEL: "a/b", PATH: "/usr/bin" })
+    const result = ConfigEnv.overrides({ BOLT_SQL_URL: "postgres://x", BOLT_MODEL: "a/b", PATH: "/usr/bin" })
     expect(result.config).toEqual({})
     expect(result.warnings).toEqual([])
   })

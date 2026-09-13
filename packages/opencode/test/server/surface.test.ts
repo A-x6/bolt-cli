@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test"
 import { OpenApi } from "effect/unstable/httpapi"
-import { Api } from "@opencode-ai/server/api"
+import { Api } from "@bolt-ai/server/api"
 import { ROUTES, VERSION, surface } from "../../src/server/surface"
 
 const spec = OpenApi.fromApi(Api)

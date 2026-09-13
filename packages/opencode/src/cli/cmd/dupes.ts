@@ -1,6 +1,6 @@
 import path from "node:path"
 import { Effect } from "effect"
-import { FSUtil } from "@opencode-ai/core/fs-util"
+import { FSUtil } from "@bolt-ai/core/fs-util"
 import { effectCmd, fail } from "../effect-cmd"
 
 const SKIP = new Set([".git", "node_modules", "dist", "build", ".turbo"])

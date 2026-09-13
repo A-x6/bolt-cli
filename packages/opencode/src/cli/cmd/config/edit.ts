@@ -65,7 +65,7 @@ export const SetCommand = effectCmd({
       })
       .option("global", { type: "boolean", default: false, describe: "write to the global config file" }),
   handler: Effect.fn("Cli.config.set")(function* (args) {
-    const { ConfigV1 } = yield* Effect.promise(() => import("@opencode-ai/core/v1/config/config"))
+    const { ConfigV1 } = yield* Effect.promise(() => import("@bolt-ai/core/v1/config/config"))
     const { ConfigParse } = yield* Effect.promise(() => import("@/config/parse"))
     const target = yield* file(args.global)
     const text = yield* content(target)
@@ -117,9 +117,8 @@ const file = Effect.fnUntraced(function* (global: boolean) {
   const ctx = yield* InstanceRef
   if (!ctx) return yield* fail("Could not load instance context")
   const bolt = yield* ConfigPaths.files("bolt", ctx.directory, ctx.worktree).pipe(Effect.orDie)
-  const opencode = yield* ConfigPaths.files("opencode", ctx.directory, ctx.worktree).pipe(Effect.orDie)
   // files() returns root-first, so the last entry is nearest to the working directory.
-  return bolt.at(-1) ?? opencode.at(-1) ?? path.join(ctx.worktree ?? ctx.directory, "bolt.jsonc")
+  return bolt.at(-1) ?? bolt.at(-1) ?? path.join(ctx.worktree ?? ctx.directory, "bolt.jsonc")
 })
 
 const content = Effect.fnUntraced(function* (target: string) {
@@ -131,7 +130,7 @@ const content = Effect.fnUntraced(function* (target: string) {
 // Throws ConfigInvalidError with actionable issues when the edited file no longer fits the
 // schema; the top-level CLI error formatter renders it.
 const validate = Effect.fnUntraced(function* (text: string, target: string) {
-  const { ConfigV1 } = yield* Effect.promise(() => import("@opencode-ai/core/v1/config/config"))
+  const { ConfigV1 } = yield* Effect.promise(() => import("@bolt-ai/core/v1/config/config"))
   const { ConfigParse } = yield* Effect.promise(() => import("@/config/parse"))
   ConfigParse.schema(ConfigV1.Info, ConfigParse.jsonc(text, target), target)
 })

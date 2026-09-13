@@ -15,6 +15,6 @@
     "@actions/github": "9.1.1",
     "@octokit/graphql": "9.0.1",
     "@octokit/rest": "catalog:",
-    "@opencode-ai/sdk": "workspace:*"
+    "@bolt-ai/sdk": "workspace:*"
   }
 }

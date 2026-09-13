@@ -1,11 +1,11 @@
-import type { Hooks, PluginInput } from "@opencode-ai/plugin"
-import { InstallationVersion } from "@opencode-ai/core/installation/version"
+import type { Hooks, PluginInput } from "@bolt-ai/plugin"
+import { InstallationVersion } from "@bolt-ai/core/installation/version"
 import { OAUTH_DUMMY_KEY } from "../../auth"
 import os from "os"
 import { setTimeout as sleep } from "node:timers/promises"
 import { createServer } from "http"
 import { OpenAIWebSocketPool } from "./ws-pool"
-import { OauthCallbackPage } from "@opencode-ai/core/oauth/page"
+import { OauthCallbackPage } from "@bolt-ai/core/oauth/page"
 
 const CLIENT_ID = "app_EMoamEEZ73f0CkXaXp7hrann"
 const ISSUER = "https://auth.openai.com"
@@ -96,7 +96,7 @@ function buildAuthorizeUrl(redirectUri: string, pkce: PkceCodes, state: string):
     id_token_add_organizations: "true",
     codex_cli_simplified_flow: "true",
     state,
-    originator: "opencode",
+    originator: "bolt",
   })
   return `${ISSUER}/oauth/authorize?${params.toString()}`
 }
@@ -558,7 +558,7 @@ export async function CodexAuthPlugin(input: PluginInput, options: CodexAuthPlug
     },
     "chat.headers": async (input, output) => {
       if (input.model.providerID !== "openai") return
-      output.headers.originator = "opencode"
+      output.headers.originator = "bolt"
       output.headers["User-Agent"] = `opencode/${InstallationVersion} (${os.platform()} ${os.release()}; ${os.arch()})`
       output.headers["session-id"] = input.sessionID
       // Temporary fetch-layer hack: title generation currently shares the conversation

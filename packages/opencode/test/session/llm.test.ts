@@ -1,7 +1,7 @@
-import { PermissionV1 } from "@opencode-ai/core/v1/permission"
-import { ConfigV1 } from "@opencode-ai/core/v1/config/config"
+import { PermissionV1 } from "@bolt-ai/core/v1/permission"
+import { ConfigV1 } from "@bolt-ai/core/v1/config/config"
 import { afterAll, beforeAll, beforeEach, describe, expect, test } from "bun:test"
-import { SessionV1 } from "@opencode-ai/core/v1/session"
+import { SessionV1 } from "@bolt-ai/core/v1/session"
 import path from "path"
 import { tool, type ModelMessage } from "ai"
 import { Cause, Effect, Exit, Fiber, Layer, Stream } from "effect"
@@ -9,10 +9,10 @@ import { InstanceRef } from "../../src/effect/instance-ref"
 import { HttpClientRequest, HttpClientResponse } from "effect/unstable/http"
 import z from "zod"
 import { LLM } from "../../src/session/llm"
-import { LLMClient, RequestExecutor } from "@opencode-ai/llm/route"
+import { LLMClient, RequestExecutor } from "@bolt-ai/llm/route"
 import { Provider } from "@/provider/provider"
 import { ProviderTransform } from "@/provider/transform"
-import { ModelsDev } from "@opencode-ai/core/models-dev"
+import { ModelsDev } from "@bolt-ai/core/models-dev"
 
 import { testEffect } from "../lib/effect"
 import type { Agent } from "../../src/agent/agent"
@@ -22,11 +22,11 @@ import { RuntimeFlags } from "@/effect/runtime-flags"
 import { Permission } from "@/permission"
 import { LLMAISDK } from "@/session/llm/ai-sdk"
 import { Session as SessionNs } from "@/session/session"
-import { ProviderV2 } from "@opencode-ai/core/provider"
-import { ModelV2 } from "@opencode-ai/core/model"
-import { AppNodeBuilder } from "@opencode-ai/core/effect/app-node-builder"
-import { LayerNode } from "@opencode-ai/core/effect/layer-node"
-import { LayerNodePlatform } from "@opencode-ai/core/effect/app-node-platform"
+import { ProviderV2 } from "@bolt-ai/core/provider"
+import { ModelV2 } from "@bolt-ai/core/model"
+import { AppNodeBuilder } from "@bolt-ai/core/effect/app-node-builder"
+import { LayerNode } from "@bolt-ai/core/effect/layer-node"
+import { LayerNodePlatform } from "@bolt-ai/core/effect/app-node-platform"
 import { ProviderError } from "@/provider/error"
 
 type ConfigModel = NonNullable<NonNullable<ConfigV1.Info["provider"]>[string]["models"]>[string]
@@ -754,7 +754,7 @@ function createEventResponse(chunks: unknown[], includeDone = false) {
 
 describe("session.llm.stream", () => {
   const vivgridFixture = { providerID: "vivgrid", modelID: "gemini-3.1-pro-preview" }
-  const opencodeFixture = { providerID: "opencode-test", modelID: vivgridFixture.modelID }
+  const opencodeFixture = { providerID: "bolt-test", modelID: vivgridFixture.modelID }
 
   it.instance(
     "sends the parent session header for opencode providers",
@@ -812,7 +812,7 @@ describe("session.llm.stream", () => {
           enabled_providers: [opencodeFixture.providerID],
           provider: {
             [opencodeFixture.providerID]: {
-              name: "OpenCode Test",
+              name: "Bolt Test",
               npm: "@ai-sdk/openai-compatible",
               models: { [fixture.model.id]: configModel(fixture.model) as ConfigModel },
               options: { apiKey: "test-key", baseURL: `${state.server!.url.origin}/v1` },

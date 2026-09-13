@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import { Redact } from "@opencode-ai/core/redact"
+import { Redact } from "@bolt-ai/core/redact"
 
 describe("Redact.text", () => {
   test("redacts well-known token formats", () => {

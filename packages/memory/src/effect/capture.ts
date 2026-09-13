@@ -235,9 +235,9 @@ export namespace MemoryCapture {
       // consolidation path does not send; the provider rejects them with MissingSessionID.
       // Keep a zero-cost fallback digest and skip the LLM calls instead of erroring every turn.
       const configuredProvider = input.memoryModel?.split("/")[0] ?? ""
-      const managedModel = configuredProvider.startsWith("opencode")
+      const managedModel = configuredProvider.startsWith("bolt")
         ? true
-        : !input.memoryModel && view.sessionModel.providerID.startsWith("opencode")
+        : !input.memoryModel && view.sessionModel.providerID.startsWith("bolt")
       if (managedModel && (digestDue || typedCall) && safe) {
         yield* memory.recordSession({
           root,
@@ -258,16 +258,16 @@ export namespace MemoryCapture {
             llm: false,
             parsed: false,
             fallback: true,
-            reason: "opencode_managed_model",
+            reason: "bolt_managed_model",
             tokens: 0,
             operationCount: 1,
             skippedCount: 0,
             summary: "session digest fallback for opencode managed model",
           },
         })
-        return yield* skip("opencode_managed_model")
+        return yield* skip("bolt_managed_model")
       }
-      if (managedModel) return yield* skip("opencode_managed_model")
+      if (managedModel) return yield* skip("bolt_managed_model")
 
       const model =
         digestDue || typedCall

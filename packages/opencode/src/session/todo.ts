@@ -1,11 +1,11 @@
-import { LayerNode } from "@opencode-ai/core/effect/layer-node"
+import { LayerNode } from "@bolt-ai/core/effect/layer-node"
 import { SessionID } from "./schema"
 import { Effect, Layer, Context } from "effect"
-import { Database } from "@opencode-ai/core/database/database"
+import { Database } from "@bolt-ai/core/database/database"
 import { eq, asc } from "drizzle-orm"
-import { TodoTable } from "@opencode-ai/core/session/sql"
+import { TodoTable } from "@bolt-ai/core/session/sql"
 import { EventV2Bridge } from "@/event-v2-bridge"
-import { SessionTodo } from "@opencode-ai/schema/session-todo"
+import { SessionTodo } from "@bolt-ai/schema/session-todo"
 
 export const Info = SessionTodo.Info
 export type Info = SessionTodo.Info
@@ -17,7 +17,7 @@ export interface Interface {
   readonly get: (sessionID: SessionID) => Effect.Effect<Info[]>
 }
 
-export class Service extends Context.Service<Service, Interface>()("@opencode/SessionTodo") {}
+export class Service extends Context.Service<Service, Interface>()("@bolt/SessionTodo") {}
 
 const layer = Layer.effect(
   Service,

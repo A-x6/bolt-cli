@@ -6,7 +6,7 @@ import path from "node:path"
 import { cliIt } from "../../lib/cli-process"
 import { createAcpClient, initialize, newSession, verifierConfig, verifierSkill } from "./helpers"
 
-describe("opencode acp skills subprocess", () => {
+describe("bolt acp skills subprocess", () => {
   cliIt.live(
     "skill slash command appears through available_commands_update",
     ({ home, llm, opencode }) =>
@@ -16,7 +16,7 @@ describe("opencode acp skills subprocess", () => {
         yield* Effect.promise(() => Bun.write(path.join(skills, "verifier-skill", "SKILL.md"), verifierSkill))
         const acp = yield* createAcpClient(
           { opencode },
-          { OPENCODE_CONFIG_CONTENT: JSON.stringify(verifierConfig(llm.url, skills)) },
+          { BOLT_CONFIG_CONTENT: JSON.stringify(verifierConfig(llm.url, skills)) },
         )
         yield* initialize(acp)
         const session = yield* newSession(acp, home)

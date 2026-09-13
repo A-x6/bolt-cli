@@ -18,24 +18,24 @@ export async function spawnWslSidecar(
   distro: string,
   opts: { onLine?: (line: WslCommandLine) => void; healthTimeoutMs?: number } = {},
 ): Promise<WslSidecar> {
-  const opencode = await resolveWslOpencode(distro)
-  if (!opencode) throw new Error(`Bolt is not installed in ${distro}`)
+  const bolt = await resolveWslOpencode(distro)
+  if (!bolt) throw new Error(`Bolt is not installed in ${distro}`)
 
   const port = await allocatePort()
   const password = randomUUID()
-  const username = "opencode"
+  const username = "bolt"
   const script = [
     "set -euo pipefail",
     'cd "$HOME" || cd /',
     'PATH=$(awk -v RS=: -v ORS=: \'$0 !~ /^\\/mnt\\//\' <<<"$PATH" | sed "s/:$//")',
     "export PATH",
     "export WSLENV=",
-    "export OPENCODE_EXPERIMENTAL_DISABLE_FILEWATCHER=true",
-    "export OPENCODE_CLIENT=desktop",
-    `export OPENCODE_SERVER_USERNAME=${shellEscape(username)}`,
-    `export OPENCODE_SERVER_PASSWORD=${shellEscape(password)}`,
+    "export BOLT_EXPERIMENTAL_DISABLE_FILEWATCHER=true",
+    "export BOLT_CLIENT=desktop",
+    `export BOLT_SERVER_USERNAME=${shellEscape(username)}`,
+    `export BOLT_SERVER_PASSWORD=${shellEscape(password)}`,
     'export XDG_STATE_HOME="$HOME/.local/state"',
-    `exec ${shellEscape(opencode)} --print-logs --log-level ${app.isPackaged ? "WARN" : "INFO"} serve --hostname 0.0.0.0 --port ${port}`,
+    `exec ${shellEscape(bolt)} --print-logs --log-level ${app.isPackaged ? "WARN" : "INFO"} serve --hostname 0.0.0.0 --port ${port}`,
   ].join("\n")
   const child = spawn("wsl", wslArgs(["bash", "-se"], distro), {
     stdio: ["pipe", "pipe", "pipe"],

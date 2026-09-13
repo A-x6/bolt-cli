@@ -1,9 +1,9 @@
 import { Argument, Flag } from "effect/unstable/cli"
 import { Spec } from "../framework/spec"
 
-declare const OPENCODE_CLI_NAME: string | undefined
+declare const BOLT_CLI_NAME: string | undefined
 
-export const Commands = Spec.make(typeof OPENCODE_CLI_NAME === "string" ? OPENCODE_CLI_NAME : "bolt", {
+export const Commands = Spec.make(typeof BOLT_CLI_NAME === "string" ? BOLT_CLI_NAME : "bolt", {
   description: "Bolt CLI command line interface",
   commands: [
     Spec.make("api", {

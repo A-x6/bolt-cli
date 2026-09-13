@@ -21,7 +21,7 @@ describe("keypress", () => {
 describe("hint", () => {
   test("names the whisper.cpp requirement and the overrides", () => {
     expect(HINT).toContain("whisper.cpp")
-    expect(HINT).toContain("OPENCODE_VOICE_WHISPER")
-    expect(HINT).toContain("OPENCODE_VOICE_MODEL")
+    expect(HINT).toContain("BOLT_VOICE_WHISPER")
+    expect(HINT).toContain("BOLT_VOICE_MODEL")
   })
 })

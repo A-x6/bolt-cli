@@ -6,7 +6,7 @@ import { LSP } from "@/lsp/lsp"
 import DESCRIPTION from "./lsp-references.txt"
 import { InstanceState } from "@/effect/instance-state"
 import { assertExternalDirectoryEffect } from "./external-directory"
-import { FSUtil } from "@opencode-ai/core/fs-util"
+import { FSUtil } from "@bolt-ai/core/fs-util"
 
 type Location = { uri: string; range: { start: { line: number; character: number } } }
 

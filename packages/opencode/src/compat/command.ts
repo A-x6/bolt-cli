@@ -1,8 +1,8 @@
 import path from "path"
 import { Effect } from "effect"
-import type { FSUtil } from "@opencode-ai/core/fs-util"
-import { ConfigMarkdown } from "@opencode-ai/core/config/markdown"
-import type { ConfigCommandV1 } from "@opencode-ai/core/v1/config/command"
+import type { FSUtil } from "@bolt-ai/core/fs-util"
+import { ConfigMarkdown } from "@bolt-ai/core/config/markdown"
+import type { ConfigCommandV1 } from "@bolt-ai/core/v1/config/command"
 
 // Command/workflow directories written by other coding agents. The markdown body
 // becomes the command template; Claude's $ARGUMENTS / $1..$N placeholder dialect
@@ -47,7 +47,7 @@ export const discover = Effect.fn("CompatCommand.discover")(function* (
 })
 
 // Nested directories stay in the name with "/" separators, matching the native
-// command convention (.opencode/command/git/commit.md -> git/commit).
+// command convention (.bolt/command/git/commit.md -> git/commit).
 function nameFor(root: string, filepath: string) {
   const normalized = filepath.replaceAll("\\", "/")
   const marker = `/${root}`

@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import { SessionV1 } from "@opencode-ai/core/v1/session"
+import { SessionV1 } from "@bolt-ai/core/v1/session"
 import { markdown } from "../../src/cli/cmd/export-md"
 
 const messages = [

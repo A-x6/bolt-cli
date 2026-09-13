@@ -82,9 +82,9 @@ export const dict = {
   "desktop.wsl.error.installDistro": "No se pudo instalar la distribución: {{distro}}",
   "desktop.wsl.error.installOpencode": "No se pudo instalar Bolt",
   "desktop.wsl.error.alreadyAdded": "Ya se ha añadido {{distro}}",
-  "desktop.wsl.error.opencodeMissing": "opencode no está instalado en esta distribución",
-  "desktop.wsl.error.opencodeCannotRun": "opencode está instalado, pero no se pudo ejecutar",
-  "desktop.wsl.error.opencodeNotInstalled": "Bolt no está instalado en {{distro}}",
+  "desktop.wsl.error.boltMissing": "bolt no está instalado en esta distribución",
+  "desktop.wsl.error.boltCannotRun": "bolt está instalado, pero no se pudo ejecutar",
+  "desktop.wsl.error.boltNotInstalled": "Bolt no está instalado en {{distro}}",
   "desktop.wsl.error.updateVersion":
     "La actualización de Bolt finalizó, pero {{distro}} sigue indicando {{installed}}; se esperaba {{expected}}",
   "desktop.wsl.error.noVersion": "sin versión",
@@ -208,9 +208,9 @@ export const dict = {
   "dialog.provider.group.other": "Otros",
   "dialog.provider.custom.label": "Proveedor personalizado compatible con OpenAI",
   "dialog.provider.tag.recommended": "Recomendado",
-  "dialog.provider.opencode.note": "Selección de modelos como Claude, GPT, Gemini y otros",
-  "dialog.provider.opencode.tagline": "Modelos optimizados y fiables",
-  "dialog.provider.opencodeGo.tagline": "Suscripción económica para todos",
+  "dialog.provider.bolt.note": "Selección de modelos como Claude, GPT, Gemini y otros",
+  "dialog.provider.bolt.tagline": "Modelos optimizados y fiables",
+  "dialog.provider.boltGo.tagline": "Suscripción económica para todos",
   "dialog.provider.anthropic.note": "Acceso directo a modelos Claude, incluidos Pro y Max",
   "dialog.provider.copilot.note": "Modelos de IA para asistencia de codificación a través de GitHub Copilot",
   "dialog.provider.openai.note": "Modelos GPT para tareas de IA generales rápidas y capaces",
@@ -225,7 +225,7 @@ export const dict = {
   "dialog.model.manage.description": "Personalizar qué modelos aparecen en el selector de modelos.",
   "dialog.model.manage.provider.toggle": "Mostrar u ocultar todos los modelos de {{provider}}",
 
-  "dialog.model.unpaid.freeModels.title": "Modelos gratuitos proporcionados por OpenCode",
+  "dialog.model.unpaid.freeModels.title": "Modelos gratuitos proporcionados por Bolt",
   "dialog.model.unpaid.addMore.title": "Añadir más modelos de proveedores populares",
   "dialog.model.unpaid.viewMoreProviders": "Ver más de 70 proveedores",
 
@@ -245,13 +245,13 @@ export const dict = {
   "provider.connect.apiKey.label": "Clave API de {{provider}}",
   "provider.connect.apiKey.placeholder": "Clave API",
   "provider.connect.apiKey.required": "La clave API es obligatoria",
-  "provider.connect.opencodeZen.line1":
-    "OpenCode Zen te da acceso a un conjunto curado de modelos fiables optimizados para agentes de programación.",
-  "provider.connect.opencodeZen.line2":
+  "provider.connect.boltZen.line1":
+    "Bolt Zen te da acceso a un conjunto curado de modelos fiables optimizados para agentes de programación.",
+  "provider.connect.boltZen.line2":
     "Con una sola clave API obtendrás acceso a modelos como Claude, GPT, Gemini, GLM y más.",
-  "provider.connect.opencodeZen.visit.prefix": "Visita ",
-  "provider.connect.opencodeZen.visit.link": "opencode.ai/zen",
-  "provider.connect.opencodeZen.visit.suffix": " para obtener tu clave API.",
+  "provider.connect.boltZen.visit.prefix": "Visita ",
+  "provider.connect.boltZen.visit.link": "bolt.ai/zen",
+  "provider.connect.boltZen.visit.suffix": " para obtener tu clave API.",
   "provider.connect.oauth.code.visit.prefix": "Visita ",
   "provider.connect.oauth.code.visit.link": "este enlace",
   "provider.connect.oauth.code.visit.suffix":
@@ -424,7 +424,7 @@ export const dict = {
   "dialog.mcp.empty": "No hay servidores MCP configurados",
 
   "dialog.lsp.empty": "Servidores LSP detectados automáticamente por tipo de archivo",
-  "dialog.plugins.empty": "Plugins configurados en opencode.json",
+  "dialog.plugins.empty": "Plugins configurados en bolt.json",
 
   "mcp.status.connected": "conectado",
   "mcp.status.failed": "fallido",
@@ -478,7 +478,7 @@ export const dict = {
   "wsl.server.retryStart": "Reintentar el inicio",
   "wsl.server.updating": "Actualizando...",
   "wsl.onboarding.step.distro": "Elegir distribución",
-  "wsl.onboarding.step.opencode": "Bolt",
+  "wsl.onboarding.step.bolt": "Bolt",
   "wsl.onboarding.checkingRuntime": "Comprobando WSL...",
   "wsl.onboarding.restartRequired": "Es necesario reiniciar Windows para terminar de instalar WSL.",
   "wsl.onboarding.ready": "WSL está listo.",
@@ -498,8 +498,8 @@ export const dict = {
   "wsl.onboarding.updatingOpencodeIn": "Actualizando Bolt en {{distro}}...",
   "wsl.onboarding.updateOpencodeIn": "Actualiza Bolt en {{distro}}.",
   "wsl.onboarding.updateOpencode": "Actualizar Bolt",
-  "wsl.onboarding.opencodeReadyIn": "Bolt está listo en {{distro}}.",
-  "wsl.onboarding.opencodeReady": "Bolt está listo.",
+  "wsl.onboarding.boltReadyIn": "Bolt está listo en {{distro}}.",
+  "wsl.onboarding.boltReady": "Bolt está listo.",
   "wsl.onboarding.installOpencodeIn": "Instala Bolt en {{distro}}.",
   "wsl.onboarding.installOpencode": "Instalar Bolt",
   "wsl.onboarding.chooseDistroFirst": "Elige primero una distribución.",
@@ -509,7 +509,7 @@ export const dict = {
   "wsl.onboarding.checkAgain": "Comprobar de nuevo",
   "wsl.onboarding.distroStatus.ready": "Lista",
   "wsl.onboarding.distroStatus.checking": "Comprobando...",
-  "wsl.onboarding.distroStatus.opencodeMissing": "Bolt no está instalado",
+  "wsl.onboarding.distroStatus.boltMissing": "Bolt no está instalado",
   "wsl.onboarding.distroStatus.missingTools": "Faltan bash y curl",
   "wsl.onboarding.distroStatus.unsupported": "No compatible · Usa WSL 2",
   "wsl.onboarding.needAnotherDistro": "¿Necesitas otra distribución?",
@@ -705,7 +705,7 @@ export const dict = {
   "error.chain.responseBody": "Cuerpo de la respuesta:\n{{body}}",
   "error.chain.didYouMean": "¿Quizá quisiste decir {{suggestions}}?",
   "error.chain.modelNotFound": "Modelo no encontrado: {{provider}}/{{model}}",
-  "error.chain.checkConfig": "Comprueba los nombres de proveedor/modelo en tu configuración (opencode.json)",
+  "error.chain.checkConfig": "Comprueba los nombres de proveedor/modelo en tu configuración (bolt.json)",
   "error.chain.mcpFailed": 'El servidor MCP "{{name}}" falló. Nota: Bolt aún no admite la autenticación MCP.',
   "error.chain.providerAuthFailed": "Autenticación de proveedor fallida ({{provider}}): {{message}}",
   "error.chain.providerInitFailed":

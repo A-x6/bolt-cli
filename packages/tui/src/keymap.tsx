@@ -18,10 +18,10 @@ import { useTuiConfig } from "./config"
 import { TuiKeybind } from "./config/keybind"
 
 export const LEADER_TOKEN = "leader"
-export const OPENCODE_BASE_MODE = "base"
+export const BOLT_BASE_MODE = "base"
 export const COMMAND_PALETTE_COMMAND = "command.palette.show"
 
-const OPENCODE_MODE_KEY = "opencode.mode"
+const BOLT_MODE_KEY = "bolt.mode"
 
 export const OpencodeKeymapProvider = KeymapProvider
 export const useOpencodeKeymap = useKeymap
@@ -29,7 +29,7 @@ export const useOpencodeKeymap = useKeymap
 export { useBindings, useKeymapSelector }
 
 export type OpenTuiKeymap = ReturnType<typeof useKeymap>
-type OpencodeModeStack = ReturnType<typeof createOpencodeModeStack>
+type OpencodeModeStack = ReturnType<typeof createBoltModeStack>
 type CommandSlashEntry = {
   display: string
   description?: string
@@ -50,12 +50,12 @@ function isVisiblePaletteCommand(command: Command) {
   return command.hidden !== true && command.name !== COMMAND_PALETTE_COMMAND
 }
 
-export function createOpencodeModeStack(keymap: OpenTuiKeymap) {
-  keymap.setData(OPENCODE_MODE_KEY, OPENCODE_BASE_MODE)
+export function createBoltModeStack(keymap: OpenTuiKeymap) {
+  keymap.setData(BOLT_MODE_KEY, BOLT_BASE_MODE)
 
   const offFields = keymap.registerLayerFields({
     mode(value, ctx) {
-      ctx.require(OPENCODE_MODE_KEY, value)
+      ctx.require(BOLT_MODE_KEY, value)
     },
   })
 
@@ -63,12 +63,12 @@ export function createOpencodeModeStack(keymap: OpenTuiKeymap) {
   let disposed = false
 
   const update = () => {
-    keymap.setData(OPENCODE_MODE_KEY, stack.at(-1)?.mode ?? OPENCODE_BASE_MODE)
+    keymap.setData(BOLT_MODE_KEY, stack.at(-1)?.mode ?? BOLT_BASE_MODE)
   }
 
   const stackApi = {
     current() {
-      return stack.at(-1)?.mode ?? OPENCODE_BASE_MODE
+      return stack.at(-1)?.mode ?? BOLT_BASE_MODE
     },
     push(mode: string) {
       if (disposed) return () => {}
@@ -90,7 +90,7 @@ export function createOpencodeModeStack(keymap: OpenTuiKeymap) {
       disposed = true
       stack.length = 0
       offFields()
-      keymap.setData(OPENCODE_MODE_KEY, undefined)
+      keymap.setData(BOLT_MODE_KEY, undefined)
       modeStacks.delete(keymap)
     },
   }
@@ -212,7 +212,7 @@ export function formatKeyBindings(bindings: Parameters<typeof formatCommandBindi
 }
 
 export function registerOpencodeKeymap(keymap: OpenTuiKeymap, renderer: CliRenderer, config: ResolvedKeymapConfig) {
-  const modeStack = createOpencodeModeStack(keymap)
+  const modeStack = createBoltModeStack(keymap)
   const offCommaBindings = registerCommaBindings(keymap)
   const offAliasExpander = registerKeyAliases(keymap)
   const offBaseLayout = registerBaseLayoutFallback(keymap)

@@ -18,7 +18,7 @@ opencode JS/TS SDK จัดเตรียมไคลเอ็นต์ปร�
 ติดตั้ง SDK จาก npm:
 
 ```bash
-npm install @opencode-ai/sdk
+npm install @bolt-ai/sdk
 ```
 
 ---
@@ -28,9 +28,9 @@ npm install @opencode-ai/sdk
 สร้างอินสแตนซ์ของ opencode:
 
 ```javascript
-import { createOpencode } from "@opencode-ai/sdk"
+import { createBolt } from "@bolt-ai/sdk"
 
-const { client } = await createOpencode()
+const { client } = await createBolt()
 ```
 
 สิ่งนี้จะเริ่มต้นทั้งเซิร์ฟเวอร์และไคลเอนต์
@@ -49,12 +49,12 @@ const { client } = await createOpencode()
 
 ## การกำหนดค่า
 
-คุณสามารถส่งผ่านออบเจ็กต์การกำหนดค่าเพื่อปรับแต่งลักษณะการทำงานได้ อินสแตนซ์ยังคงรับ `opencode.json` ของคุณ แต่คุณสามารถแทนที่หรือเพิ่มการกำหนดค่าแบบอินไลน์ได้:
+คุณสามารถส่งผ่านออบเจ็กต์การกำหนดค่าเพื่อปรับแต่งลักษณะการทำงานได้ อินสแตนซ์ยังคงรับ `bolt.json` ของคุณ แต่คุณสามารถแทนที่หรือเพิ่มการกำหนดค่าแบบอินไลน์ได้:
 
 ```javascript
-import { createOpencode } from "@opencode-ai/sdk"
+import { createBolt } from "@bolt-ai/sdk"
 
-const opencode = await createOpencode({
+const bolt = await createBolt({
   hostname: "127.0.0.1",
   port: 4096,
   config: {
@@ -62,9 +62,9 @@ const opencode = await createOpencode({
   },
 })
 
-console.log(`Server running at ${opencode.server.url}`)
+console.log(`Server running at ${bolt.server.url}`)
 
-opencode.server.close()
+bolt.server.close()
 ```
 
 ## ลูกค้าเท่านั้น
@@ -72,9 +72,9 @@ opencode.server.close()
 หากคุณมีอินสแตนซ์ opencode ที่ทำงานอยู่แล้ว คุณสามารถสร้างอินสแตนซ์ไคลเอ็นต์เพื่อเชื่อมต่อได้:
 
 ```javascript
-import { createOpencodeClient } from "@opencode-ai/sdk"
+import { createBoltClient } from "@bolt-ai/sdk"
 
-const client = createOpencodeClient({
+const client = createBoltClient({
   baseUrl: "http://localhost:4096",
 })
 ```
@@ -96,7 +96,7 @@ const client = createOpencodeClient({
 SDK มีคำจำกัดความ TypeScript สำหรับ API ประเภททั้งหมด นำเข้าโดยตรง:
 
 ```typescript
-import type { Session, Message, Part } from "@opencode-ai/sdk"
+import type { Session, Message, Part } from "@bolt-ai/sdk"
 ```
 
 ทุกประเภทสร้างขึ้นจากข้อกำหนด OpenAPI ของเซิร์ฟเวอร์และมีอยู่ใน <a href={typesUrl}>ไฟล์ประเภท</a>

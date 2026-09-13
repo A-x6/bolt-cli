@@ -12,14 +12,14 @@ import {
   verifierConfig,
 } from "./helpers"
 
-describe("opencode acp config option subprocess", () => {
+describe("bolt acp config option subprocess", () => {
   cliIt.live(
     'model option is listed with category "model"',
     ({ home, llm, opencode }) =>
       Effect.gen(function* () {
         const acp = yield* createAcpClient(
           { opencode },
-          { OPENCODE_CONFIG_CONTENT: JSON.stringify(verifierConfig(llm.url)) },
+          { BOLT_CONFIG_CONTENT: JSON.stringify(verifierConfig(llm.url)) },
         )
         yield* initialize(acp)
         const model = expectSelectOption((yield* newSession(acp, home)).configOptions, "model")
@@ -37,7 +37,7 @@ describe("opencode acp config option subprocess", () => {
       Effect.gen(function* () {
         const acp = yield* createAcpClient(
           { opencode },
-          { OPENCODE_CONFIG_CONTENT: JSON.stringify(verifierConfig(llm.url)) },
+          { BOLT_CONFIG_CONTENT: JSON.stringify(verifierConfig(llm.url)) },
         )
         yield* initialize(acp)
         const session = yield* newSession(acp, home)
@@ -64,7 +64,7 @@ describe("opencode acp config option subprocess", () => {
       Effect.gen(function* () {
         const acp = yield* createAcpClient(
           { opencode },
-          { OPENCODE_CONFIG_CONTENT: JSON.stringify(verifierConfig(llm.url)) },
+          { BOLT_CONFIG_CONTENT: JSON.stringify(verifierConfig(llm.url)) },
         )
         yield* initialize(acp)
         const effort = expectSelectOption((yield* newSession(acp, home)).configOptions, "effort")
@@ -82,7 +82,7 @@ describe("opencode acp config option subprocess", () => {
       Effect.gen(function* () {
         const acp = yield* createAcpClient(
           { opencode },
-          { OPENCODE_CONFIG_CONTENT: JSON.stringify(verifierConfig(llm.url)) },
+          { BOLT_CONFIG_CONTENT: JSON.stringify(verifierConfig(llm.url)) },
         )
         yield* initialize(acp)
         const session = yield* newSession(acp, home)

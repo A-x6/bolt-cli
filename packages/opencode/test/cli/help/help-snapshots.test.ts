@@ -91,7 +91,7 @@ const SUBCOMMANDS = [
 // different wraps from a 200-col local terminal.
 const SNAPSHOT_ENV = { COLUMNS: "120" }
 
-describe("opencode CLI help-text snapshots", () => {
+describe("bolt CLI help-text snapshots", () => {
   // Single test, parallel spawns. Each command's help fires under
   // `concurrency: 8` — wall-clock stays under ~10s even for ~35 commands,
   // versus ~1 minute if we serialized.

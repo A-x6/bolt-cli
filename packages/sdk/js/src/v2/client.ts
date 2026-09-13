@@ -47,7 +47,7 @@ function rewrite(request: Request, values: { directory?: string; workspace?: str
   return next
 }
 
-export function createOpencodeClient(config?: Config & { directory?: string; experimental_workspaceID?: string }) {
+export function createBoltClient(config?: Config & { directory?: string; experimental_workspaceID?: string }) {
   if (!config?.fetch) {
     const customFetch: any = (req: any) => {
       // @ts-ignore
@@ -84,7 +84,7 @@ export function createOpencodeClient(config?: Config & { directory?: string; exp
   client.interceptors.response.use((response) => {
     const contentType = response.headers.get("content-type")
     if (contentType === "text/html")
-      throw new Error("Request is not supported by this version of OpenCode Server (Server responded with text/html)")
+      throw new Error("Request is not supported by this version of Bolt Server (Server responded with text/html)")
 
     return response
   })

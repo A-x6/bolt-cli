@@ -1,7 +1,7 @@
 import path from "path"
 import fs from "fs/promises"
 import type { ModelMessage } from "ai"
-import { Global } from "@opencode-ai/core/global"
+import { Global } from "@bolt-ai/core/global"
 
 export const DIR = "replay"
 

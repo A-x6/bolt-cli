@@ -1,8 +1,8 @@
-import { withAlpha } from "@opencode-ai/ui/theme/color"
-import { useTheme } from "@opencode-ai/ui/theme/context"
-import { resolveThemeVariant } from "@opencode-ai/ui/theme/resolve"
-import { resolveThemeVariantV2 } from "@opencode-ai/ui/theme/v2/resolve"
-import type { HexColor, ResolvedV2Theme } from "@opencode-ai/ui/theme/types"
+import { withAlpha } from "@bolt-ai/ui/theme/color"
+import { useTheme } from "@bolt-ai/ui/theme/context"
+import { resolveThemeVariant } from "@bolt-ai/ui/theme/resolve"
+import { resolveThemeVariantV2 } from "@bolt-ai/ui/theme/v2/resolve"
+import type { HexColor, ResolvedV2Theme } from "@bolt-ai/ui/theme/types"
 import { showToast } from "@/utils/toast"
 import type { FitAddon, Ghostty, Terminal as Term } from "ghostty-web"
 import { type ComponentProps, createEffect, createMemo, onCleanup, onMount, splitProps } from "solid-js"
@@ -180,7 +180,7 @@ export const Terminal = (props: TerminalProps) => {
   const directory = sdk().directory
   const url = sdk().url
   const auth = connection.http
-  const username = auth?.username ?? "opencode"
+  const username = auth?.username ?? "bolt"
   const password = auth?.password ?? ""
   const authToken = connection.type === "http" ? connection.authToken : false
   const sameOrigin = new URL(url, location.href).origin === location.origin

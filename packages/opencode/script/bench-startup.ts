@@ -39,7 +39,7 @@ async function measure(args: string[]) {
     const proc = Bun.spawn([process.execPath, "run", entry, ...args], {
       stdout: "ignore",
       stderr: "ignore",
-      env: { ...process.env, OPENCODE_DISABLE_AUTOUPDATE: "1" },
+      env: { ...process.env, BOLT_DISABLE_AUTOUPDATE: "1" },
     })
     const code = await proc.exited
     const elapsed = performance.now() - start

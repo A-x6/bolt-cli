@@ -63,15 +63,15 @@ export const DiffCommand = effectCmd({
       const project = yield* Effect.all(
         [
           ConfigPaths.files("bolt", ctx.directory, ctx.worktree),
-          ConfigPaths.files("opencode", ctx.directory, ctx.worktree),
+          ConfigPaths.files("bolt", ctx.directory, ctx.worktree),
         ],
         { concurrency: 2 },
       ).pipe(Effect.orDie)
       const directories = yield* ConfigPaths.directories(ctx.directory, ctx.worktree).pipe(Effect.orDie)
       const nested = directories
-        .filter((dir) => dir.endsWith(".bolt") || dir.endsWith(".opencode"))
+        .filter((dir) => dir.endsWith(".bolt") || dir.endsWith(".bolt"))
         .flatMap((dir) =>
-          ["bolt.jsonc", "bolt.json", "opencode.jsonc", "opencode.json"].map((name) => path.join(dir, name)),
+          ["bolt.jsonc", "bolt.json", "bolt.jsonc", "bolt.json"].map((name) => path.join(dir, name)),
         )
       return Array.from(new Set([...project.flat(), ...nested]))
         .filter((file) => !path.relative(cwd, file).startsWith(".."))

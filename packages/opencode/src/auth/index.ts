@@ -1,11 +1,11 @@
-import { LayerNode } from "@opencode-ai/core/effect/layer-node"
+import { LayerNode } from "@bolt-ai/core/effect/layer-node"
 import path from "path"
 import { Effect, Layer, Option, Record, Result, Schema, Context } from "effect"
-import { NonNegativeInt } from "@opencode-ai/core/schema"
-import { Global } from "@opencode-ai/core/global"
-import { FSUtil } from "@opencode-ai/core/fs-util"
+import { NonNegativeInt } from "@bolt-ai/core/schema"
+import { Global } from "@bolt-ai/core/global"
+import { FSUtil } from "@bolt-ai/core/fs-util"
 
-export const OAUTH_DUMMY_KEY = "opencode-oauth-dummy-key"
+export const OAUTH_DUMMY_KEY = "bolt-oauth-dummy-key"
 
 const file = path.join(Global.Path.data, "auth.json")
 
@@ -47,7 +47,7 @@ export interface Interface {
   readonly remove: (key: string) => Effect.Effect<void, AuthError>
 }
 
-export class Service extends Context.Service<Service, Interface>()("@opencode/Auth") {}
+export class Service extends Context.Service<Service, Interface>()("@bolt/Auth") {}
 
 const layer = Layer.effect(
   Service,
@@ -56,7 +56,7 @@ const layer = Layer.effect(
     const decode = Schema.decodeUnknownOption(Info)
 
     const all = Effect.fn("Auth.all")(function* () {
-      const content = process.env.OPENCODE_AUTH_CONTENT
+      const content = process.env.BOLT_AUTH_CONTENT
       // Validate env-provided auth content through the same schema as the file,
       // and fall back to an empty set on invalid JSON instead of silently
       // swallowing the parse error (or returning unvalidated data).

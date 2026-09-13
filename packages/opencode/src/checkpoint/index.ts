@@ -1,4 +1,4 @@
-import { LayerNode } from "@opencode-ai/core/effect/layer-node"
+import { LayerNode } from "@bolt-ai/core/effect/layer-node"
 import { Context, Effect, Layer, Schema } from "effect"
 import { InstanceState } from "@/effect/instance-state"
 import { Snapshot } from "@/snapshot"
@@ -50,7 +50,7 @@ export interface Interface {
   readonly remove: (name: string) => Effect.Effect<void, NotFoundError>
 }
 
-export class Service extends Context.Service<Service, Interface>()("@opencode/Checkpoint") {}
+export class Service extends Context.Service<Service, Interface>()("@bolt/Checkpoint") {}
 
 function key(projectID: string, name?: string) {
   if (name === undefined) return ["checkpoint", projectID]

@@ -1,4 +1,4 @@
-import type { PermissionV1 } from "@opencode-ai/core/v1/permission"
+import type { PermissionV1 } from "@bolt-ai/core/v1/permission"
 import path from "path"
 import { Effect } from "effect"
 import { UI } from "../ui"

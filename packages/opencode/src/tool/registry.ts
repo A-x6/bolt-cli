@@ -1,6 +1,6 @@
-import { LayerNode } from "@opencode-ai/core/effect/layer-node"
-import { httpClient } from "@opencode-ai/core/effect/app-node-platform"
-import { Ripgrep } from "@opencode-ai/core/ripgrep"
+import { LayerNode } from "@bolt-ai/core/effect/layer-node"
+import { httpClient } from "@bolt-ai/core/effect/app-node-platform"
+import { Ripgrep } from "@bolt-ai/core/ripgrep"
 import { PlanExitTool } from "./plan"
 import { Session } from "@/session/session"
 import { QuestionTool } from "./question"
@@ -16,7 +16,7 @@ import { GrepTool } from "./grep"
 import { HttpTool } from "./http"
 import { ReadTool } from "./read"
 import { TaskTool } from "./task"
-import { Database } from "@opencode-ai/core/database/database"
+import { Database } from "@bolt-ai/core/database/database"
 import { TodoWriteTool } from "./todo"
 import { WebFetchTool } from "./webfetch"
 import { WriteTool } from "./write"
@@ -42,7 +42,7 @@ import { TaskCreateTool, TaskListTool, TaskUpdateTool } from "./tasks"
 import { Tool } from "./tool"
 import { Command } from "@/command"
 import { Config } from "@/config/config"
-import { type ToolContext as PluginToolContext, type ToolDefinition } from "@opencode-ai/plugin"
+import { type ToolContext as PluginToolContext, type ToolDefinition } from "@bolt-ai/plugin"
 import type { JSONSchema7, JSONSchema7Definition } from "@ai-sdk/provider"
 import z from "zod"
 import { Plugin } from "../plugin"
@@ -56,12 +56,12 @@ import { LspReferencesTool } from "./lsp-references"
 import { LspRenameTool } from "./lsp-rename"
 import * as Truncate from "./truncate"
 import { ApplyPatchTool } from "./apply_patch"
-import { Glob } from "@opencode-ai/core/util/glob"
+import { Glob } from "@bolt-ai/core/util/glob"
 import path from "path"
 import { pathToFileURL } from "url"
 import { Context, Effect, Layer, Schema } from "effect"
 import { ChildProcessSpawner } from "effect/unstable/process/ChildProcessSpawner"
-import { CrossSpawnSpawner } from "@opencode-ai/core/cross-spawn-spawner"
+import { CrossSpawnSpawner } from "@bolt-ai/core/cross-spawn-spawner"
 import { Format } from "../format"
 import { InstanceState } from "@/effect/instance-state"
 import { EffectBridge } from "@/effect/bridge"
@@ -69,24 +69,24 @@ import { Question } from "../question"
 import { Todo } from "../session/todo"
 import { LSP } from "@/lsp/lsp"
 import { Instruction } from "../session/instruction"
-import { FSUtil } from "@opencode-ai/core/fs-util"
+import { FSUtil } from "@bolt-ai/core/fs-util"
 import { EventV2Bridge } from "@/event-v2-bridge"
 import { Agent } from "../agent/agent"
 import { Skill } from "../skill"
 import { Permission } from "@/permission"
 import { BackgroundJob } from "@/background/job"
 import { RuntimeFlags } from "@/effect/runtime-flags"
-import { ProviderV2 } from "@opencode-ai/core/provider"
-import { ModelV2 } from "@opencode-ai/core/model"
+import { ProviderV2 } from "@bolt-ai/core/provider"
+import { ModelV2 } from "@bolt-ai/core/model"
 import { MCP } from "@/mcp"
-import { PermissionV1 } from "@opencode-ai/core/v1/permission"
+import { PermissionV1 } from "@bolt-ai/core/v1/permission"
 import { McpCatalog } from "@/mcp/catalog"
 import { Storage } from "@/storage/storage"
 
 export function webSearchEnabled(providerID: ProviderV2.ID, flags = { exa: false, parallel: false }) {
   return (
-    providerID === ProviderV2.ID.opencode ||
-    providerID === ProviderV2.ID.make("opencode-go") ||
+    providerID === ProviderV2.ID.bolt ||
+    providerID === ProviderV2.ID.make("bolt-go") ||
     flags.exa ||
     flags.parallel
   )
@@ -114,7 +114,7 @@ export interface Interface {
   }) => Effect.Effect<Tool.Def[]>
 }
 
-export class Service extends Context.Service<Service, Interface>()("@opencode/ToolRegistry") {}
+export class Service extends Context.Service<Service, Interface>()("@bolt/ToolRegistry") {}
 
 const layer = Layer.effect(
   Service,

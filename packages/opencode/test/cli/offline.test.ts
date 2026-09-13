@@ -5,10 +5,10 @@ describe("offline mode", () => {
   test("classifies local destinations", () => {
     expect(Offline.local(new URL("http://localhost:4096/health"))).toBe(true)
     expect(Offline.local(new URL("http://127.0.0.1:3000"))).toBe(true)
-    expect(Offline.local(new URL("http://opencode.internal/session"))).toBe(true)
+    expect(Offline.local(new URL("http://bolt.internal/session"))).toBe(true)
     expect(Offline.local(new URL("http://[::1]:8080"))).toBe(true)
     expect(Offline.local(new URL("https://api.openai.com/v1/responses"))).toBe(false)
-    expect(Offline.local(new URL("https://models.opencode.ai"))).toBe(false)
+    expect(Offline.local(new URL("https://models.bolt.ai"))).toBe(false)
   })
 
   test("rejection message names the host and the flag", () => {

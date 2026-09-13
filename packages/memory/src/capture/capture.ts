@@ -1,4 +1,4 @@
-// Public entry point (`@opencode-ai/memory/capture`). Implementation lives in focused siblings;
+// Public entry point (`@bolt-ai/memory/capture`). Implementation lives in focused siblings;
 // this barrel keeps the import surface stable.
 export * from "./parse"
 export * from "./diff"

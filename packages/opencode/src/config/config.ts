@@ -1,31 +1,31 @@
-import { LayerNode } from "@opencode-ai/core/effect/layer-node"
-import { httpClient } from "@opencode-ai/core/effect/app-node-platform"
-import { serviceUse } from "@opencode-ai/core/effect/service-use"
+import { LayerNode } from "@bolt-ai/core/effect/layer-node"
+import { httpClient } from "@bolt-ai/core/effect/app-node-platform"
+import { serviceUse } from "@bolt-ai/core/effect/service-use"
 import path from "path"
 import { pathToFileURL } from "url"
 import os from "os"
 import { mergeDeep } from "remeda"
-import { Global } from "@opencode-ai/core/global"
+import { Global } from "@bolt-ai/core/global"
 import fsNode from "fs/promises"
-import { Flag } from "@opencode-ai/core/flag/flag"
+import { Flag } from "@bolt-ai/core/flag/flag"
 import { Auth } from "../auth"
 import { Env } from "../env"
 import { applyEdits, modify } from "jsonc-parser"
-import { InstallationLocal, InstallationVersion } from "@opencode-ai/core/installation/version"
+import { InstallationLocal, InstallationVersion } from "@bolt-ai/core/installation/version"
 import { existsSync } from "fs"
 import { Account } from "@/account/account"
 import { isRecord } from "@/util/record"
-import type { ConsoleState } from "@opencode-ai/core/v1/config/console-state"
-import { FSUtil } from "@opencode-ai/core/fs-util"
+import type { ConsoleState } from "@bolt-ai/core/v1/config/console-state"
+import { FSUtil } from "@bolt-ai/core/fs-util"
 import { InstanceState } from "@/effect/instance-state"
 import { Context, Duration, Effect, Exit, Fiber, Layer, Option, Schema } from "effect"
 import { FetchHttpClient, HttpClient, HttpClientRequest } from "effect/unstable/http"
-import { EffectFlock } from "@opencode-ai/core/util/effect-flock"
+import { EffectFlock } from "@bolt-ai/core/util/effect-flock"
 import { containsPath, type InstanceContext } from "../project/instance-context"
-import { ConfigV1 } from "@opencode-ai/core/v1/config/config"
-import { InvalidError, RemoteAuthError } from "@opencode-ai/core/v1/config/error"
-import { ConfigPermissionV1 } from "@opencode-ai/core/v1/config/permission"
-import { ConfigPluginV1 } from "@opencode-ai/core/v1/config/plugin"
+import { ConfigV1 } from "@bolt-ai/core/v1/config/config"
+import { InvalidError, RemoteAuthError } from "@bolt-ai/core/v1/config/error"
+import { ConfigPermissionV1 } from "@bolt-ai/core/v1/config/permission"
+import { ConfigPluginV1 } from "@bolt-ai/core/v1/config/plugin"
 import { CompatAgent } from "@/compat/agent"
 import { CompatCommand } from "@/compat/command"
 import { CompatMCP } from "@/compat/mcp"
@@ -39,7 +39,7 @@ import { ConfigPaths } from "./paths"
 import { ConfigPlugin } from "./plugin"
 import { ConfigVariable } from "./variable"
 import { ConfigV2Compat } from "./v2-compat"
-import { Npm } from "@opencode-ai/core/npm"
+import { Npm } from "@bolt-ai/core/npm"
 import { withTransientReadRetry } from "@/util/effect-http-client"
 
 // Custom merge function that concatenates array fields instead of replacing them
@@ -143,12 +143,12 @@ export interface Interface {
   readonly waitForDependencies: () => Effect.Effect<void>
 }
 
-export class Service extends Context.Service<Service, Interface>()("@opencode/Config") {}
+export class Service extends Context.Service<Service, Interface>()("@bolt/Config") {}
 
 export const use = serviceUse(Service)
 
 export function globalConfigFile() {
-  const candidates = ["bolt.jsonc", "bolt.json", "opencode.jsonc", "opencode.json", "config.json"].map((file) =>
+  const candidates = ["bolt.jsonc", "bolt.json", "bolt.jsonc", "bolt.json", "config.json"].map((file) =>
     path.join(Global.Path.config, file),
   )
   for (const file of candidates) {
@@ -253,8 +253,8 @@ const layer = Layer.effect(
 
       yield* Effect.promise(() => resolveLoadedPlugins(data, options.path))
       if (!data.$schema) {
-        data.$schema = "https://opencode.ai/config.json"
-        const updated = text.replace(/^\s*\{/, '{\n  "$schema": "https://opencode.ai/config.json",')
+        data.$schema = "https://bolt.ai/config.json"
+        const updated = text.replace(/^\s*\{/, '{\n  "$schema": "https://bolt.ai/config.json",')
         yield* fs.writeFileString(options.path, updated).pipe(Effect.catch(() => Effect.void))
       }
       return data
@@ -271,17 +271,17 @@ const layer = Layer.effect(
       let result: Info = {}
       // Seed the default global config with the schema for editor completion, but avoid writing when the user
       // explicitly routes config through env-provided paths or content.
-      if (!Flag.OPENCODE_CONFIG && !Flag.OPENCODE_CONFIG_DIR && !Flag.OPENCODE_CONFIG_CONTENT) {
+      if (!Flag.BOLT_CONFIG && !Flag.BOLT_CONFIG_DIR && !Flag.BOLT_CONFIG_CONTENT) {
         const file = globalConfigFile()
         if (!existsSync(file)) {
           yield* fs
-            .writeWithDirs(file, JSON.stringify({ $schema: "https://opencode.ai/config.json" }, null, 2))
+            .writeWithDirs(file, JSON.stringify({ $schema: "https://bolt.ai/config.json" }, null, 2))
             .pipe(Effect.catch(() => Effect.void))
         }
       }
       result = mergeConfig(result, yield* loadFile(path.join(Global.Path.config, "config.json"), env))
-      result = mergeConfig(result, yield* loadFile(path.join(Global.Path.config, "opencode.json"), env))
-      result = mergeConfig(result, yield* loadFile(path.join(Global.Path.config, "opencode.jsonc"), env))
+      result = mergeConfig(result, yield* loadFile(path.join(Global.Path.config, "bolt.json"), env))
+      result = mergeConfig(result, yield* loadFile(path.join(Global.Path.config, "bolt.jsonc"), env))
       // bolt configs load last so they win over legacy opencode configs
       result = mergeConfig(result, yield* loadFile(path.join(Global.Path.config, "bolt.json"), env))
       result = mergeConfig(result, yield* loadFile(path.join(Global.Path.config, "bolt.jsonc"), env))
@@ -293,7 +293,7 @@ const layer = Layer.effect(
             .then(async (mod) => {
               const { provider, model, ...rest } = mod.default
               if (provider && model) result.model = `${provider}/${model}`
-              result["$schema"] = "https://opencode.ai/config.json"
+              result["$schema"] = "https://bolt.ai/config.json"
               result = mergeConfig(result, rest)
               await fsNode.writeFile(path.join(Global.Path.config, "config.json"), JSON.stringify(result, null, 2))
               await fsNode.unlink(legacy)
@@ -350,7 +350,7 @@ const layer = Layer.effect(
 
         const pluginScopeForSource = Effect.fnUntraced(function* (source: string) {
           if (source.startsWith("http://") || source.startsWith("https://")) return "global"
-          if (source === "OPENCODE_CONFIG_CONTENT") return "local"
+          if (source === "BOLT_CONFIG_CONTENT") return "local"
           if (containsPath(source, ctx)) return "local"
           return "global"
         })
@@ -409,7 +409,7 @@ const layer = Layer.effect(
                 })
               : {}
             const remoteConfig = mergeConfig(isRecord(wellknown.config) ? wellknown.config : {}, fetchedConfig)
-            if (!remoteConfig.$schema) remoteConfig.$schema = "https://opencode.ai/config.json"
+            if (!remoteConfig.$schema) remoteConfig.$schema = "https://bolt.ai/config.json"
             const source = wellknownURL
             const next = yield* loadConfig(
               JSON.stringify(remoteConfig),
@@ -427,13 +427,13 @@ const layer = Layer.effect(
         const global = Object.keys(authEnv).length ? yield* loadGlobal(authEnv) : yield* getGlobal()
         yield* merge(Global.Path.config, global, "global")
 
-        if (Flag.OPENCODE_CONFIG) {
-          yield* merge(Flag.OPENCODE_CONFIG, yield* loadFile(Flag.OPENCODE_CONFIG, authEnv))
-          yield* Effect.logDebug("loaded custom config", { path: Flag.OPENCODE_CONFIG })
+        if (Flag.BOLT_CONFIG) {
+          yield* merge(Flag.BOLT_CONFIG, yield* loadFile(Flag.BOLT_CONFIG, authEnv))
+          yield* Effect.logDebug("loaded custom config", { path: Flag.BOLT_CONFIG })
         }
 
-        if (!Flag.OPENCODE_DISABLE_PROJECT_CONFIG) {
-          for (const name of ["opencode", "bolt"]) {
+        if (!Flag.BOLT_DISABLE_PROJECT_CONFIG) {
+          for (const name of ["bolt", "bolt"]) {
             for (const file of yield* ConfigPaths.files(name, ctx.directory, ctx.worktree).pipe(Effect.orDie)) {
               yield* merge(file, yield* loadFile(file, authEnv), "local")
             }
@@ -446,15 +446,15 @@ const layer = Layer.effect(
 
         const directories = yield* ConfigPaths.directories(ctx.directory, ctx.worktree)
 
-        if (Flag.OPENCODE_CONFIG_DIR) {
-          yield* Effect.logDebug("loading config from OPENCODE_CONFIG_DIR", { path: Flag.OPENCODE_CONFIG_DIR })
+        if (Flag.BOLT_CONFIG_DIR) {
+          yield* Effect.logDebug("loading config from BOLT_CONFIG_DIR", { path: Flag.BOLT_CONFIG_DIR })
         }
 
         const deps: Fiber.Fiber<void>[] = []
 
         for (const dir of directories) {
-          if (dir.endsWith(".bolt") || dir.endsWith(".opencode") || dir === Flag.OPENCODE_CONFIG_DIR) {
-            for (const file of ["opencode.json", "opencode.jsonc", "bolt.json", "bolt.jsonc"]) {
+          if (dir.endsWith(".bolt") || dir.endsWith(".bolt") || dir === Flag.BOLT_CONFIG_DIR) {
+            for (const file of ["bolt.json", "bolt.jsonc", "bolt.json", "bolt.jsonc"]) {
               const source = path.join(dir, file)
               yield* Effect.logDebug(`loading config from ${source}`)
               yield* merge(source, yield* loadFile(source, authEnv))
@@ -470,7 +470,7 @@ const layer = Layer.effect(
             .install(dir, {
               add: [
                 {
-                  name: "@opencode-ai/plugin",
+                  name: "@bolt-ai/plugin",
                   version: InstallationLocal ? undefined : InstallationVersion,
                 },
               ],
@@ -505,20 +505,20 @@ const layer = Layer.effect(
           }
           result.command = mergeDeep(result.command ?? {}, commands)
           result.agent = mergeDeep(result.agent ?? {}, agents)
-          // Auto-discovered plugins under `.opencode/plugin(s)` are already local files, so ConfigPlugin.load
+          // Auto-discovered plugins under `.bolt/plugin(s)` are already local files, so ConfigPlugin.load
           // returns normalized Specs and we only need to attach origin metadata here.
           const list = yield* Effect.promise(() => ConfigPlugin.load(dir))
           yield* mergePluginOrigins(dir, list)
         }
 
-        if (process.env.OPENCODE_CONFIG_CONTENT) {
-          const source = "OPENCODE_CONFIG_CONTENT"
-          const next = yield* loadConfig(process.env.OPENCODE_CONFIG_CONTENT, {
+        if (process.env.BOLT_CONFIG_CONTENT) {
+          const source = "BOLT_CONFIG_CONTENT"
+          const next = yield* loadConfig(process.env.BOLT_CONFIG_CONTENT, {
             dir: ctx.directory,
             source,
           })
           yield* merge(source, next, "local")
-          yield* Effect.logDebug("loaded custom config from OPENCODE_CONFIG_CONTENT")
+          yield* Effect.logDebug("loaded custom config from BOLT_CONFIG_CONTENT")
         }
 
         const activeAccount = Option.getOrUndefined(
@@ -534,8 +534,8 @@ const layer = Layer.effect(
               { concurrency: 2 },
             )
             if (Option.isSome(tokenOpt)) {
-              process.env["OPENCODE_CONSOLE_TOKEN"] = tokenOpt.value
-              yield* env.set("OPENCODE_CONSOLE_TOKEN", tokenOpt.value)
+              process.env["BOLT_CONSOLE_TOKEN"] = tokenOpt.value
+              yield* env.set("BOLT_CONSOLE_TOKEN", tokenOpt.value)
             }
 
             if (Option.isSome(configOpt)) {
@@ -560,10 +560,10 @@ const layer = Layer.effect(
         }
 
         // A profile is a named partial config merged over everything file-based once selected via
-        // --profile or OPENCODE_PROFILE; env overrides and managed settings below still win.
+        // --profile or BOLT_PROFILE; env overrides and managed settings below still win.
         // Profiles must be defined in regular (non-managed) config sources to be visible here.
-        if (Flag.OPENCODE_PROFILE) {
-          const name = Flag.OPENCODE_PROFILE
+        if (Flag.BOLT_PROFILE) {
+          const name = Flag.BOLT_PROFILE
           const profiles = result.profile ?? {}
           const selected = profiles[name]
           if (selected === undefined) {
@@ -601,7 +601,7 @@ const layer = Layer.effect(
 
         const managedDir = ConfigManaged.managedConfigDir()
         if (existsSync(managedDir)) {
-          for (const file of ["opencode.json", "opencode.jsonc"]) {
+          for (const file of ["bolt.json", "bolt.jsonc"]) {
             const source = path.join(managedDir, file)
             yield* merge(source, yield* loadFile(source), "global")
           }
@@ -627,11 +627,11 @@ const layer = Layer.effect(
           })
         }
 
-        if (Flag.OPENCODE_PERMISSION) {
+        if (Flag.BOLT_PERMISSION) {
           try {
-            result.permission = mergeDeep(result.permission ?? {}, JSON.parse(Flag.OPENCODE_PERMISSION))
+            result.permission = mergeDeep(result.permission ?? {}, JSON.parse(Flag.BOLT_PERMISSION))
           } catch (err) {
-            yield* Effect.logWarning("OPENCODE_PERMISSION contains invalid JSON, skipping", { err })
+            yield* Effect.logWarning("BOLT_PERMISSION contains invalid JSON, skipping", { err })
           }
         }
 
@@ -661,10 +661,10 @@ const layer = Layer.effect(
           result.share = "auto"
         }
 
-        if (Flag.OPENCODE_DISABLE_AUTOCOMPACT) {
+        if (Flag.BOLT_DISABLE_AUTOCOMPACT) {
           result.compaction = { ...result.compaction, auto: false }
         }
-        if (Flag.OPENCODE_DISABLE_PRUNE) {
+        if (Flag.BOLT_DISABLE_PRUNE) {
           result.compaction = { ...result.compaction, prune: false }
         }
 
@@ -672,7 +672,7 @@ const layer = Layer.effect(
         // so explicit bolt/opencode entries always win; the gates themselves live in the
         // merged config. MCP is opt-in only: imported servers execute commands defined
         // in repository files.
-        if (!Flag.OPENCODE_DISABLE_PROJECT_CONFIG) {
+        if (!Flag.BOLT_DISABLE_PROJECT_CONFIG) {
           const compat = CompatSettings.settings(result.compat)
           if (compat.mcp) {
             const found = yield* CompatMCP.discover(fs, {

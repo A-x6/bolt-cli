@@ -122,7 +122,7 @@ export async function seed(directory: string, preset?: Preset) {
     await Bun.write(target, content)
     created.push(target)
   }
-  const config = { $schema: "https://opencode.ai/config.json", ...(preset?.config ?? {}) }
+  const config = { $schema: "https://bolt.ai/config.json", ...(preset?.config ?? {}) }
   await write(path.join(directory, "bolt.jsonc"), JSON.stringify(config, null, 2) + "\n")
   for (const [name, content] of Object.entries(preset?.agents ?? {})) {
     await write(path.join(directory, ".bolt", "agent", `${name}.md`), content)

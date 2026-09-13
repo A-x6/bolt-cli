@@ -2,9 +2,9 @@ export * as Crash from "./crash"
 
 import fs from "node:fs"
 import path from "node:path"
-import { Global } from "@opencode-ai/core/global"
-import { InstallationVersion, InstallationChannel } from "@opencode-ai/core/installation/version"
-import { Redact } from "@opencode-ai/core/redact"
+import { Global } from "@bolt-ai/core/global"
+import { InstallationVersion, InstallationChannel } from "@bolt-ai/core/installation/version"
+import { Redact } from "@bolt-ai/core/redact"
 import { errorMessage } from "@/util/error"
 
 // Crash reports: written locally on unexpected CLI failures, with the same

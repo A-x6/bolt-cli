@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "@opencode-ai/sdk-next",
+  "name": "@bolt-ai/sdk-next",
   "private": true,
   "type": "module",
   "license": "AGPL-3.0-only",
@@ -12,9 +12,9 @@
     "typecheck": "tsgo --noEmit"
   },
   "dependencies": {
-    "@opencode-ai/client": "workspace:*",
-    "@opencode-ai/core": "workspace:*",
-    "@opencode-ai/server": "workspace:*",
+    "@bolt-ai/client": "workspace:*",
+    "@bolt-ai/core": "workspace:*",
+    "@bolt-ai/server": "workspace:*",
     "effect": "catalog:"
   },
   "devDependencies": {

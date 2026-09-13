@@ -22,8 +22,8 @@ export type Gateway = CatalogGateway | CustomGateway
 export const gateways: Gateway[] = [
   {
     kind: "catalog",
-    id: "opencode",
-    name: "OpenCode Zen",
+    id: "bolt",
+    name: "Bolt Zen",
   },
   {
     kind: "catalog",

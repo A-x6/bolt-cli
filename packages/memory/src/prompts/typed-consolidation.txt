@@ -86,7 +86,7 @@ Rules:
 - Do not include commentary outside JSON.
 
 Examples:
-- User says tests run from packages/opencode, not repo root: output append_correction with key "test_command".
+- User says tests run from packages/bolt, not repo root: output append_correction with key "test_command".
 - Assistant establishes that project memory is project-only and stored under the global repo memory folder: output upsert_project_decision.
 - User or assistant establishes a standing project requirement such as "project memory should stay project-only": output upsert_project_constraint.
 - Assistant lists setup commands such as bun install or bun run dev: output upsert_environment_fact with section "Commands".

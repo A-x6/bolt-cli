@@ -1,6 +1,6 @@
 ---
 title: Введение
-description: Начните работу с opencode.
+description: Начните работу с bolt.
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components"
@@ -34,7 +34,7 @@ export const console = config.console
 Самый простой способ установить opencode — через сценарий установки.
 
 ```bash
-curl -fsSL https://opencode.ai/install | bash
+curl -fsSL https://bolt.ai/install | bash
 ```
 
 Вы также можете установить его с помощью следующих команд:
@@ -45,28 +45,28 @@ curl -fsSL https://opencode.ai/install | bash
 
       <TabItem label="npm">
       ```bash
-      npm install -g opencode-ai
+      npm install -g bolt-ai
       ```
 
           </TabItem>
 
         <TabItem label="Bun">
         ```bash
-        bun install -g opencode-ai
+        bun install -g bolt-ai
         ```
 
           </TabItem>
 
         <TabItem label="pnpm">
         ```bash
-        pnpm install -g opencode-ai
+        pnpm install -g bolt-ai
         ```
 
           </TabItem>
 
         <TabItem label="Yarn">
         ```bash
-        yarn global add opencode-ai
+        yarn global add bolt-ai
         ```
 
       </TabItem>
@@ -91,7 +91,7 @@ curl -fsSL https://opencode.ai/install | bash
 #### Windows
 
 :::tip[Рекомендуется: используйте WSL]
-Для наилучшей работы в Windows мы рекомендуем использовать [Подсистема Windows для Linux (WSL)](/docs/windows-wsl). Он обеспечивает лучшую производительность и полную совместимость с функциями opencode.
+Для наилучшей работы в Windows мы рекомендуем использовать [Подсистема Windows для Linux (WSL)](/docs/windows-wsl). Он обеспечивает лучшую производительность и полную совместимость с функциями bolt.
 :::
 
 - **Используя Chocolatey**
@@ -109,7 +109,7 @@ curl -fsSL https://opencode.ai/install | bash
 - **Использование NPM**
 
   ```bash
-  npm install -g opencode-ai
+  npm install -g bolt-ai
   ```
 
 - **Использование Mise**
@@ -134,10 +134,10 @@ curl -fsSL https://opencode.ai/install | bash
 
 С opencode вы можете использовать любого поставщика LLM, настроив его ключи API.
 
-Если вы новичок в использовании поставщиков LLM, мы рекомендуем использовать [OpenCode Zen](/docs/zen).
-Это тщательно подобранный список моделей, протестированных и проверенных opencode.
+Если вы новичок в использовании поставщиков LLM, мы рекомендуем использовать [Bolt Zen](/docs/zen).
+Это тщательно подобранный список моделей, протестированных и проверенных bolt.
 
-1. Запустите команду `/connect` в TUI, выберите opencode и перейдите по адресу [opencode.ai/auth](https://opencode.ai/auth).
+1. Запустите команду `/connect` в TUI, выберите opencode и перейдите по адресу [bolt.ai/auth](https://bolt.ai/auth).
 
    ```txt
    /connect
@@ -167,7 +167,7 @@ curl -fsSL https://opencode.ai/install | bash
 cd /path/to/project
 ```
 
-И запустите opencode.
+И запустите bolt.
 
 ```bash
 opencode
@@ -332,7 +332,7 @@ Can you refactor the function in @packages/functions/src/api/index.ts?
 
 ## Общий доступ
 
-Разговорами, которые вы ведете с opencode, можно [поделиться с вашей
+Разговорами, которые вы ведете с bolt, можно [поделиться с вашей
 командой](/docs/share).
 
 ```bash frame="none"
@@ -345,12 +345,12 @@ Can you refactor the function in @packages/functions/src/api/index.ts?
 По умолчанию общий доступ к беседам не предоставляется.
 :::
 
-Вот [пример диалога](https://opencode.ai/s/4XP1fce5) с opencode.
+Вот [пример диалога](https://bolt.ai/s/4XP1fce5) с bolt.
 
 ---
 
 ## Настроить
 
-И все! Теперь вы профессионал в использовании opencode.
+И все! Теперь вы профессионал в использовании bolt.
 
 Чтобы создать свою собственную, мы рекомендуем [выбрать тему](/docs/themes), [настроить привязки клавиш](/docs/keybinds), [настроить средства форматирования кода](/docs/formatters), [создать собственные команды](/docs/commands) или поиграться с файлом [opencode config](/docs/config).

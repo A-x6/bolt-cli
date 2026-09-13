@@ -14,7 +14,7 @@
   node_modules ? callPackage ./node-modules.nix { },
 }:
 stdenvNoCC.mkDerivation (finalAttrs: {
-  pname = "opencode";
+  pname = "bolt";
   inherit (node_modules) version src;
   inherit node_modules;
 
@@ -45,9 +45,9 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   '';
 
   env.MODELS_DEV_API_JSON = "${models-dev}/dist/_api.json";
-  env.OPENCODE_DISABLE_MODELS_FETCH = true;
-  env.OPENCODE_VERSION = finalAttrs.version;
-  env.OPENCODE_CHANNEL = "prod";
+  env.BOLT_DISABLE_MODELS_FETCH = true;
+  env.BOLT_VERSION = finalAttrs.version;
+  env.BOLT_CHANNEL = "prod";
 
   buildPhase = ''
     runHook preBuild
@@ -62,10 +62,10 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   installPhase = ''
     runHook preInstall
 
-    install -Dm755 dist/opencode-*/bin/opencode $out/bin/opencode
-    install -Dm644 schema.json $out/share/opencode/schema.json
+    install -Dm755 dist/bolt-*/bin/bolt $out/bin/bolt
+    install -Dm644 schema.json $out/share/bolt/schema.json
 
-    wrapProgram $out/bin/opencode \
+    wrapProgram $out/bin/bolt \
       --prefix PATH : ${
         lib.makeBinPath (
           [
@@ -81,9 +81,9 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
   postInstall = lib.optionalString (stdenvNoCC.buildPlatform.canExecute stdenvNoCC.hostPlatform) ''
     # trick yargs into also generating zsh completions
-    installShellCompletion --cmd opencode \
-      --bash <($out/bin/opencode completion) \
-      --zsh <(SHELL=/bin/zsh $out/bin/opencode completion)
+    installShellCompletion --cmd bolt \
+      --bash <($out/bin/bolt completion) \
+      --zsh <(SHELL=/bin/zsh $out/bin/bolt completion)
   '';
 
   nativeInstallCheckInputs = [
@@ -91,19 +91,19 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     writableTmpDirAsHomeHook
   ];
   doInstallCheck = true;
-  versionCheckKeepEnvironment = [ "HOME" "OPENCODE_DISABLE_MODELS_FETCH" ];
+  versionCheckKeepEnvironment = [ "HOME" "BOLT_DISABLE_MODELS_FETCH" ];
   versionCheckProgramArg = "--version";
 
   passthru = {
-    jsonschema = "${placeholder "out"}/share/opencode/schema.json";
+    jsonschema = "${placeholder "out"}/share/bolt/schema.json";
     env = finalAttrs.env;
   };
 
   meta = {
     description = "The open source coding agent";
-    homepage = "https://opencode.ai";
+    homepage = "https://bolt.ai";
     license = lib.licenses.mit;
-    mainProgram = "opencode";
+    mainProgram = "bolt";
     inherit (node_modules.meta) platforms;
   };
 })

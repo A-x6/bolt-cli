@@ -2,9 +2,9 @@ import { describe, expect, test } from "bun:test"
 import { Effect } from "effect"
 import { ProviderTransform } from "@/provider/transform"
 import { LLMRequestPrep } from "@/session/llm/request"
-import { ProviderV2 } from "@opencode-ai/core/provider"
-import { ModelV2 } from "@opencode-ai/core/model"
-import { ModelsDev } from "@opencode-ai/core/models-dev"
+import { ProviderV2 } from "@bolt-ai/core/provider"
+import { ModelV2 } from "@bolt-ai/core/model"
+import { ModelsDev } from "@bolt-ai/core/models-dev"
 import { generateText, jsonSchema, type ModelMessage } from "ai"
 import { createAmazonBedrock, type AmazonBedrockLanguageModelOptions } from "@ai-sdk/amazon-bedrock"
 import { createAnthropic } from "@ai-sdk/anthropic"
@@ -2040,7 +2040,7 @@ describe("ProviderTransform.schema - openai supported schema subset", () => {
   })
 
   test.each([
-    ["opencode", "@ai-sdk/openai"],
+    ["bolt", "@ai-sdk/openai"],
     ["custom-openai-compatible", "@ai-sdk/openai"],
     ["azure", "@ai-sdk/azure"],
   ])("sanitizes %s models using %s", (providerID, npm) => {
@@ -2439,7 +2439,7 @@ describe("ProviderTransform.message - surrogate sanitization", () => {
         content: [
           { type: "text", text: text("assistant text") },
           { type: "reasoning", text: text("assistant reasoning") },
-          { type: "tool-call", toolCallId: "call-1", toolName: "Read", input: { filePath: ".opencode/tool/emoji.ts" } },
+          { type: "tool-call", toolCallId: "call-1", toolName: "Read", input: { filePath: ".bolt/tool/emoji.ts" } },
           {
             type: "tool-result",
             toolCallId: "call-2",
@@ -3293,10 +3293,10 @@ describe("ProviderTransform.message - strip openai metadata when store=false", (
   test("preserves metadata using providerID key when store is false", () => {
     const opencodeModel = {
       ...openaiModel,
-      providerID: "opencode",
+      providerID: "bolt",
       api: {
-        id: "opencode-test",
-        url: "https://api.opencode.ai",
+        id: "bolt-test",
+        url: "https://api.bolt.ai",
         npm: "@ai-sdk/openai-compatible",
       },
     }
@@ -3320,17 +3320,17 @@ describe("ProviderTransform.message - strip openai metadata when store=false", (
 
     const result = ProviderTransform.message(msgs, opencodeModel, { store: false }) as any[]
 
-    expect(result[0].content[0].providerOptions?.opencode?.itemId).toBe("msg_123")
-    expect(result[0].content[0].providerOptions?.opencode?.otherOption).toBe("value")
+    expect(result[0].content[0].providerOptions?.bolt?.itemId).toBe("msg_123")
+    expect(result[0].content[0].providerOptions?.bolt?.otherOption).toBe("value")
   })
 
   test("preserves itemId across all providerOptions keys", () => {
     const opencodeModel = {
       ...openaiModel,
-      providerID: "opencode",
+      providerID: "bolt",
       api: {
-        id: "opencode-test",
-        url: "https://api.opencode.ai",
+        id: "bolt-test",
+        url: "https://api.bolt.ai",
         npm: "@ai-sdk/openai-compatible",
       },
     }
@@ -3359,10 +3359,10 @@ describe("ProviderTransform.message - strip openai metadata when store=false", (
     const result = ProviderTransform.message(msgs, opencodeModel, { store: false }) as any[]
 
     expect(result[0].providerOptions?.openai?.itemId).toBe("msg_root")
-    expect(result[0].providerOptions?.opencode?.itemId).toBe("msg_opencode")
+    expect(result[0].providerOptions?.bolt?.itemId).toBe("msg_opencode")
     expect(result[0].providerOptions?.extra?.itemId).toBe("msg_extra")
     expect(result[0].content[0].providerOptions?.openai?.itemId).toBe("msg_openai_part")
-    expect(result[0].content[0].providerOptions?.opencode?.itemId).toBe("msg_opencode_part")
+    expect(result[0].content[0].providerOptions?.bolt?.itemId).toBe("msg_opencode_part")
     expect(result[0].content[0].providerOptions?.extra?.itemId).toBe("msg_extra_part")
   })
 
@@ -3848,8 +3848,8 @@ describe("ProviderTransform sampling defaults - DeepSeek", () => {
 
   test.each([
     ["deepseek", "deepseek-v4-flash"],
-    ["opencode", "deepseek-v4-flash"],
-    ["opencode-go", "deepseek-v4-flash"],
+    ["bolt", "deepseek-v4-flash"],
+    ["bolt-go", "deepseek-v4-flash"],
     ["openrouter", "deepseek/deepseek-v4-flash-0731"],
     ["ollama-cloud", "deepseek-v4-flash:0731"],
   ])("defaults top_p for %s/%s", (providerID, id) => {

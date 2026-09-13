@@ -1,7 +1,7 @@
 export * as ServerAuth from "./auth"
 
 import { ConfigService } from "@/effect/config-service"
-import { Flag } from "@opencode-ai/core/flag/flag"
+import { Flag } from "@bolt-ai/core/flag/flag"
 import { createHash, timingSafeEqual } from "node:crypto"
 import { Config as EffectConfig, Context, Option, Redacted } from "effect"
 
@@ -15,9 +15,9 @@ export type DecodedCredentials = {
   readonly password: Redacted.Redacted
 }
 
-export class Config extends ConfigService.Service<Config>()("@opencode/ServerAuthConfig", {
-  password: EffectConfig.string("OPENCODE_SERVER_PASSWORD").pipe(EffectConfig.option),
-  username: EffectConfig.string("OPENCODE_SERVER_USERNAME").pipe(EffectConfig.withDefault("opencode")),
+export class Config extends ConfigService.Service<Config>()("@bolt/ServerAuthConfig", {
+  password: EffectConfig.string("BOLT_SERVER_PASSWORD").pipe(EffectConfig.option),
+  username: EffectConfig.string("BOLT_SERVER_USERNAME").pipe(EffectConfig.withDefault("bolt")),
 }) {}
 
 export type Info = Context.Service.Shape<typeof Config>
@@ -44,10 +44,10 @@ function equals(a: string, b: string) {
 }
 
 export function header(credentials?: Credentials) {
-  const password = credentials?.password ?? Flag.OPENCODE_SERVER_PASSWORD
+  const password = credentials?.password ?? Flag.BOLT_SERVER_PASSWORD
   if (!password) return undefined
 
-  const username = credentials?.username ?? Flag.OPENCODE_SERVER_USERNAME ?? "opencode"
+  const username = credentials?.username ?? Flag.BOLT_SERVER_USERNAME ?? "bolt"
   return `Basic ${Buffer.from(`${username}:${password}`).toString("base64")}`
 }
 

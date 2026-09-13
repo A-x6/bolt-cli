@@ -37,7 +37,7 @@ export const WarmCommand = effectCmd({
     // Refreshing the models catalog populates the on-disk cache that prompt
     // assembly reads for model metadata; the TTL keeps repeat warms cheap.
     const modelsStart = performance.now()
-    const { ModelsDev } = yield* Effect.promise(() => import("@opencode-ai/core/models-dev"))
+    const { ModelsDev } = yield* Effect.promise(() => import("@bolt-ai/core/models-dev"))
     const models = yield* ModelsDev.Service
     yield* models.refresh()
     yield* models.get()

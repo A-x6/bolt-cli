@@ -45,11 +45,11 @@ opencode поставляется с несколькими встроенным
 
 ## Настройка
 
-Вы можете настроить форматтеры через раздел `formatter` в конфигурации opencode.
+Вы можете настроить форматтеры через раздел `formatter` в конфигурации bolt.
 
-```json title="opencode.json"
+```json title="bolt.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://bolt.ai/config.json",
   "formatter": {}
 }
 ```
@@ -71,18 +71,18 @@ opencode поставляется с несколькими встроенным
 
 Чтобы глобально отключить **все** средства форматирования, установите для `formatter` значение `false`:
 
-```json title="opencode.json" {3}
+```json title="bolt.json" {3}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://bolt.ai/config.json",
   "formatter": false
 }
 ```
 
 Чтобы отключить **конкретный** форматтер, установите для `disabled` значение `true`:
 
-```json title="opencode.json" {5}
+```json title="bolt.json" {5}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://bolt.ai/config.json",
   "formatter": {
     "prettier": {
       "disabled": true
@@ -97,9 +97,9 @@ opencode поставляется с несколькими встроенным
 
 Вы можете переопределить встроенные средства форматирования или добавить новые, указав команду, переменные среды и расширения файлов:
 
-```json title="opencode.json" {4-14}
+```json title="bolt.json" {4-14}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://bolt.ai/config.json",
   "formatter": {
     "prettier": {
       "command": ["npx", "prettier", "--write", "$FILE"],

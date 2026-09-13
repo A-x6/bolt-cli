@@ -5,8 +5,8 @@ import { SemanticRank } from "./semantic-rank"
 import DESCRIPTION from "./semantic-search.txt"
 import { InstanceState } from "@/effect/instance-state"
 import { assertExternalDirectoryEffect } from "./external-directory"
-import { FSUtil } from "@opencode-ai/core/fs-util"
-import { Ripgrep } from "@opencode-ai/core/ripgrep"
+import { FSUtil } from "@bolt-ai/core/fs-util"
+import { Ripgrep } from "@bolt-ai/core/ripgrep"
 
 const MAX_FILES = 4000
 const MAX_FILE_BYTES = 200_000

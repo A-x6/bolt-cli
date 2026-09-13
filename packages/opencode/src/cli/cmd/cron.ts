@@ -1,7 +1,7 @@
 import fs from "node:fs"
 import path from "node:path"
 import { Effect } from "effect"
-import { Global } from "@opencode-ai/core/global"
+import { Global } from "@bolt-ai/core/global"
 import { UI } from "../ui"
 import { effectCmd, fail } from "../effect-cmd"
 import { spawnJob } from "./jobs"

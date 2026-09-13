@@ -1,5 +1,5 @@
 import { afterEach, describe, expect } from "bun:test"
-import { LayerNode } from "@opencode-ai/core/effect/layer-node"
+import { LayerNode } from "@bolt-ai/core/effect/layer-node"
 import { Cause, Effect, Exit, Layer } from "effect"
 import { BackgroundJob } from "@/background/job"
 import {
@@ -13,8 +13,8 @@ import { disposeAllInstances, provideInstance, testInstanceStoreLayer, tmpdirSco
 import { Agent } from "../../src/agent/agent"
 import { Truncate } from "@/tool/truncate"
 import { SessionID, MessageID } from "../../src/session/schema"
-import { CrossSpawnSpawner } from "@opencode-ai/core/cross-spawn-spawner"
-import { FSUtil } from "@opencode-ai/core/fs-util"
+import { CrossSpawnSpawner } from "@bolt-ai/core/cross-spawn-spawner"
+import { FSUtil } from "@bolt-ai/core/fs-util"
 import { Plugin } from "../../src/plugin"
 import { testEffect } from "../lib/effect"
 import { Tool } from "@/tool/tool"

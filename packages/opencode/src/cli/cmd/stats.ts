@@ -4,7 +4,7 @@ import { Envelope } from "../envelope"
 import { Porcelain } from "../porcelain"
 import { Session } from "@/session/session"
 import { NotFoundError } from "@/storage/storage"
-import { Database } from "@opencode-ai/core/database/database"
+import { Database } from "@bolt-ai/core/database/database"
 import type { Project } from "@/project/project"
 
 interface SessionStats {
@@ -138,8 +138,8 @@ const aggregateSessionStats = Effect.fn("Cli.stats.aggregate")(function* (
   // graph at startup for unrelated commands.
   const { Session } = yield* Effect.promise(() => import("@/session/session"))
   const { NotFoundError } = yield* Effect.promise(() => import("@/storage/storage"))
-  const { Database } = yield* Effect.promise(() => import("@opencode-ai/core/database/database"))
-  const { SessionTable } = yield* Effect.promise(() => import("@opencode-ai/core/session/sql"))
+  const { Database } = yield* Effect.promise(() => import("@bolt-ai/core/database/database"))
+  const { SessionTable } = yield* Effect.promise(() => import("@bolt-ai/core/session/sql"))
   const database = yield* Database.Service
   const svc = yield* Session.Service
   const sessions = (yield* database.db.select().from(SessionTable).all().pipe(Effect.orDie)).map((row) =>

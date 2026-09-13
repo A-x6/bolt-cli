@@ -2,9 +2,9 @@ import { describe, expect, test } from "bun:test"
 import { pick, table } from "../../src/cli/cmd/worktree"
 
 const ROWS = [
-  { name: "alpha", directory: "/data/worktree/p1/alpha", branch: "opencode/alpha" },
+  { name: "alpha", directory: "/data/worktree/p1/alpha", branch: "bolt/alpha" },
   { name: "beta", directory: "/data/worktree/p1/beta" },
-  { name: "gamma", directory: "/data/worktree/p1/gamma", branch: "opencode/gamma" },
+  { name: "gamma", directory: "/data/worktree/p1/gamma", branch: "bolt/gamma" },
 ]
 
 describe("table", () => {
@@ -26,7 +26,7 @@ describe("pick", () => {
   })
 
   test("matches by branch", () => {
-    expect(pick(ROWS, "opencode/gamma")?.name).toBe("gamma")
+    expect(pick(ROWS, "bolt/gamma")?.name).toBe("gamma")
   })
 
   test("matches by directory", () => {
@@ -38,7 +38,7 @@ describe("pick", () => {
   })
 
   test("returns undefined when the key is ambiguous", () => {
-    const rows = [...ROWS, { name: "opencode/gamma", directory: "/elsewhere" }]
-    expect(pick(rows, "opencode/gamma")).toBeUndefined()
+    const rows = [...ROWS, { name: "bolt/gamma", directory: "/elsewhere" }]
+    expect(pick(rows, "bolt/gamma")).toBeUndefined()
   })
 })

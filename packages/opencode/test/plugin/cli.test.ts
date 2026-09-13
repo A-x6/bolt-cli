@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import type { Hooks } from "@opencode-ai/plugin"
+import type { Hooks } from "@bolt-ai/plugin"
 import { candidate, known, match } from "../../src/plugin/cli"
 
 describe("known", () => {

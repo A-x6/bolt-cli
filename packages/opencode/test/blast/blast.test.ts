@@ -34,7 +34,7 @@ describe("blast.kind", () => {
 
 describe("blast.pkg", () => {
   test("maps paths to workspace packages", () => {
-    expect(Blast.pkg("packages/opencode/src/index.ts")).toBe("opencode")
+    expect(Blast.pkg("packages/opencode/src/index.ts")).toBe("bolt")
     expect(Blast.pkg("packages/core/src/redact.ts")).toBe("core")
     expect(Blast.pkg("scripts/build.ts")).toBe("root")
   })
@@ -51,7 +51,7 @@ describe("blast.stem", () => {
   })
 
   test("skips src for top-level index files", () => {
-    expect(Blast.stem("packages/opencode/src/index.ts")).toBe("opencode")
+    expect(Blast.stem("packages/opencode/src/index.ts")).toBe("bolt")
   })
 })
 

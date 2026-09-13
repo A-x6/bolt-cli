@@ -5,7 +5,7 @@ export * as Offline from "./offline"
 // Loopback and in-process destinations stay allowed so local servers, the
 // daemon, and the internal fetch bridge keep working.
 
-const LOCAL = new Set(["localhost", "127.0.0.1", "[::1]", "::1", "0.0.0.0", "opencode.internal"])
+const LOCAL = new Set(["localhost", "127.0.0.1", "[::1]", "::1", "0.0.0.0", "bolt.internal"])
 
 export function local(url: URL) {
   return LOCAL.has(url.hostname)

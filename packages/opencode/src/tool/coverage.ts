@@ -2,8 +2,8 @@ import path from "path"
 import { Effect, Schema } from "effect"
 import * as Tool from "./tool"
 import { InstanceState } from "@/effect/instance-state"
-import { FSUtil } from "@opencode-ai/core/fs-util"
-import { Glob } from "@opencode-ai/core/util/glob"
+import { FSUtil } from "@bolt-ai/core/fs-util"
+import { Glob } from "@bolt-ai/core/util/glob"
 import DESCRIPTION from "./coverage.txt"
 
 const MATCH_LIMIT = 10

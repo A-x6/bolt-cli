@@ -12,7 +12,7 @@ import { UpgradeCommand } from "./cli/cmd/upgrade"
 import { UninstallCommand } from "./cli/cmd/uninstall"
 import { ModelsCommand } from "./cli/cmd/models"
 import { UI } from "./cli/ui"
-import { InstallationVersion } from "@opencode-ai/core/installation/version"
+import { InstallationVersion } from "@bolt-ai/core/installation/version"
 import { FormatError } from "./cli/error"
 import { ServeCommand } from "./cli/cmd/serve"
 import { DaemonCommand } from "./cli/cmd/daemon"
@@ -265,18 +265,18 @@ const cli = yargs(args)
   .middleware(async (opts) => {
     if (opts.quiet) UI.setQuiet(true)
     if (opts.verbose) {
-      process.env.OPENCODE_PRINT_LOGS = "1"
-      process.env.OPENCODE_LOG_LEVEL = "DEBUG"
+      process.env.BOLT_PRINT_LOGS = "1"
+      process.env.BOLT_LOG_LEVEL = "DEBUG"
     }
-    if (opts.printLogs) process.env.OPENCODE_PRINT_LOGS = "1"
-    if (opts.logLevel) process.env.OPENCODE_LOG_LEVEL = opts.logLevel
-    if (opts.profile) process.env.OPENCODE_PROFILE = opts.profile
+    if (opts.printLogs) process.env.BOLT_PRINT_LOGS = "1"
+    if (opts.logLevel) process.env.BOLT_LOG_LEVEL = opts.logLevel
+    if (opts.profile) process.env.BOLT_PROFILE = opts.profile
     if (opts.pure) {
-      process.env.OPENCODE_PURE = "1"
+      process.env.BOLT_PURE = "1"
     }
-    if (opts.offline || process.env.OPENCODE_OFFLINE) {
+    if (opts.offline || process.env.BOLT_OFFLINE) {
       // The env var propagates offline mode to spawned bolt subprocesses.
-      process.env.OPENCODE_OFFLINE = "1"
+      process.env.BOLT_OFFLINE = "1"
       const { Offline } = await import("./cli/offline")
       Offline.enable()
     }
@@ -284,8 +284,8 @@ const cli = yargs(args)
     Heap.start()
 
     process.env.AGENT = "1"
-    process.env.OPENCODE = "1"
-    process.env.OPENCODE_PID = String(process.pid)
+    process.env.BOLT = "1"
+    process.env.BOLT_PID = String(process.pid)
   })
   .usage("")
   .completion("completion", "generate shell completion script (pass 'fish' for fish)")

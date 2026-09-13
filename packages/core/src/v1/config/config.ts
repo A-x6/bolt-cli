@@ -40,7 +40,7 @@ export const Info = Schema.Struct({
     description: "Server configuration for opencode serve and web commands",
   }),
   command: Schema.optional(Schema.Record(Schema.String, ConfigCommandV1.Info)).annotate({
-    description: "Command configuration, see https://opencode.ai/docs/commands",
+    description: "Command configuration, see https://bolt.ai/docs/commands",
   }),
   skills: Schema.optional(ConfigSkillsV1.Info).annotate({ description: "Additional skill folder paths" }),
   references: Schema.optional(ConfigReference.Info).annotate({
@@ -80,7 +80,7 @@ export const Info = Schema.Struct({
   }),
   profile: Schema.optional(Schema.Record(Schema.String, Schema.Json)).annotate({
     description:
-      "Named configuration profiles selected with --profile or OPENCODE_PROFILE. Each profile is a partial config object (model, provider, mcp, etc.) merged over all file-based config when active",
+      "Named configuration profiles selected with --profile or BOLT_PROFILE. Each profile is a partial config object (model, provider, mcp, etc.) merged over all file-based config when active",
   }),
   alias: Schema.optional(Schema.Record(Schema.String, Schema.String)).annotate({
     description:
@@ -115,7 +115,7 @@ export const Info = Schema.Struct({
       }),
       [Schema.Record(Schema.String, ConfigAgentV1.Info)],
     ),
-  ).annotate({ description: "Agent configuration, see https://opencode.ai/docs/agents" }),
+  ).annotate({ description: "Agent configuration, see https://bolt.ai/docs/agents" }),
   provider: Schema.optional(Schema.Record(Schema.String, ConfigProviderV1.Info)).annotate({
     description: "Custom provider configurations and model overrides",
   }),

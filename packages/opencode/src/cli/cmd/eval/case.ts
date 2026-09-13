@@ -1,6 +1,6 @@
 import path from "path"
 import { Schema } from "effect"
-import { Glob } from "@opencode-ai/core/util/glob"
+import { Glob } from "@bolt-ai/core/util/glob"
 import { Filesystem } from "@/util/filesystem"
 import { ConfigMarkdown } from "@/config/markdown"
 import { ConfigParse } from "@/config/parse"

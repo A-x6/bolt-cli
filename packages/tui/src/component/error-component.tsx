@@ -3,7 +3,7 @@ import { useKeyboard, useTerminalDimensions } from "@opentui/solid"
 import { createSignal, For, Show } from "solid-js"
 import { getScrollAcceleration } from "../util/scroll"
 import { useClipboard } from "../context/clipboard"
-import { InstallationVersion } from "@opencode-ai/core/installation/version"
+import { InstallationVersion } from "@bolt-ai/core/installation/version"
 import { useExit } from "../context/exit"
 import { describeOS, describeTerminal } from "../util/system"
 
@@ -206,7 +206,7 @@ function buildIssueURL(message: string, stack: string) {
   // the contributing-guidelines compliance check, which pushes for system info.
   const url = new URL("https://github.com/bolt-builder/bolt-cli/issues/new?template=bug-report.yml")
   url.searchParams.set("title", `TUI crash: ${message}`)
-  url.searchParams.set("opencode-version", InstallationVersion)
+  url.searchParams.set("bolt-version", InstallationVersion)
   url.searchParams.set("os", describeOS())
   url.searchParams.set("terminal", describeTerminal())
   url.searchParams.set(

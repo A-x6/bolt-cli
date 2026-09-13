@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import { ConfigV1 } from "@opencode-ai/core/v1/config/config"
+import { ConfigV1 } from "@bolt-ai/core/v1/config/config"
 import { ConfigParse } from "../../src/config/parse"
 
 type Issue = { code?: string; keys?: string[]; path?: string[]; message: string }

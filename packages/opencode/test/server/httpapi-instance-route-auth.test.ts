@@ -5,7 +5,7 @@ import { EventPaths } from "../../src/server/routes/instance/httpapi/groups/even
 import { PtyPaths } from "../../src/server/routes/instance/httpapi/groups/pty"
 import { HttpApiApp } from "../../src/server/routes/instance/httpapi/server"
 import { ServerAuth } from "../../src/server/auth"
-import { PtyID } from "@opencode-ai/core/pty/schema"
+import { PtyID } from "@bolt-ai/core/pty/schema"
 import { resetDatabase } from "../fixture/db"
 import { disposeAllInstances, tmpdir } from "../fixture/fixture"
 
@@ -15,8 +15,8 @@ function app(input: { password?: string; username?: string }) {
       Layer.provide(
         ConfigProvider.layer(
           ConfigProvider.fromUnknown({
-            OPENCODE_SERVER_PASSWORD: input.password,
-            OPENCODE_SERVER_USERNAME: input.username,
+            BOLT_SERVER_PASSWORD: input.password,
+            BOLT_SERVER_USERNAME: input.username,
           }),
         ),
       ),
@@ -56,7 +56,7 @@ describe("HttpApi instance route authorization", () => {
     expect(missing.status).toBe(401)
 
     const authed = await server.request(EventPaths.event, {
-      headers: { ...headers, authorization: basic("opencode", "secret") },
+      headers: { ...headers, authorization: basic("bolt", "secret") },
     })
     await cancelBody(authed)
     expect(authed.status).toBe(200)
@@ -73,7 +73,7 @@ describe("HttpApi instance route authorization", () => {
     expect(missing.status).toBe(401)
 
     const authed = await server.request(route, {
-      headers: { ...headers, authorization: basic("opencode", "secret") },
+      headers: { ...headers, authorization: basic("bolt", "secret") },
     })
     await cancelBody(authed)
     expect(authed.status).toBe(404)

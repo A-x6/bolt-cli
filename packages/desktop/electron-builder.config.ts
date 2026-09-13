@@ -39,7 +39,7 @@ async function signWindows(configuration: { path: string }) {
 const identity = !process.env.CSC_LINK && process.env.CSC_IDENTITY_AUTO_DISCOVERY === "false" ? "-" : undefined
 
 const channel = (() => {
-  const raw = process.env.OPENCODE_CHANNEL
+  const raw = process.env.BOLT_CHANNEL
   if (raw === "dev" || raw === "beta" || raw === "prod") return raw
   return "dev"
 })()

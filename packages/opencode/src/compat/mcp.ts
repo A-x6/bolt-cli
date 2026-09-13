@@ -2,8 +2,8 @@ import path from "path"
 import { pathToFileURL } from "url"
 import { Effect } from "effect"
 import { parse } from "jsonc-parser"
-import type { FSUtil } from "@opencode-ai/core/fs-util"
-import type { ConfigMCPV1 } from "@opencode-ai/core/v1/config/mcp"
+import type { FSUtil } from "@bolt-ai/core/fs-util"
+import type { ConfigMCPV1 } from "@bolt-ai/core/v1/config/mcp"
 
 // MCP server definition files written by other coding agents, discovered from the
 // working directory up to the worktree root. First definition of a name wins.

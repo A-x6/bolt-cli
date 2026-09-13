@@ -1,5 +1,5 @@
 import { EOL } from "os"
-import type { OpencodeClient } from "@opencode-ai/sdk/v2"
+import type { OpencodeClient } from "@bolt-ai/sdk/v2"
 import { UI } from "../../ui"
 
 // Best-of-N runs: fire the same task at several models in parallel sessions,

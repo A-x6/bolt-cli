@@ -10,7 +10,7 @@ import path from "path"
 import os from "os"
 import { mkdtemp, rm } from "node:fs/promises"
 import { Effect } from "effect"
-import { createOpencodeClient, type OpencodeClient } from "@opencode-ai/sdk/v2"
+import { createBoltClient, type OpencodeClient } from "@bolt-ai/sdk/v2"
 import { UI } from "../ui"
 import { ExitCode } from "../exit"
 import { effectCmd, fail } from "../effect-cmd"
@@ -124,8 +124,8 @@ export const EvalCommand = effectCmd({
           await Bun.write(path.join(workspace, relative), content)
         }
 
-        const sdk = createOpencodeClient({
-          baseUrl: "http://opencode.internal",
+        const sdk = createBoltClient({
+          baseUrl: "http://bolt.internal",
           fetch: fetchFn,
           directory: workspace,
         })

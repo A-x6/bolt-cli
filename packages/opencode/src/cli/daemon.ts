@@ -2,7 +2,7 @@ export * as Daemon from "./daemon"
 
 import fs from "node:fs"
 import path from "node:path"
-import { Global } from "@opencode-ai/core/global"
+import { Global } from "@bolt-ai/core/global"
 
 // Discovery record for `bolt daemon`: a warm server that one-shot commands
 // route through instead of booting an in-process server. The record lives in

@@ -1,35 +1,35 @@
 import { expect, test } from "bun:test"
 import { Schema } from "effect"
-import { AgentV2 } from "@opencode-ai/core/agent"
-import { ModelV2 } from "@opencode-ai/core/model"
-import { SessionV2 } from "@opencode-ai/core/session"
-import { Agent } from "@opencode-ai/schema/agent"
-import { Location } from "@opencode-ai/schema/location"
-import { Model } from "@opencode-ai/schema/model"
-import { AgentAttachment, FileAttachment, Prompt, Source } from "@opencode-ai/schema/prompt"
-import { Provider } from "@opencode-ai/schema/provider"
-import { Project } from "@opencode-ai/schema/project"
-import { ProjectDirectories } from "@opencode-ai/schema/project-directories"
-import { PermissionV1 } from "@opencode-ai/schema/permission-v1"
-import { Session } from "@opencode-ai/schema/session"
-import { SessionInput } from "@opencode-ai/schema/session-input"
-import { SessionMessage } from "@opencode-ai/schema/session-message"
-import { Workspace } from "@opencode-ai/schema/workspace"
-import { Command } from "@opencode-ai/schema/command"
-import { Connection } from "@opencode-ai/schema/connection"
-import { Credential } from "@opencode-ai/schema/credential"
-import { FileSystem } from "@opencode-ai/schema/filesystem"
-import { Integration } from "@opencode-ai/schema/integration"
-import { LLM } from "@opencode-ai/schema/llm"
-import { Permission } from "@opencode-ai/schema/permission"
-import { Plugin } from "@opencode-ai/schema/plugin"
-import { Pty } from "@opencode-ai/schema/pty"
-import { Reference } from "@opencode-ai/schema/reference"
-import { SessionTodo } from "@opencode-ai/schema/session-todo"
-import { Skill } from "@opencode-ai/schema/skill"
-import { AbsolutePath, DateTimeUtcFromMillis, optional, statics } from "@opencode-ai/schema/schema"
-import { ProviderV2 } from "@opencode-ai/core/provider"
-import { PluginV2 } from "@opencode-ai/core/plugin"
+import { AgentV2 } from "@bolt-ai/core/agent"
+import { ModelV2 } from "@bolt-ai/core/model"
+import { SessionV2 } from "@bolt-ai/core/session"
+import { Agent } from "@bolt-ai/schema/agent"
+import { Location } from "@bolt-ai/schema/location"
+import { Model } from "@bolt-ai/schema/model"
+import { AgentAttachment, FileAttachment, Prompt, Source } from "@bolt-ai/schema/prompt"
+import { Provider } from "@bolt-ai/schema/provider"
+import { Project } from "@bolt-ai/schema/project"
+import { ProjectDirectories } from "@bolt-ai/schema/project-directories"
+import { PermissionV1 } from "@bolt-ai/schema/permission-v1"
+import { Session } from "@bolt-ai/schema/session"
+import { SessionInput } from "@bolt-ai/schema/session-input"
+import { SessionMessage } from "@bolt-ai/schema/session-message"
+import { Workspace } from "@bolt-ai/schema/workspace"
+import { Command } from "@bolt-ai/schema/command"
+import { Connection } from "@bolt-ai/schema/connection"
+import { Credential } from "@bolt-ai/schema/credential"
+import { FileSystem } from "@bolt-ai/schema/filesystem"
+import { Integration } from "@bolt-ai/schema/integration"
+import { LLM } from "@bolt-ai/schema/llm"
+import { Permission } from "@bolt-ai/schema/permission"
+import { Plugin } from "@bolt-ai/schema/plugin"
+import { Pty } from "@bolt-ai/schema/pty"
+import { Reference } from "@bolt-ai/schema/reference"
+import { SessionTodo } from "@bolt-ai/schema/session-todo"
+import { Skill } from "@bolt-ai/schema/skill"
+import { AbsolutePath, DateTimeUtcFromMillis, optional, statics } from "@bolt-ai/schema/schema"
+import { ProviderV2 } from "@bolt-ai/core/provider"
+import { PluginV2 } from "@bolt-ai/core/plugin"
 
 test("Core reuses the canonical shared schemas", async () => {
   const [
@@ -55,27 +55,27 @@ test("Core reuses the canonical shared schemas", async () => {
     coreSchema,
     coreWorkspace,
   ] = await Promise.all([
-    import("@opencode-ai/core/command"),
-    import("@opencode-ai/core/integration/connection"),
-    import("@opencode-ai/core/credential"),
-    import("@opencode-ai/core/filesystem"),
-    import("@opencode-ai/core/integration"),
-    import("@opencode-ai/core/location"),
-    import("@opencode-ai/llm"),
-    import("@opencode-ai/core/permission"),
-    import("@opencode-ai/core/v1/permission"),
-    import("@opencode-ai/core/project/copy"),
-    import("@opencode-ai/core/pty"),
-    import("@opencode-ai/core/project/schema"),
-    import("@opencode-ai/core/reference"),
-    import("@opencode-ai/core/session/input"),
-    import("@opencode-ai/core/session/message"),
-    import("@opencode-ai/core/session/todo"),
-    import("@opencode-ai/core/session/prompt"),
-    import("@opencode-ai/core/skill"),
-    import("@opencode-ai/core/v2-schema"),
-    import("@opencode-ai/core/schema"),
-    import("@opencode-ai/core/workspace"),
+    import("@bolt-ai/core/command"),
+    import("@bolt-ai/core/integration/connection"),
+    import("@bolt-ai/core/credential"),
+    import("@bolt-ai/core/filesystem"),
+    import("@bolt-ai/core/integration"),
+    import("@bolt-ai/core/location"),
+    import("@bolt-ai/llm"),
+    import("@bolt-ai/core/permission"),
+    import("@bolt-ai/core/v1/permission"),
+    import("@bolt-ai/core/project/copy"),
+    import("@bolt-ai/core/pty"),
+    import("@bolt-ai/core/project/schema"),
+    import("@bolt-ai/core/reference"),
+    import("@bolt-ai/core/session/input"),
+    import("@bolt-ai/core/session/message"),
+    import("@bolt-ai/core/session/todo"),
+    import("@bolt-ai/core/session/prompt"),
+    import("@bolt-ai/core/skill"),
+    import("@bolt-ai/core/v2-schema"),
+    import("@bolt-ai/core/schema"),
+    import("@bolt-ai/core/workspace"),
   ])
 
   const schemas = [

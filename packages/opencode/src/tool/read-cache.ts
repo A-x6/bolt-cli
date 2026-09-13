@@ -1,8 +1,8 @@
 export * as ReadCache from "./read-cache"
 
 import path from "node:path"
-import { Global } from "@opencode-ai/core/global"
-import { Hash } from "@opencode-ai/core/util/hash"
+import { Global } from "@bolt-ai/core/global"
+import { Hash } from "@bolt-ai/core/util/hash"
 
 // Persistent cache of read-tool line snapshots, keyed per project directory.
 // A snapshot is reused only when the file's mtime and size are unchanged, so

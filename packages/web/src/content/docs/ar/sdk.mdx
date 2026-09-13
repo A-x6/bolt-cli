@@ -1,6 +1,6 @@
 ---
 title: مجموعة تطوير البرمجيات (SDK)
-description: عميل JavaScript آمن الأنواع لخادم opencode.
+description: عميل JavaScript آمن الأنواع لخادم bolt.
 ---
 
 import config from "../../../../config.mjs"
@@ -18,7 +18,7 @@ export const typesUrl = `${config.github}/blob/dev/packages/sdk/js/src/gen/types
 ثبّت SDK من npm:
 
 ```bash
-npm install @opencode-ai/sdk
+npm install @bolt-ai/sdk
 ```
 
 ---
@@ -28,9 +28,9 @@ npm install @opencode-ai/sdk
 أنشئ مثيلا من opencode:
 
 ```javascript
-import { createOpencode } from "@opencode-ai/sdk"
+import { createBolt } from "@bolt-ai/sdk"
 
-const { client } = await createOpencode()
+const { client } = await createBolt()
 ```
 
 هذا يشغّل خادما وعميلا معا.
@@ -49,12 +49,12 @@ const { client } = await createOpencode()
 
 ## الإعدادات
 
-يمكنك تمرير كائن إعدادات لتخصيص السلوك. سيستمر المثيل في التقاط `opencode.json` لديك، لكن يمكنك تجاوز الإعدادات أو إضافة إعدادات مباشرة:
+يمكنك تمرير كائن إعدادات لتخصيص السلوك. سيستمر المثيل في التقاط `bolt.json` لديك، لكن يمكنك تجاوز الإعدادات أو إضافة إعدادات مباشرة:
 
 ```javascript
-import { createOpencode } from "@opencode-ai/sdk"
+import { createBolt } from "@bolt-ai/sdk"
 
-const opencode = await createOpencode({
+const bolt = await createBolt({
   hostname: "127.0.0.1",
   port: 4096,
   config: {
@@ -62,9 +62,9 @@ const opencode = await createOpencode({
   },
 })
 
-console.log(`Server running at ${opencode.server.url}`)
+console.log(`Server running at ${bolt.server.url}`)
 
-opencode.server.close()
+bolt.server.close()
 ```
 
 ## العميل فقط
@@ -72,9 +72,9 @@ opencode.server.close()
 إذا كان لديك مثيل opencode يعمل بالفعل، يمكنك إنشاء مثيل عميل للاتصال به:
 
 ```javascript
-import { createOpencodeClient } from "@opencode-ai/sdk"
+import { createBoltClient } from "@bolt-ai/sdk"
 
-const client = createOpencodeClient({
+const client = createBoltClient({
   baseUrl: "http://localhost:4096",
 })
 ```
@@ -96,7 +96,7 @@ const client = createOpencodeClient({
 تتضمن SDK تعريفات TypeScript لجميع أنواع API. استوردها مباشرة:
 
 ```typescript
-import type { Session, Message, Part } from "@opencode-ai/sdk"
+import type { Session, Message, Part } from "@bolt-ai/sdk"
 ```
 
 جميع الأنواع مولّدة من مواصفات OpenAPI الخاصة بالخادم ومتاحة في <a href={typesUrl}>ملف الأنواع</a>.

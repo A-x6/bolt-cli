@@ -1,16 +1,16 @@
 import { afterEach, describe, expect } from "bun:test"
-import { ConfigV1 } from "@opencode-ai/core/v1/config/config"
-import { SessionV1 } from "@opencode-ai/core/v1/session"
+import { ConfigV1 } from "@bolt-ai/core/v1/config/config"
+import { SessionV1 } from "@bolt-ai/core/v1/session"
 import { Deferred, Effect, Layer } from "effect"
 import type * as Scope from "effect/Scope"
 import { HttpServer } from "effect/unstable/http"
 import { ChildProcessSpawner } from "effect/unstable/process"
-import { AppNodeBuilder } from "@opencode-ai/core/effect/app-node-builder"
-import { LayerNode } from "@opencode-ai/core/effect/layer-node"
-import { FSUtil } from "@opencode-ai/core/fs-util"
-import { CrossSpawnSpawner } from "@opencode-ai/core/cross-spawn-spawner"
-import { Flag } from "@opencode-ai/core/flag/flag"
-import { createOpencodeClient } from "@opencode-ai/sdk/v2"
+import { AppNodeBuilder } from "@bolt-ai/core/effect/app-node-builder"
+import { LayerNode } from "@bolt-ai/core/effect/layer-node"
+import { FSUtil } from "@bolt-ai/core/fs-util"
+import { CrossSpawnSpawner } from "@bolt-ai/core/cross-spawn-spawner"
+import { Flag } from "@bolt-ai/core/flag/flag"
+import { createBoltClient } from "@bolt-ai/sdk/v2"
 import { validateSession } from "../../src/cli/tui/validate-session"
 import { InstanceBootstrap } from "../../src/project/bootstrap"
 import { InstanceStore } from "../../src/project/instance-store"
@@ -26,9 +26,9 @@ import { resetDatabase } from "../fixture/db"
 import { disposeAllInstances, TestInstance, tmpdirScoped } from "../fixture/fixture"
 import { awaitWithTimeout, pollWithTimeout, testEffect } from "../lib/effect"
 import { testProviderConfig } from "../lib/test-provider"
-import { ProviderV2 } from "@opencode-ai/core/provider"
-import { ModelV2 } from "@opencode-ai/core/model"
-import { Database } from "@opencode-ai/core/database/database"
+import { ProviderV2 } from "@bolt-ai/core/provider"
+import { ModelV2 } from "@bolt-ai/core/model"
+import { Database } from "@bolt-ai/core/database/database"
 import { httpApiLayer } from "./httpapi-layer"
 
 const noopBootstrapLayer = Layer.succeed(InstanceBootstrap.Service, InstanceBootstrap.Service.of({ run: Effect.void }))
@@ -39,12 +39,12 @@ const appLayer = AppNodeBuilder.build(
 const it = testEffect(Layer.mergeAll(appLayer, httpApiLayer))
 
 const original = {
-  OPENCODE_SERVER_PASSWORD: Flag.OPENCODE_SERVER_PASSWORD,
-  OPENCODE_SERVER_USERNAME: Flag.OPENCODE_SERVER_USERNAME,
+  BOLT_SERVER_PASSWORD: Flag.BOLT_SERVER_PASSWORD,
+  BOLT_SERVER_USERNAME: Flag.BOLT_SERVER_USERNAME,
 }
 
 type ServerPath = "default" | "raw"
-type Sdk = ReturnType<typeof createOpencodeClient>
+type Sdk = ReturnType<typeof createBoltClient>
 type SdkResult = { response?: Response; data?: unknown; error?: unknown }
 type Captured = { status?: number; data?: unknown; error?: unknown }
 type ProjectFixture = { sdk: Sdk; directory: string }
@@ -70,7 +70,7 @@ function client(
 ) {
   return serverFetch(serverPath, input).pipe(
     Effect.map((fetch) =>
-      createOpencodeClient({
+      createBoltClient({
         baseUrl: "http://localhost",
         directory,
         experimental_workspaceID: input?.workspaceID,
@@ -88,8 +88,8 @@ function serverFetch(
   return HttpServer.HttpServer.use((server) =>
     Effect.sync(() => {
       void serverPath
-      Flag.OPENCODE_SERVER_PASSWORD = input?.password
-      Flag.OPENCODE_SERVER_USERNAME = input?.username
+      Flag.BOLT_SERVER_PASSWORD = input?.password
+      Flag.BOLT_SERVER_USERNAME = input?.username
       const baseUrl = HttpServer.formatAddress(server.address)
       return Object.assign(
         async (request: RequestInfo | URL, init?: RequestInit) => {
@@ -285,7 +285,7 @@ function writeStandardFiles(dir: string) {
 function writeProjectSkill(dir: string) {
   return FSUtil.Service.use((fs) =>
     fs.writeWithDirs(
-      path.join(dir, ".opencode", "skills", "project-rest-skill", "SKILL.md"),
+      path.join(dir, ".bolt", "skills", "project-rest-skill", "SKILL.md"),
       `---
 name: project-rest-skill
 description: A project skill visible to REST API prompts.
@@ -328,8 +328,8 @@ function seedMessage(directory: string, sessionID: string) {
 }
 
 afterEach(async () => {
-  Flag.OPENCODE_SERVER_PASSWORD = original.OPENCODE_SERVER_PASSWORD
-  Flag.OPENCODE_SERVER_USERNAME = original.OPENCODE_SERVER_USERNAME
+  Flag.BOLT_SERVER_PASSWORD = original.BOLT_SERVER_PASSWORD
+  Flag.BOLT_SERVER_USERNAME = original.BOLT_SERVER_USERNAME
   await disposeAllInstances()
   await resetDatabase()
 })
@@ -497,12 +497,12 @@ describe("HttpApi SDK", () => {
         const missing = yield* capture(() => missingSdk.file.read({ path: "hello.txt" }))
         const badSdk = yield* client("raw", directory, {
           password: "secret",
-          headers: { authorization: authorization("opencode", "wrong") },
+          headers: { authorization: authorization("bolt", "wrong") },
         })
         const bad = yield* capture(() => badSdk.file.read({ path: "hello.txt" }))
         const goodSdk = yield* client("raw", directory, {
           password: "secret",
-          headers: { authorization: authorization("opencode", "secret") },
+          headers: { authorization: authorization("bolt", "secret") },
         })
         const good = yield* capture(() => goodSdk.file.read({ path: "hello.txt" }))
 

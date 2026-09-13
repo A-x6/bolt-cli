@@ -3,9 +3,9 @@
 // rank the results. The winning worktree (and branch) is kept for review;
 // --cleanup deletes the losers. Orchestration lives in ./run/arena.
 import type { Argv } from "yargs"
-import type { PermissionV1 } from "@opencode-ai/core/v1/permission"
+import type { PermissionV1 } from "@bolt-ai/core/v1/permission"
 import { Effect } from "effect"
-import { createOpencodeClient } from "@opencode-ai/sdk/v2"
+import { createBoltClient } from "@bolt-ai/sdk/v2"
 import { UI } from "../ui"
 import { effectCmd } from "../effect-cmd"
 
@@ -83,7 +83,7 @@ export const ArenaCommand = effectCmd({
       const { ServerLocalFetch } = await import("@/server/local-fetch")
       const fetchFn = ServerLocalFetch.fetchFn
       const client = (directory: string) =>
-        createOpencodeClient({ baseUrl: "http://opencode.internal", fetch: fetchFn, directory })
+        createBoltClient({ baseUrl: "http://bolt.internal", fetch: fetchFn, directory })
 
       const exit = await runArena({
         sdk: client(process.cwd()),

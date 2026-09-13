@@ -1,7 +1,7 @@
 import { Effect } from "effect"
 import { UI } from "../ui"
 import { effectCmd, fail } from "../effect-cmd"
-import { Flag } from "@opencode-ai/core/flag/flag"
+import { Flag } from "@bolt-ai/core/flag/flag"
 
 /** Build the copy-pasteable command a partner runs to join a pair session. */
 export function invite(input: { url: string; session: string; password?: boolean }) {
@@ -40,18 +40,18 @@ export const PairCommand = effectCmd({
       .option("password", {
         alias: ["p"],
         type: "string",
-        describe: "basic auth password (defaults to OPENCODE_SERVER_PASSWORD)",
+        describe: "basic auth password (defaults to BOLT_SERVER_PASSWORD)",
       })
       .option("username", {
         alias: ["u"],
         type: "string",
-        describe: "basic auth username (defaults to OPENCODE_SERVER_USERNAME or 'opencode')",
+        describe: "basic auth username (defaults to BOLT_SERVER_USERNAME or 'bolt')",
       }),
   handler: Effect.fn("Cli.pair")(function* (args) {
     if (!process.stdout.isTTY) return yield* fail("bolt pair requires an interactive terminal")
 
     const { ServerAuth } = yield* Effect.promise(() => import("@/server/auth"))
-    const { createOpencodeClient } = yield* Effect.promise(() => import("@opencode-ai/sdk/v2"))
+    const { createBoltClient } = yield* Effect.promise(() => import("@bolt-ai/sdk/v2"))
     const { runMini } = yield* Effect.promise(() => import("./run"))
     const headers = ServerAuth.headers({ password: args.password, username: args.username })
 
@@ -59,7 +59,7 @@ export const PairCommand = effectCmd({
       const url = args.join
       const session = yield* Effect.gen(function* () {
         if (args.session) return args.session
-        const sdk = createOpencodeClient({ baseUrl: url, headers })
+        const sdk = createBoltClient({ baseUrl: url, headers })
         const list = yield* Effect.promise(() =>
           sdk.session.list().then(
             (value) => value.data,
@@ -92,7 +92,7 @@ export const PairCommand = effectCmd({
     // Host flow: boot the local server, create the shared session, print the
     // join command, and enter interactive mode attached over HTTP so both
     // terminals drive the session through the exact same machinery.
-    const secured = Boolean(Flag.OPENCODE_SERVER_PASSWORD)
+    const secured = Boolean(Flag.BOLT_SERVER_PASSWORD)
     // "localhost" resolves through DNS/hosts and may map to a non-loopback
     // address, so pin unauthenticated binds to a literal loopback IP.
     const hostname = !secured && args.hostname === "localhost" ? "127.0.0.1" : args.hostname
@@ -100,7 +100,7 @@ export const PairCommand = effectCmd({
     // grants file read/write and shell execution (mirrors `bolt serve`).
     if (!secured && !["127.0.0.1", "::1"].includes(hostname)) {
       return yield* fail(
-        "Refusing to listen on a non-loopback interface without authentication. Set OPENCODE_SERVER_PASSWORD or bind to 127.0.0.1.",
+        "Refusing to listen on a non-loopback interface without authentication. Set BOLT_SERVER_PASSWORD or bind to 127.0.0.1.",
       )
     }
 
@@ -108,7 +108,7 @@ export const PairCommand = effectCmd({
     const server = yield* Effect.promise(() => Server.listen({ hostname, port: args.port, cors: [] }))
     const url = server.url.origin
 
-    const sdk = createOpencodeClient({ baseUrl: url, directory: process.cwd(), headers })
+    const sdk = createBoltClient({ baseUrl: url, directory: process.cwd(), headers })
     const created = yield* Effect.promise(() =>
       sdk.session.create({ title: "bolt pair" }).then(
         (value) => value.data,
@@ -124,7 +124,7 @@ export const PairCommand = effectCmd({
     UI.empty()
     UI.println("To pair from another terminal, run:")
     UI.println(`  ${invite({ url, session: created.id, password: secured })}`)
-    if (secured) UI.println("  (replace <password> with the value of OPENCODE_SERVER_PASSWORD on this machine)")
+    if (secured) UI.println("  (replace <password> with the value of BOLT_SERVER_PASSWORD on this machine)")
     UI.empty()
 
     yield* Effect.promise(() =>

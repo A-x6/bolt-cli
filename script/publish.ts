@@ -1,6 +1,6 @@
 #!/usr/bin/env bun
 
-import { Script } from "@opencode-ai/script"
+import { Script } from "@bolt-ai/script"
 import { $ } from "bun"
 import { fileURLToPath } from "url"
 
@@ -39,9 +39,9 @@ console.log("\n=== cli ===\n")
 await $`bun ./packages/opencode/script/publish.ts`
 
 // The preview cli, sdk, plugin, and ui packages still publish under the
-// `@opencode-ai` npm scope, which Bolt does not own; publishing them would fail
+// `@bolt-ai` npm scope, which Bolt does not own; publishing them would fail
 // with the bolt-builder token. Re-enable once they are rebranded to a scope we own.
-console.log("\n=== preview cli / sdk / plugin / ui: skipped (@opencode-ai scope not owned) ===\n")
+console.log("\n=== preview cli / sdk / plugin / ui: skipped (@bolt-ai scope not owned) ===\n")
 
 if (Script.release) {
   // latest.json signs update artifacts with the Tauri updater key. When

@@ -40,7 +40,7 @@ describe("args", () => {
 
 describe("endpoint", () => {
   test("extracts the port from the serve banner", () => {
-    expect(endpoint("opencode server listening on http://127.0.0.1:39241\n")).toBe(39241)
+    expect(endpoint("bolt server listening on http://127.0.0.1:39241\n")).toBe(39241)
   })
 
   test("handles tty line endings and prefixed output", () => {

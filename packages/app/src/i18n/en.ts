@@ -110,9 +110,9 @@ export const dict = {
   "dialog.provider.group.other": "Other",
   "dialog.provider.custom.label": "Custom OpenAI-compatible provider",
   "dialog.provider.tag.recommended": "Recommended",
-  "dialog.provider.opencode.note": "Curated models including Claude, GPT, Gemini and more",
-  "dialog.provider.opencode.tagline": "Reliable optimized models",
-  "dialog.provider.opencodeGo.tagline": "Low cost subscription for everyone",
+  "dialog.provider.bolt.note": "Curated models including Claude, GPT, Gemini and more",
+  "dialog.provider.bolt.tagline": "Reliable optimized models",
+  "dialog.provider.boltGo.tagline": "Low cost subscription for everyone",
   "dialog.provider.anthropic.note": "Direct access to Claude models, including Pro and Max",
   "dialog.provider.copilot.note": "AI models for coding assistance via GitHub Copilot",
   "dialog.provider.openai.note": "GPT models for fast, capable general AI tasks",
@@ -127,7 +127,7 @@ export const dict = {
   "dialog.model.manage.description": "Customize which models appear in the model selector.",
   "dialog.model.manage.provider.toggle": "Toggle all {{provider}} models",
 
-  "dialog.model.unpaid.freeModels.title": "Free models provided by OpenCode",
+  "dialog.model.unpaid.freeModels.title": "Free models provided by Bolt",
   "dialog.model.unpaid.addMore.title": "Add more models from popular providers",
   "dialog.model.unpaid.viewMoreProviders": "See 70+ more providers",
 
@@ -147,13 +147,13 @@ export const dict = {
   "provider.connect.apiKey.label": "{{provider}} API key",
   "provider.connect.apiKey.placeholder": "API key",
   "provider.connect.apiKey.required": "API key is required",
-  "provider.connect.opencodeZen.line1":
-    "OpenCode Zen gives you access to a curated set of reliable optimized models for coding agents.",
-  "provider.connect.opencodeZen.line2":
+  "provider.connect.boltZen.line1":
+    "Bolt Zen gives you access to a curated set of reliable optimized models for coding agents.",
+  "provider.connect.boltZen.line2":
     "With a single API key you'll get access to models such as Claude, GPT, Gemini, GLM and more.",
-  "provider.connect.opencodeZen.visit.prefix": "Visit ",
-  "provider.connect.opencodeZen.visit.link": "opencode.ai/zen",
-  "provider.connect.opencodeZen.visit.suffix": " to collect your API key.",
+  "provider.connect.boltZen.visit.prefix": "Visit ",
+  "provider.connect.boltZen.visit.link": "bolt.ai/zen",
+  "provider.connect.boltZen.visit.suffix": " to collect your API key.",
   "provider.connect.oauth.code.visit.prefix": "Visit ",
   "provider.connect.oauth.code.visit.link": "this link",
   "provider.connect.oauth.code.visit.suffix":
@@ -325,7 +325,7 @@ export const dict = {
   "dialog.mcp.empty": "No MCPs configured",
 
   "dialog.lsp.empty": "LSPs auto-detected from file types",
-  "dialog.plugins.empty": "Plugins configured in opencode.json",
+  "dialog.plugins.empty": "Plugins configured in bolt.json",
 
   "mcp.status.connected": "connected",
   "mcp.status.failed": "failed",
@@ -385,7 +385,7 @@ export const dict = {
   "wsl.server.retryStart": "Retry start",
   "wsl.server.updating": "Updating...",
   "wsl.onboarding.step.distro": "Choose distro",
-  "wsl.onboarding.step.opencode": "Bolt",
+  "wsl.onboarding.step.bolt": "Bolt",
   "wsl.onboarding.checkingRuntime": "Checking WSL...",
   "wsl.onboarding.restartRequired": "Windows needs a restart to finish installing WSL.",
   "wsl.onboarding.ready": "WSL is ready.",
@@ -405,8 +405,8 @@ export const dict = {
   "wsl.onboarding.updatingOpencodeIn": "Updating Bolt in {{distro}}...",
   "wsl.onboarding.updateOpencodeIn": "Update Bolt in {{distro}}.",
   "wsl.onboarding.updateOpencode": "Update Bolt",
-  "wsl.onboarding.opencodeReadyIn": "Bolt is ready in {{distro}}.",
-  "wsl.onboarding.opencodeReady": "Bolt is ready.",
+  "wsl.onboarding.boltReadyIn": "Bolt is ready in {{distro}}.",
+  "wsl.onboarding.boltReady": "Bolt is ready.",
   "wsl.onboarding.installOpencodeIn": "Install Bolt in {{distro}}.",
   "wsl.onboarding.installOpencode": "Install Bolt",
   "wsl.onboarding.chooseDistroFirst": "Choose a distro first.",
@@ -416,7 +416,7 @@ export const dict = {
   "wsl.onboarding.checkAgain": "Check again",
   "wsl.onboarding.distroStatus.ready": "Ready",
   "wsl.onboarding.distroStatus.checking": "Checking...",
-  "wsl.onboarding.distroStatus.opencodeMissing": "Bolt not installed",
+  "wsl.onboarding.distroStatus.boltMissing": "Bolt not installed",
   "wsl.onboarding.distroStatus.missingTools": "Missing bash, curl",
   "wsl.onboarding.distroStatus.unsupported": "Unsupported · Use WSL 2",
   "wsl.onboarding.needAnotherDistro": "Need another distro?",
@@ -622,7 +622,7 @@ export const dict = {
   "error.chain.responseBody": "Response body:\n{{body}}",
   "error.chain.didYouMean": "Did you mean: {{suggestions}}",
   "error.chain.modelNotFound": "Model not found: {{provider}}/{{model}}",
-  "error.chain.checkConfig": "Check your config (opencode.json) provider/model names",
+  "error.chain.checkConfig": "Check your config (bolt.json) provider/model names",
   "error.chain.mcpFailed": 'MCP server "{{name}}" failed. Note, Bolt does not support MCP authentication yet.',
   "error.chain.providerAuthFailed": "Provider authentication failed ({{provider}}): {{message}}",
   "error.chain.providerInitFailed":

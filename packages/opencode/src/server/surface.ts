@@ -58,7 +58,7 @@ export function surface(base: string) {
     version: VERSION,
     base: origin,
     openapi: `${origin}/doc`,
-    auth: "HTTP basic auth when OPENCODE_SERVER_PASSWORD is set; unauthenticated on loopback otherwise",
+    auth: "HTTP basic auth when BOLT_SERVER_PASSWORD is set; unauthenticated on loopback otherwise",
     routes: ROUTES.map((route) => ({
       name: route.name,
       method: route.method,

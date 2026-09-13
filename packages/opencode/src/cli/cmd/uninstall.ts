@@ -2,7 +2,7 @@ import type { Argv } from "yargs"
 import { UI } from "../ui"
 import * as prompts from "@clack/prompts"
 import { Installation } from "../../installation"
-import { Global } from "@opencode-ai/core/global"
+import { Global } from "@bolt-ai/core/global"
 import fs from "fs/promises"
 import path from "path"
 import os from "os"
@@ -218,7 +218,7 @@ async function executeUninstall(method: Installation.Method, targets: RemovalTar
     const err = removable ? await fs.rm(targets.binary, { force: true }).catch((e) => e) : new Error("locked")
     if (!err) {
       const binDir = path.dirname(targets.binary)
-      if (binDir.includes(".bolt") || binDir.includes(".opencode")) {
+      if (binDir.includes(".bolt") || binDir.includes(".bolt")) {
         await fs.rmdir(binDir).catch(() => {})
       }
       prompts.log.step("Removed binary")
@@ -229,7 +229,7 @@ async function executeUninstall(method: Installation.Method, targets: RemovalTar
       prompts.log.info(`  rm "${targets.binary}"`)
 
       const binDir = path.dirname(targets.binary)
-      if (binDir.includes(".bolt") || binDir.includes(".opencode")) {
+      if (binDir.includes(".bolt") || binDir.includes(".bolt")) {
         prompts.log.info(`  rmdir "${binDir}" 2>/dev/null`)
       }
     }
@@ -286,7 +286,7 @@ async function getShellConfigFile(): Promise<string | null> {
       content.includes("# bolt") ||
       content.includes(".bolt/bin") ||
       content.includes("# opencode") ||
-      content.includes(".opencode/bin")
+      content.includes(".bolt/bin")
     ) {
       return file
     }
@@ -312,14 +312,14 @@ export async function cleanShellConfig(file: string) {
 
     if (skip) {
       skip = false
-      if (trimmed.includes(".bolt/bin") || trimmed.includes(".opencode/bin") || trimmed.includes("fish_add_path")) {
+      if (trimmed.includes(".bolt/bin") || trimmed.includes(".bolt/bin") || trimmed.includes("fish_add_path")) {
         continue
       }
     }
 
     if (
-      (trimmed.startsWith("export PATH=") && (trimmed.includes(".bolt/bin") || trimmed.includes(".opencode/bin"))) ||
-      (trimmed.startsWith("fish_add_path") && (trimmed.includes(".bolt") || trimmed.includes(".opencode")))
+      (trimmed.startsWith("export PATH=") && (trimmed.includes(".bolt/bin") || trimmed.includes(".bolt/bin"))) ||
+      (trimmed.startsWith("fish_add_path") && (trimmed.includes(".bolt") || trimmed.includes(".bolt")))
     ) {
       continue
     }

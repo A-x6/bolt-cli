@@ -1,9 +1,9 @@
-import type { Session as SDKSession, Message, Part } from "@opencode-ai/sdk/v2"
+import type { Session as SDKSession, Message, Part } from "@bolt-ai/sdk/v2"
 import { CliError, effectCmd } from "../effect-cmd"
 import { ShareNext } from "@/share/share-next"
 import { SessionBundle } from "@/session/bundle"
 import { EOL } from "os"
-import { FSUtil } from "@opencode-ai/core/fs-util"
+import { FSUtil } from "@bolt-ai/core/fs-util"
 import { Effect } from "effect"
 import type { InstanceContext } from "@/project/instance-context"
 

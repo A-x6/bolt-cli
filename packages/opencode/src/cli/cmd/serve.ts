@@ -1,7 +1,7 @@
 import { Effect } from "effect"
 import { effectCmd, fail } from "../effect-cmd"
 import { withNetworkOptions, resolveNetworkOptions, enforceLoopbackWithoutAuth } from "../network"
-import { Flag } from "@opencode-ai/core/flag/flag"
+import { Flag } from "@bolt-ai/core/flag/flag"
 
 export const ServeCommand = effectCmd({
   command: "serve",
@@ -17,8 +17,8 @@ export const ServeCommand = effectCmd({
   instance: false,
   handler: Effect.fn("Cli.serve")(function* (args) {
     const { Server } = yield* Effect.promise(() => import("../../server/server"))
-    if (!Flag.OPENCODE_SERVER_PASSWORD) {
-      console.log("Warning: OPENCODE_SERVER_PASSWORD is not set; server is unsecured.")
+    if (!Flag.BOLT_SERVER_PASSWORD) {
+      console.log("Warning: BOLT_SERVER_PASSWORD is not set; server is unsecured.")
     }
     const resolved = yield* resolveNetworkOptions(args)
     const guard = enforceLoopbackWithoutAuth(resolved)

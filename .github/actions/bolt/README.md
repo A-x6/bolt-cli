@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: bolt-builder/bolt-cli/.github/actions/bolt@dev
         env:
-          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+          BOLT_API_KEY: ${{ secrets.BOLT_API_KEY }}
         with:
           prompt: "Summarize the failures in the latest test run and propose fixes"
           model: opencode/claude-fable-5
@@ -40,4 +40,4 @@ Two caches keep repeat runs fast:
 
 ## Auth
 
-Provide provider credentials as environment variables on the step (for example `OPENCODE_API_KEY` or `ANTHROPIC_API_KEY`). The action never handles secrets itself.
+Provide provider credentials as environment variables on the step (for example `BOLT_API_KEY` or `ANTHROPIC_API_KEY`). The action never handles secrets itself.

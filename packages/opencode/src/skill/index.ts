@@ -1,19 +1,19 @@
-import { LayerNode } from "@opencode-ai/core/effect/layer-node"
+import { LayerNode } from "@bolt-ai/core/effect/layer-node"
 import path from "path"
 import { Effect, Layer, Context, Schema } from "effect"
-import { NamedError } from "@opencode-ai/core/util/error"
+import { NamedError } from "@bolt-ai/core/util/error"
 import type { Agent } from "@/agent/agent"
 import { EventV2Bridge } from "@/event-v2-bridge"
 import { InstanceState } from "@/effect/instance-state"
-import { Global } from "@opencode-ai/core/global"
-import { SkillPlugin } from "@opencode-ai/core/plugin/skill"
+import { Global } from "@bolt-ai/core/global"
+import { SkillPlugin } from "@bolt-ai/core/plugin/skill"
 import { Permission } from "@/permission"
-import { FSUtil } from "@opencode-ai/core/fs-util"
+import { FSUtil } from "@bolt-ai/core/fs-util"
 import { Config } from "@/config/config"
-import { FrontmatterError } from "@opencode-ai/core/v1/config/error"
+import { FrontmatterError } from "@bolt-ai/core/v1/config/error"
 import { ConfigMarkdown } from "@/config/markdown"
 import { RuntimeFlags } from "@/effect/runtime-flags"
-import { Glob } from "@opencode-ai/core/util/glob"
+import { Glob } from "@bolt-ai/core/util/glob"
 import { Discovery } from "./discovery"
 import { isRecord } from "@/util/record"
 import { escapeHtml } from "@/util/html"
@@ -21,7 +21,7 @@ import { escapeHtml } from "@/util/html"
 const CLAUDE_EXTERNAL_DIR = ".claude"
 const AGENTS_EXTERNAL_DIR = ".agents"
 const EXTERNAL_SKILL_PATTERN = "skills/**/SKILL.md"
-const OPENCODE_SKILL_PATTERN = "{skill,skills}/**/SKILL.md"
+const BOLT_SKILL_PATTERN = "{skill,skills}/**/SKILL.md"
 const SKILL_PATTERN = "**/SKILL.md"
 
 // Built-in skill that ships with bolt. The model's intuition for what a
@@ -31,7 +31,7 @@ const SKILL_PATTERN = "**/SKILL.md"
 // actual schemas instead of guesses.
 const BOLT_CONFIG_SKILL_NAME = "bolt-config"
 const BOLT_CONFIG_SKILL_DESCRIPTION =
-  "Use ONLY when the user is editing or creating bolt's own configuration: bolt.json, bolt.jsonc, legacy opencode.json(c), files under .bolt/ or .opencode/, or files under ~/.config/opencode/. Also use when creating or fixing bolt agents, subagents, skills, plugins, MCP servers, or permission rules. Do not use for the user's own application code, or for any project that is not configuring bolt itself."
+  "Use ONLY when the user is editing or creating bolt's own configuration: bolt.json, bolt.jsonc, legacy bolt.json(c), files under .bolt/ or .bolt/, or files under ~/.config/opencode/. Also use when creating or fixing bolt agents, subagents, skills, plugins, MCP servers, or permission rules. Do not use for the user's own application code, or for any project that is not configuring bolt itself."
 const BOLT_CONFIG_SKILL_BODY = SkillPlugin.BoltConfigContent
 
 export const Info = Schema.Struct({
@@ -204,7 +204,7 @@ const discoverSkills = Effect.fnUntraced(function* (
 
   const configDirs = yield* config.directories()
   for (const dir of configDirs) {
-    yield* scan(state, dir, OPENCODE_SKILL_PATTERN)
+    yield* scan(state, dir, BOLT_SKILL_PATTERN)
   }
 
   const cfg = yield* config.get()
@@ -245,7 +245,7 @@ const loadSkills = Effect.fnUntraced(function* (
   yield* Effect.logInfo("init", { count: Object.keys(state.skills).length })
 })
 
-export class Service extends Context.Service<Service, Interface>()("@opencode/Skill") {}
+export class Service extends Context.Service<Service, Interface>()("@bolt/Skill") {}
 
 const layer = Layer.effect(
   Service,

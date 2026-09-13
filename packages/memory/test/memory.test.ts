@@ -32,7 +32,7 @@ describe("memory facade", () => {
         root: t.root,
         file: "environment.md",
         section: "Commands",
-        text: "Run CLI tests from packages/opencode.",
+        text: "Run CLI tests from packages/bolt.",
       })
 
       const ctx = await Memory.context({ root: t.root, record: false })

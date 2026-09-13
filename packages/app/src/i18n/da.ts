@@ -107,9 +107,9 @@ export const dict = {
   "dialog.provider.group.other": "Andre",
   "dialog.provider.custom.label": "Brugerdefineret OpenAI-kompatibel udbyder",
   "dialog.provider.tag.recommended": "Anbefalet",
-  "dialog.provider.opencode.note": "Udvalgte modeller inklusive Claude, GPT, Gemini og flere",
-  "dialog.provider.opencode.tagline": "Pålidelige optimerede modeller",
-  "dialog.provider.opencodeGo.tagline": "Billigt abonnement for alle",
+  "dialog.provider.bolt.note": "Udvalgte modeller inklusive Claude, GPT, Gemini og flere",
+  "dialog.provider.bolt.tagline": "Pålidelige optimerede modeller",
+  "dialog.provider.boltGo.tagline": "Billigt abonnement for alle",
   "dialog.provider.anthropic.note": "Direkte adgang til Claude-modeller, inklusive Pro og Max",
   "dialog.provider.copilot.note": "AI-modeller til kodningsassistance via GitHub Copilot",
   "dialog.provider.openai.note": "GPT-modeller til hurtige, kompetente generelle AI-opgaver",
@@ -124,7 +124,7 @@ export const dict = {
   "dialog.model.manage.description": "Tilpas hvilke modeller der vises i modelvælgeren.",
   "dialog.model.manage.provider.toggle": "Skift alle {{provider}}-modeller",
 
-  "dialog.model.unpaid.freeModels.title": "Gratis modeller leveret af OpenCode",
+  "dialog.model.unpaid.freeModels.title": "Gratis modeller leveret af Bolt",
   "dialog.model.unpaid.addMore.title": "Tilføj flere modeller fra populære udbydere",
   "dialog.model.unpaid.viewMoreProviders": "Se mere end 70 yderligere udbydere",
 
@@ -144,13 +144,13 @@ export const dict = {
   "provider.connect.apiKey.label": "API-nøgle til {{provider}}",
   "provider.connect.apiKey.placeholder": "API-nøgle",
   "provider.connect.apiKey.required": "API-nøgle er påkrævet",
-  "provider.connect.opencodeZen.line1":
-    "OpenCode Zen giver dig adgang til et udvalg af pålidelige optimerede modeller til kodningsagenter.",
-  "provider.connect.opencodeZen.line2":
+  "provider.connect.boltZen.line1":
+    "Bolt Zen giver dig adgang til et udvalg af pålidelige optimerede modeller til kodningsagenter.",
+  "provider.connect.boltZen.line2":
     "Med en enkelt API-nøgle får du adgang til modeller som Claude, GPT, Gemini, GLM og flere.",
-  "provider.connect.opencodeZen.visit.prefix": "Besøg ",
-  "provider.connect.opencodeZen.visit.link": "opencode.ai/zen",
-  "provider.connect.opencodeZen.visit.suffix": " for at hente din API-nøgle.",
+  "provider.connect.boltZen.visit.prefix": "Besøg ",
+  "provider.connect.boltZen.visit.link": "bolt.ai/zen",
+  "provider.connect.boltZen.visit.suffix": " for at hente din API-nøgle.",
   "provider.connect.oauth.code.visit.prefix": "Besøg ",
   "provider.connect.oauth.code.visit.link": "dette link",
   "provider.connect.oauth.code.visit.suffix":
@@ -320,7 +320,7 @@ export const dict = {
   "dialog.mcp.empty": "Ingen MCP'er konfigureret",
 
   "dialog.lsp.empty": "LSP'er registreret automatisk fra filtyper",
-  "dialog.plugins.empty": "Plugins konfigureret i opencode.json",
+  "dialog.plugins.empty": "Plugins konfigureret i bolt.json",
 
   "mcp.status.connected": "forbundet",
   "mcp.status.failed": "mislykkedes",
@@ -374,7 +374,7 @@ export const dict = {
   "wsl.server.retryStart": "Prøv at starte igen",
   "wsl.server.updating": "Opdaterer...",
   "wsl.onboarding.step.distro": "Vælg distribution",
-  "wsl.onboarding.step.opencode": "Bolt",
+  "wsl.onboarding.step.bolt": "Bolt",
   "wsl.onboarding.checkingRuntime": "Tjekker WSL...",
   "wsl.onboarding.restartRequired": "Windows skal genstartes for at fuldføre installationen af WSL.",
   "wsl.onboarding.ready": "WSL er klar.",
@@ -394,8 +394,8 @@ export const dict = {
   "wsl.onboarding.updatingOpencodeIn": "Opdaterer Bolt i {{distro}}...",
   "wsl.onboarding.updateOpencodeIn": "Opdater Bolt i {{distro}}.",
   "wsl.onboarding.updateOpencode": "Opdater Bolt",
-  "wsl.onboarding.opencodeReadyIn": "Bolt er klar i {{distro}}.",
-  "wsl.onboarding.opencodeReady": "Bolt er klar.",
+  "wsl.onboarding.boltReadyIn": "Bolt er klar i {{distro}}.",
+  "wsl.onboarding.boltReady": "Bolt er klar.",
   "wsl.onboarding.installOpencodeIn": "Installer Bolt i {{distro}}.",
   "wsl.onboarding.installOpencode": "Installer Bolt",
   "wsl.onboarding.chooseDistroFirst": "Vælg først en distribution.",
@@ -405,7 +405,7 @@ export const dict = {
   "wsl.onboarding.checkAgain": "Tjek igen",
   "wsl.onboarding.distroStatus.ready": "Klar",
   "wsl.onboarding.distroStatus.checking": "Tjekker...",
-  "wsl.onboarding.distroStatus.opencodeMissing": "Bolt er ikke installeret",
+  "wsl.onboarding.distroStatus.boltMissing": "Bolt er ikke installeret",
   "wsl.onboarding.distroStatus.missingTools": "Mangler bash, curl",
   "wsl.onboarding.distroStatus.unsupported": "Ikke understøttet · Brug WSL 2",
   "wsl.onboarding.needAnotherDistro": "Har du brug for en anden distribution?",
@@ -583,7 +583,7 @@ export const dict = {
   "error.chain.responseBody": "Svarindhold:\n{{body}}",
   "error.chain.didYouMean": "Mente du: {{suggestions}}",
   "error.chain.modelNotFound": "Model ikke fundet: {{provider}}/{{model}}",
-  "error.chain.checkConfig": "Kontrollér udbyder- og modelnavnene i din konfiguration (opencode.json)",
+  "error.chain.checkConfig": "Kontrollér udbyder- og modelnavnene i din konfiguration (bolt.json)",
   "error.chain.mcpFailed": 'MCP-server "{{name}}" fejlede. Bemærk, Bolt understøtter ikke MCP-godkendelse endnu.',
   "error.chain.providerAuthFailed": "Udbydergodkendelse mislykkedes ({{provider}}): {{message}}",
   "error.chain.providerInitFailed":
@@ -1219,9 +1219,9 @@ export const dict = {
   "desktop.wsl.error.installDistro": "Kunne ikke installere distributionen: {{distro}}",
   "desktop.wsl.error.installOpencode": "Installationen af Bolt mislykkedes",
   "desktop.wsl.error.alreadyAdded": "{{distro}} er allerede tilføjet",
-  "desktop.wsl.error.opencodeMissing": "opencode er ikke installeret i denne distribution",
-  "desktop.wsl.error.opencodeCannotRun": "opencode er installeret, men kunne ikke køre",
-  "desktop.wsl.error.opencodeNotInstalled": "Bolt er ikke installeret i {{distro}}",
+  "desktop.wsl.error.boltMissing": "bolt er ikke installeret i denne distribution",
+  "desktop.wsl.error.boltCannotRun": "bolt er installeret, men kunne ikke køre",
+  "desktop.wsl.error.boltNotInstalled": "Bolt er ikke installeret i {{distro}}",
   "desktop.wsl.error.updateVersion":
     "Opdateringen af Bolt er fuldført, men {{distro}} rapporterer stadig {{installed}}. Forventet: {{expected}}",
   "desktop.wsl.error.noVersion": "ingen version",

@@ -18,7 +18,7 @@ opencode'u programatik olarak kontrol etmek ve entegrasyonlar oluşturmak için 
 SDK'yı npm'den yükleyin:
 
 ```bash
-npm install @opencode-ai/sdk
+npm install @bolt-ai/sdk
 ```
 
 ---
@@ -28,9 +28,9 @@ npm install @opencode-ai/sdk
 Bir opencode örneği oluşturun:
 
 ```javascript
-import { createOpencode } from "@opencode-ai/sdk"
+import { createBolt } from "@bolt-ai/sdk"
 
-const { client } = await createOpencode()
+const { client } = await createBolt()
 ```
 
 Bu, hem bir sunucu hem de bir istemci başlatır
@@ -49,12 +49,12 @@ Bu, hem bir sunucu hem de bir istemci başlatır
 
 ## Yapılandırma
 
-Davranışı özelleştirmek için bir yapılandırma nesnesi iletebilirsiniz. Örnek yine de `opencode.json` dosyanızı alır, ancak yapılandırmayı satır içi olarak geçersiz kılabilir veya ekleyebilirsiniz:
+Davranışı özelleştirmek için bir yapılandırma nesnesi iletebilirsiniz. Örnek yine de `bolt.json` dosyanızı alır, ancak yapılandırmayı satır içi olarak geçersiz kılabilir veya ekleyebilirsiniz:
 
 ```javascript
-import { createOpencode } from "@opencode-ai/sdk"
+import { createBolt } from "@bolt-ai/sdk"
 
-const opencode = await createOpencode({
+const bolt = await createBolt({
   hostname: "127.0.0.1",
   port: 4096,
   config: {
@@ -62,9 +62,9 @@ const opencode = await createOpencode({
   },
 })
 
-console.log(`Server running at ${opencode.server.url}`)
+console.log(`Server running at ${bolt.server.url}`)
 
-opencode.server.close()
+bolt.server.close()
 ```
 
 ## Yalnızca istemci
@@ -72,9 +72,9 @@ opencode.server.close()
 Halihazırda çalışan bir opencode örneğiniz varsa, ona bağlanmak için bir istemci örneği oluşturabilirsiniz:
 
 ```javascript
-import { createOpencodeClient } from "@opencode-ai/sdk"
+import { createBoltClient } from "@bolt-ai/sdk"
 
-const client = createOpencodeClient({
+const client = createBoltClient({
   baseUrl: "http://localhost:4096",
 })
 ```
@@ -96,7 +96,7 @@ const client = createOpencodeClient({
 SDK, tüm API türleri için TypeScript tanımlarını içerir. Bunları doğrudan içe aktarın:
 
 ```typescript
-import type { Session, Message, Part } from "@opencode-ai/sdk"
+import type { Session, Message, Part } from "@bolt-ai/sdk"
 ```
 
 Tüm tipler, sunucunun OpenAPI spesifikasyonundan oluşturulur ve <a href={typesUrl}>tipler dosyasında</a> mevcuttur.

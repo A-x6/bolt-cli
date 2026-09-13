@@ -3,7 +3,7 @@ import { UI } from "../ui"
 import * as prompts from "@clack/prompts"
 import { Installation } from "../../installation"
 import { UpdateJournal } from "../../installation/journal"
-import { InstallationVersion } from "@opencode-ai/core/installation/version"
+import { InstallationVersion } from "@bolt-ai/core/installation/version"
 
 export const UpgradeCommand = {
   command: "upgrade [target]",

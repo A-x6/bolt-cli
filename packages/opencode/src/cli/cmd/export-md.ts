@@ -1,4 +1,4 @@
-import { SessionV1 } from "@opencode-ai/core/v1/session"
+import { SessionV1 } from "@bolt-ai/core/v1/session"
 
 // Structural message shape so both raw and sanitized transcripts render.
 export interface Turn {

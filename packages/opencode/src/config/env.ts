@@ -1,7 +1,7 @@
 export * as ConfigEnv from "./env"
 
 import { Exit, Option, Schema } from "effect"
-import { ConfigV1 } from "@opencode-ai/core/v1/config/config"
+import { ConfigV1 } from "@bolt-ai/core/v1/config/config"
 import { ConfigParse } from "./parse"
 
 const PREFIX = "BOLT_"

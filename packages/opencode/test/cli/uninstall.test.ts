@@ -29,7 +29,7 @@ describe("uninstall cleanShellConfig", () => {
         "alias ll='ls -la'",
         "# bolt",
         'export PATH="$HOME/.bolt/bin:$PATH"',
-        'export PATH="$HOME/.opencode/bin:$PATH"',
+        'export PATH="$HOME/.bolt/bin:$PATH"',
         "",
       ].join("\n"),
     )
@@ -37,7 +37,7 @@ describe("uninstall cleanShellConfig", () => {
     const content = fs.readFileSync(file, "utf8")
     expect(content).toContain("alias ll")
     expect(content).not.toContain(".bolt/bin")
-    expect(content).not.toContain(".opencode/bin")
+    expect(content).not.toContain(".bolt/bin")
     expect(content).not.toContain("# bolt")
   })
 

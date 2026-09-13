@@ -8,7 +8,7 @@ import { ServerAuth } from "@/server/auth"
 import { writeHeapSnapshot } from "node:v8"
 import fs from "node:fs"
 import path from "node:path"
-import { Global } from "@opencode-ai/core/global"
+import { Global } from "@bolt-ai/core/global"
 import { Heap } from "@/cli/heap"
 import { AppRuntime } from "@/effect/app-runtime"
 import { Effect } from "effect"
@@ -22,7 +22,7 @@ const logUnhandled = (kind: string) => (error: unknown) => {
   const detail = error instanceof Error ? (error.stack ?? error.message) : String(error)
   const line = `timestamp=${new Date().toISOString()} level=ERROR run=worker message=${JSON.stringify(`${kind}: ${detail}`)}\n`
   try {
-    fs.appendFileSync(path.join(Global.Path.log, "opencode.log"), line)
+    fs.appendFileSync(path.join(Global.Path.log, "bolt.log"), line)
   } catch {}
 }
 

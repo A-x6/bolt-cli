@@ -6,22 +6,22 @@
 // the original /event race or #27371's invalid-model hang).
 //
 // Configuration flows through opencode's built-in test affordances:
-//   - OPENCODE_CONFIG_CONTENT      : provider config inline, no files to find
-//   - OPENCODE_TEST_HOME           : pins os.homedir() → tmpdir
-//   - OPENCODE_DISABLE_PROJECT_CONFIG : skip walking up for opencode.json
-//   - OPENCODE_PURE                : skip external plugin discovery + install
-//   - OPENCODE_DISABLE_AUTOUPDATE / AUTOCOMPACT / MODELS_FETCH : no background work
+//   - BOLT_CONFIG_CONTENT      : provider config inline, no files to find
+//   - BOLT_TEST_HOME           : pins os.homedir() → tmpdir
+//   - BOLT_DISABLE_PROJECT_CONFIG : skip walking up for bolt.json
+//   - BOLT_PURE                : skip external plugin discovery + install
+//   - BOLT_DISABLE_AUTOUPDATE / AUTOCOMPACT / MODELS_FETCH : no background work
 // Plus HOME / XDG_* pointing at the tmpdir for belt-and-suspenders isolation.
 //
 // Today only `opencode.run` is fully wired. The shape supports adding more
-// builders (`opencode.serve(opts)`, `opencode.acp(opts)`, `opencode.auth(...)`)
+// builders (`opencode.serve(opts)`, `opencode.acp(opts)`, `bolt.auth(...)`)
 // without changing the fixture. Long-lived commands like `serve` will need a
 // different return shape — see the TODO at the bottom of OpencodeCli.
 import { test, type TestOptions } from "bun:test"
-import { FSUtil } from "@opencode-ai/core/fs-util"
-import { AppNodeBuilder } from "@opencode-ai/core/effect/app-node-builder"
-import { LayerNode } from "@opencode-ai/core/effect/layer-node"
-import { AppProcess } from "@opencode-ai/core/process"
+import { FSUtil } from "@bolt-ai/core/fs-util"
+import { AppNodeBuilder } from "@bolt-ai/core/effect/app-node-builder"
+import { LayerNode } from "@bolt-ai/core/effect/layer-node"
+import { AppProcess } from "@bolt-ai/core/process"
 import { Deferred, Duration, Effect, Layer, Queue, Schedule, Scope, Stream } from "effect"
 import { FetchHttpClient, HttpClient } from "effect/unstable/http"
 import { ChildProcess } from "effect/unstable/process"
@@ -61,19 +61,19 @@ function forkStderrDrain(stream: ReadableStream<Uint8Array>, into: string[]) {
 
 function isolatedEnv(home: string, configJson: string): Record<string, string> {
   return {
-    OPENCODE_TEST_HOME: home,
+    BOLT_TEST_HOME: home,
     HOME: home,
     XDG_CONFIG_HOME: path.join(home, ".config"),
     XDG_DATA_HOME: path.join(home, ".local/share"),
     XDG_STATE_HOME: path.join(home, ".local/state"),
     XDG_CACHE_HOME: path.join(home, ".cache"),
-    OPENCODE_CONFIG_CONTENT: configJson,
-    OPENCODE_DISABLE_PROJECT_CONFIG: "1",
-    OPENCODE_PURE: "1",
-    OPENCODE_DISABLE_AUTOUPDATE: "1",
-    OPENCODE_DISABLE_AUTOCOMPACT: "1",
-    OPENCODE_DISABLE_MODELS_FETCH: "1",
-    OPENCODE_AUTH_CONTENT: "{}",
+    BOLT_CONFIG_CONTENT: configJson,
+    BOLT_DISABLE_PROJECT_CONFIG: "1",
+    BOLT_PURE: "1",
+    BOLT_DISABLE_AUTOUPDATE: "1",
+    BOLT_DISABLE_AUTOCOMPACT: "1",
+    BOLT_DISABLE_MODELS_FETCH: "1",
+    BOLT_AUTH_CONTENT: "{}",
   }
 }
 
@@ -91,7 +91,7 @@ export type RunHandle = {
 
 export type SpawnOpts = { readonly timeoutMs?: number; readonly env?: Record<string, string> }
 
-// Typed equivalent of constructing argv for `opencode run`. New flags should
+// Typed equivalent of constructing argv for `bolt run`. New flags should
 // land here so tests stay grep-able and refactor-safe.
 export type RunOpts = SpawnOpts & {
   readonly model?: string
@@ -204,7 +204,7 @@ export function withCliFixture<A, E>(
     const configJson = JSON.stringify(testProviderConfig(llm.url))
     const env = isolatedEnv(home, configJson)
 
-    const spawn = Effect.fn("opencode.spawn")(function* (args: string[], opts?: SpawnOpts) {
+    const spawn = Effect.fn("bolt.spawn")(function* (args: string[], opts?: SpawnOpts) {
       const start = Date.now()
       const timeoutMs = opts?.timeoutMs ?? 30_000
       // stdin: "ignore" so the child doesn't see a piped stdin and block
@@ -266,7 +266,7 @@ export function withCliFixture<A, E>(
         ...opts,
         env: {
           ...opts.env,
-          OPENCODE_CONFIG_CONTENT: JSON.stringify({
+          BOLT_CONFIG_CONTENT: JSON.stringify({
             ...testProviderConfig(llm.url),
             permission: opts.permission,
           }),
@@ -278,7 +278,7 @@ export function withCliFixture<A, E>(
       return spawn(runArgs(message, opts), runOpts(opts))
     }
 
-    const startRun = Effect.fn("opencode.startRun")(function* (message: string, opts?: RunOpts) {
+    const startRun = Effect.fn("bolt.startRun")(function* (message: string, opts?: RunOpts) {
       const start = Date.now()
       const options = runOpts(opts)
       const proc = yield* Effect.acquireRelease(
@@ -311,7 +311,7 @@ export function withCliFixture<A, E>(
       } satisfies RunHandle
     })
 
-    const serve = Effect.fn("opencode.serve")(function* (opts?: ServeOpts) {
+    const serve = Effect.fn("bolt.serve")(function* (opts?: ServeOpts) {
       const argv = ["serve"]
       // Default port 0 — let the OS pick a free port, parse the actual one
       // off stdout. Hard-coded ports flake under parallel tests.
@@ -345,7 +345,7 @@ export function withCliFixture<A, E>(
 
       // Watch stdout line-by-line for the listening sentinel. Format
       // (see src/cli/cmd/serve.ts):
-      //   "opencode server listening on http://<host>:<port>"
+      //   "bolt server listening on http://<host>:<port>"
       const readyRe = /listening on (http:\/\/([^\s:]+):(\d+))/
       const readyDeferred = yield* Deferred.make<{ url: string; hostname: string; port: number }>()
       yield* Effect.forkScoped(
@@ -385,7 +385,7 @@ export function withCliFixture<A, E>(
       } satisfies ServeHandle
     })
 
-    const acp = Effect.fn("opencode.acp")(function* (opts?: AcpOpts) {
+    const acp = Effect.fn("bolt.acp")(function* (opts?: AcpOpts) {
       const argv = ["acp"]
       if (opts?.cwd) argv.push("--cwd", opts.cwd)
       if (opts?.extraArgs) argv.push(...opts.extraArgs)
@@ -468,7 +468,7 @@ export function withCliFixture<A, E>(
 
     return yield* fn({ llm, home, opencode })
     // FetchHttpClient is provided so test bodies can `yield* HttpClient.HttpClient`
-    // and hit endpoints on `opencode.serve()` without rolling their own fetch.
+    // and hit endpoints on `bolt.serve()` without rolling their own fetch.
   }).pipe(
     Effect.provide(
       Layer.mergeAll(
@@ -494,7 +494,7 @@ function normalizeLines(value: string) {
 
 // Convenience for the common assertion pattern. Dumps stderr/stdout when
 // the exit code doesn't match — saves debugging time on CI failures.
-function expectExit(result: RunResult, expected: number, label = "opencode") {
+function expectExit(result: RunResult, expected: number, label = "bolt") {
   if (result.exitCode === expected) return
   const tail = (s: string, n: number) => (s.length > n ? "..." + s.slice(-n) : s)
   // eslint-disable-next-line no-console

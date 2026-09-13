@@ -1,6 +1,6 @@
 ---
 title: SDK
-description: Client JS type-safe per il server opencode.
+description: Client JS type-safe per il server bolt.
 ---
 
 import config from "../../../../config.mjs"
@@ -18,7 +18,7 @@ Usalo per creare integrazioni e controllare opencode in modo programmatico.
 Installa l'SDK da npm:
 
 ```bash
-npm install @opencode-ai/sdk
+npm install @bolt-ai/sdk
 ```
 
 ---
@@ -28,9 +28,9 @@ npm install @opencode-ai/sdk
 Crea un'istanza di opencode:
 
 ```javascript
-import { createOpencode } from "@opencode-ai/sdk"
+import { createBolt } from "@bolt-ai/sdk"
 
-const { client } = await createOpencode()
+const { client } = await createBolt()
 ```
 
 Questo avvia sia un server sia un client
@@ -49,12 +49,12 @@ Questo avvia sia un server sia un client
 
 ## Configurazione
 
-Puoi passare un oggetto di configurazione per personalizzare il comportamento. L'istanza legge comunque `opencode.json`, ma puoi sovrascrivere o aggiungere configurazione inline:
+Puoi passare un oggetto di configurazione per personalizzare il comportamento. L'istanza legge comunque `bolt.json`, ma puoi sovrascrivere o aggiungere configurazione inline:
 
 ```javascript
-import { createOpencode } from "@opencode-ai/sdk"
+import { createBolt } from "@bolt-ai/sdk"
 
-const opencode = await createOpencode({
+const bolt = await createBolt({
   hostname: "127.0.0.1",
   port: 4096,
   config: {
@@ -62,9 +62,9 @@ const opencode = await createOpencode({
   },
 })
 
-console.log(`Server running at ${opencode.server.url}`)
+console.log(`Server running at ${bolt.server.url}`)
 
-opencode.server.close()
+bolt.server.close()
 ```
 
 ## Solo client
@@ -72,9 +72,9 @@ opencode.server.close()
 Se hai gia un'istanza di opencode in esecuzione, puoi creare un client per collegarti:
 
 ```javascript
-import { createOpencodeClient } from "@opencode-ai/sdk"
+import { createBoltClient } from "@bolt-ai/sdk"
 
-const client = createOpencodeClient({
+const client = createBoltClient({
   baseUrl: "http://localhost:4096",
 })
 ```
@@ -96,7 +96,7 @@ const client = createOpencodeClient({
 L'SDK include definizioni TypeScript per tutti i tipi API. Importale direttamente:
 
 ```typescript
-import type { Session, Message, Part } from "@opencode-ai/sdk"
+import type { Session, Message, Part } from "@bolt-ai/sdk"
 ```
 
 Tutti i tipi sono generati dalla specifica OpenAPI del server e disponibili nel <a href={typesUrl}>file dei tipi</a>.

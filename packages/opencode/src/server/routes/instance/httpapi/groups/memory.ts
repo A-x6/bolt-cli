@@ -1,5 +1,5 @@
-import { MemoryApiClientError, MemoryApiServerError } from "@opencode-ai/memory/effect/errors"
-import { MemoryContract } from "@opencode-ai/memory/effect/httpapi"
+import { MemoryApiClientError, MemoryApiServerError } from "@bolt-ai/memory/effect/errors"
+import { MemoryContract } from "@bolt-ai/memory/effect/httpapi"
 import { HttpApi, HttpApiEndpoint, HttpApiGroup, OpenApi } from "effect/unstable/httpapi"
 import { Authorization } from "../middleware/authorization"
 import { InstanceContextMiddleware } from "../middleware/instance-context"
@@ -147,7 +147,7 @@ export const MemoryApi = HttpApi.make("memory")
   )
   .annotateMerge(
     OpenApi.annotations({
-      title: "opencode memory HttpApi",
+      title: "bolt memory HttpApi",
       version: "0.0.1",
       description: "Project memory HttpApi surface.",
     }),

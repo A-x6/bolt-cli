@@ -1,4 +1,4 @@
-import type { ConfigV1 } from "@opencode-ai/core/v1/config/config"
+import type { ConfigV1 } from "@bolt-ai/core/v1/config/config"
 
 export interface Info {
   readonly rules: boolean
